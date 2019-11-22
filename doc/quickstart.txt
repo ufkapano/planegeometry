@@ -1,0 +1,16 @@
+QUICK START
+----------------------------------------------------------------------
+MAIN CLASSES
+
+from planegeometry.structures.points import Point
+from planegeometry.structures.segments Segment
+from planegeometry.structures.rectangles Rectangle
+from planegeometry.structures.polygons Polygon
+from planegeometry.structures.triangles Triangle
+from planegeometry.structures.trianglecollections TriangleCollection
+
+
+
+
+----------------------------------------------------------------------
+EOF
