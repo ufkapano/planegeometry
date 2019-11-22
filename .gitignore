@@ -4,7 +4,7 @@
 *~
 
 # Figures from tests.
-*/tests/*.pdf
+planegeometry/*/tests/*.pdf
 
 # Some Python files.
 *.py[cod]

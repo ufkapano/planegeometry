@@ -2,15 +2,20 @@ QUICK START
 ----------------------------------------------------------------------
 MAIN CLASSES
 
+# Total ordering in Point, Segment.
+
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments Segment
 from planegeometry.structures.rectangles Rectangle
 from planegeometry.structures.polygons Polygon
 from planegeometry.structures.triangles Triangle
 from planegeometry.structures.trianglecollections TriangleCollection
+----------------------------------------------------------------------
+GEOMTOOLS
 
-
-
-
+from planegeometry.algorithms.geomtools import orientation
+from planegeometry.algorithms.geomtools import find_two_furthest_points1
+from planegeometry.algorithms.geomtools import find_two_furthest_points2
+from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
 ----------------------------------------------------------------------
 EOF

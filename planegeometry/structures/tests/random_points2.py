@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 import random
 import matplotlib.pyplot as plt
@@ -10,8 +10,13 @@ for i in range(100):
 
 x = [p.x for p in point_list]
 y = [p.y for p in point_list]
-#plt.plot(x, y, marker='D', linestyle='None')   # D=diamond
-plt.plot(x, y, linestyle='None')   # D=diamond
+plt.plot(x, y, marker='.', linestyle='None')
+# https://matplotlib.org/3.1.1/api/markers_api.html
+# matplotlib.markers:
+# "D'  diamond
+# "."  point
+# "o"  circle
+# "s"  square
 
 plt.title("Random points")
 plt.xlabel("x")
