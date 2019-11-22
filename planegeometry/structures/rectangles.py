@@ -3,6 +3,7 @@
 from fractions import Fraction
 from functools import total_ordering
 from planegeometry.structures.points import Point
+from planegeometry.structures.segments import Segment
 
 @total_ordering
 class Rectangle:
@@ -103,7 +104,7 @@ class Rectangle:
 
     def __hash__(self):
         """Hashable rectangles."""
-        return hash((self.pt1, self.pt2))
+        #return hash((self.pt1, self.pt2))
         return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
 
     def __contains__(self, other):
@@ -118,6 +119,13 @@ class Rectangle:
     def is_square(self):
         """Test if a rectangle is a square."""
         return (self.pt2.x - self.pt1.x) == (self.pt2.y - self.pt1.y)
+
+    def itersegments(self):
+        """Generate all segments on demand (segment.pt1 < segment.pt2)."""
+        yield Segment(self.pt1.x, self.pt1.y, self.pt2.x, self.pt1.y)
+        yield Segment(self.pt1.x, self.pt1.y, self.pt1.x, self.pt2.y)
+        yield Segment(self.pt1.x, self.pt2.y, self.pt2.x, self.pt2.y)
+        yield Segment(self.pt2.x, self.pt1.y, self.pt2.x, self.pt2.y)
 
     def gnu(self, visible=False):
         """Return a string for Gnuplot."""

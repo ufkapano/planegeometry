@@ -5,17 +5,18 @@ import Gnuplot   # Python 2 only
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.structures.rectangles import Rectangle
-#from planegeometry.structures.triangles import Triangle
+from planegeometry.structures.triangles import Triangle
 from planegeometry.structures.circles import Circle
 
 gnu = Gnuplot.Gnuplot (persist = 1)
 
 visible = True
+
 rectangle = Rectangle(0.1, 0.3, 0.9, 0.7)
 gnu(rectangle.gnu(visible))
 
-#triangle = Triangle(0.2, 0.2, 0.8, 0.4, 0.6, 0.8)
-#gnu(triangle.gnu(visible))
+triangle = Triangle(0.2, 0.2, 0.8, 0.4, 0.6, 0.8)
+gnu(triangle.gnu(visible))
 
 circle = Circle(0.4, 0.6, 0.2)
 gnu(circle.gnu(visible))

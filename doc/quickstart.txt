@@ -2,7 +2,7 @@ QUICK START
 ----------------------------------------------------------------------
 MAIN CLASSES
 
-# Total ordering in Point, Segment, Rectangle.
+# Total ordering in Point, Segment, Rectangle, Circle.
 
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments Segment
