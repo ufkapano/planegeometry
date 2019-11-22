@@ -3,6 +3,9 @@
 # Backup files.
 *~
 
+# Figures from tests.
+*/tests/*.pdf
+
 # Some Python files.
 *.py[cod]
 
