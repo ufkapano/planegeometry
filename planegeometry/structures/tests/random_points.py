@@ -1,7 +1,20 @@
 #!/usr/bin/python
+#
+# Gnuplot under Python
+#
+# http://gnuplot-py.sourceforge.net/
+# Gnuplot.py is a Python package that interfaces to gnuplot.
+#
+# https://pypi.org/project/PyGnuplot/
+# Python Gnuplot wrapper
+# pip install PyGnuplot   # Python 2.7 and 3.6
+#
+# https://pypi.org/project/gnuplotlib/
+# Gnuplot-based plotting for numpy
+# pip install gnuplotlib
 
 import random
-import Gnuplot
+import Gnuplot   # Python 2 only
 from planegeometry.structures.points import Point
 
 gnu = Gnuplot.Gnuplot (persist = 1)
