@@ -81,6 +81,21 @@ class TestSegment(unittest.TestCase):
         self.assertFalse(self.segment1.intersect(Segment(1, 1, 3, 3))) # / -
         self.assertFalse(self.segment1.intersect(Segment(3, -1, 3, 1))) # - |
 
+    def test_intersection_point(self):
+        s1 = Segment(0, 0, 3, 3)
+        s2 = Segment(1, 3, 3, 1)
+        self.assertEqual(s1.intersection_point(s2), Point(2, 2))
+        self.assertEqual(self.segment1.intersection_point(s2), None)
+        self.assertEqual(s1.intersection_point(Segment(1, 0, 1, 2)), Point(1, 1))
+        self.assertEqual(s1.intersection_point(Segment(0, 1, 2, 1)), Point(1, 1))
+
+    def test_calculate(self):
+        s1 = Segment(0, 0, 3, 3)
+        self.assertEqual(s1.calculate_y(2), 2)
+        self.assertEqual(s1.calculate_y(2.5), 2.5)
+        self.assertEqual(s1.calculate_x(1), 1)
+        self.assertEqual(s1.calculate_x(1.5), 1.5)
+
     def test_hash(self):
         aset = set()
         aset.add(self.segment1)
