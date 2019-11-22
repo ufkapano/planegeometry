@@ -2,7 +2,7 @@ QUICK START
 ----------------------------------------------------------------------
 MAIN CLASSES
 
-# Total ordering in Point, Segment.
+# Total ordering in Point, Segment, Rectangle.
 
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments Segment
@@ -17,5 +17,10 @@ from planegeometry.algorithms.geomtools import orientation
 from planegeometry.algorithms.geomtools import find_two_furthest_points1
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
+----------------------------------------------------------------------
+BOUNDING BOX
+
+# Bounding box as a rectangle.
+from planegeometry.structures.rectangles import bounding_box
 ----------------------------------------------------------------------
 EOF
