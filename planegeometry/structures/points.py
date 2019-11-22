@@ -111,7 +111,7 @@ class Point:
         return hash((self.x, self.y))   # hash based on tuple
 
     def gnu(self):
-        """String for Gnuplot."""
+        """Return a string for Gnuplot."""
         return 'set label "" at {},{} point pt 7 ps 0.5\n'.format(
             float(self.x), float(self.y))
 

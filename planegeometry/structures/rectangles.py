@@ -103,8 +103,8 @@ class Rectangle:
 
     def __hash__(self):
         """Hashable rectangles."""
-        #return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
         return hash((self.pt1, self.pt2))
+        return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
 
     def __contains__(self, other):
         """Test if a point is in a rectangle."""

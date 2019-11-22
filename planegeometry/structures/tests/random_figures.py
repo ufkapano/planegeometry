@@ -6,7 +6,7 @@ from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.structures.rectangles import Rectangle
 #from planegeometry.structures.triangles import Triangle
-#from planegeometry.structures.circles import Circle
+from planegeometry.structures.circles import Circle
 
 gnu = Gnuplot.Gnuplot (persist = 1)
 
@@ -17,8 +17,8 @@ gnu(rectangle.gnu(visible))
 #triangle = Triangle(0.2, 0.2, 0.8, 0.4, 0.6, 0.8)
 #gnu(triangle.gnu(visible))
 
-#circle = Circle(0.4, 0.6, 0.2)
-#gnu(circle.gnu(visible))
+circle = Circle(0.4, 0.6, 0.2)
+gnu(circle.gnu(visible))
 
 # Wyswietlenie grafu.
 gnu('set terminal pdf enhanced')
