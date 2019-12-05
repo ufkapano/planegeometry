@@ -60,23 +60,11 @@ class Triangle:
     def move(self, *arguments):   # przesuniecie o (x, y)
         """Return a new moved triangle."""
         if len(arguments) == 1 and isinstance(arguments[0], Point):
-            pt = arguments[0]
-            x1 = self.pt1.x + pt.x
-            x2 = self.pt2.x + pt.x
-            x3 = self.pt3.x + pt.x
-            y1 = self.pt1.y + pt.y
-            y2 = self.pt2.y + pt.y
-            y3 = self.pt3.y + pt.y
-            return Triangle(x1, y1, x2, y2, x3, y3)
+            pt1 = arguments[0]
+            return Triangle(*((pt1 + pt2) for pt2 in (self.pt1, self.pt2, self.pt3)))
         elif len(arguments) == 2:
-            x, y = arguments
-            x1 = self.pt1.x + x
-            x2 = self.pt2.x + x
-            x3 = self.pt3.x + x
-            y1 = self.pt1.y + y
-            y2 = self.pt2.y + y
-            y3 = self.pt3.y + y
-            return Triangle(x1, y1, x2, y2, x3, y3)
+            pt1 = Point(*arguments)
+            return Triangle(*((pt1 + pt2) for pt2 in (self.pt1, self.pt2, self.pt3)))
         else:
             raise ValueError("bad arguments")
 

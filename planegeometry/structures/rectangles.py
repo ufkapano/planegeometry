@@ -152,6 +152,8 @@ def bounding_box(point_list):
         xmax = max(point.x, xmax)
         ymin = min(point.y, ymin)
         ymax = max(point.y, ymax)
+    # One can use a divide-and-conquer algorithm to find pairs
+    # (xmin, xmax) and (ymin, ymax) at the same time.
     return Rectangle(xmin, ymin, xmax, ymax)
 
 # EOF
