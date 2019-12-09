@@ -35,6 +35,12 @@ class TestCircle(unittest.TestCase):
         self.assertEqual(c3, self.c1)
         self.assertNotEqual(id(c3), id(self.c1))
 
+    def test_center(self):
+        self.assertEqual(self.c1.center(), Point(0, 0))
+        self.assertEqual(self.c2.center(), Point(0, 0))
+        self.assertEqual(self.c3.center(), Point(1, 2))
+        self.assertEqual(self.c4.center(), Point(Fraction(1, 3), Fraction(2, 3)))
+
     def test_area(self):
         self.assertEqual(self.c1.area(), math.pi * 2 * 2)
         self.assertEqual(self.c2.area(), math.pi * 6 * 6)

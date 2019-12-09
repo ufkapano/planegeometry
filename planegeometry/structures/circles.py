@@ -31,6 +31,10 @@ class Circle:
         """Return a copy of a circle."""
         return Circle(self.pt, self.radius)
 
+    def center(self):
+        """Return the center of a circle."""
+        return self.pt
+
     def area(self):
         """Return the circle area."""
         return math.pi * self.radius * self.radius
