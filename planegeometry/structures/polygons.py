@@ -157,6 +157,10 @@ class Polygon:
             else:
                 yield Segment(pt2, pt1)
 
+    def __hash__(self):
+        """Hashable polygons."""
+        return hash(frozenset(self.point_list))
+
 
 def bounding_box(point_list):
     """Return the bounding box for a point set."""

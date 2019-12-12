@@ -96,6 +96,14 @@ class TestPolygon(unittest.TestCase):
         self.assertTrue(Segment(2, 0, 2, 1) in L)
         self.assertTrue(Segment(0, 0, 2, 0) in L)
 
+    def test_hash(self):
+        aset = set()
+        aset.add(self.polygon1)
+        aset.add(self.polygon1)   # ignored
+        self.assertEqual(len(aset), 1)
+        aset.add(self.polygon2)
+        self.assertEqual(len(aset), 2)
+
     def tearDown(self): pass
 
 

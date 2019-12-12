@@ -132,6 +132,7 @@ class Segment:   # odcinek skierowany
 
     def calculate_y(self, x):
         """Calculate y for a given x in the segment."""
+        # Is x between x1 and x2? Yes for a sweep line.
         x1 = self.pt1.x
         y1 = self.pt1.y
         x2 = self.pt2.x
@@ -140,6 +141,7 @@ class Segment:   # odcinek skierowany
 
     def calculate_x(self, y):
         """Calculate x for a given y in the segment."""
+        # Is y between y1 and y2? Yes for a sweep line.
         x1 = self.pt1.x
         y1 = self.pt1.y
         x2 = self.pt2.x
@@ -148,8 +150,8 @@ class Segment:   # odcinek skierowany
 
     def __hash__(self):
         """Hashable segments."""
-        #return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
-        return hash((self.pt1, self.pt2))
+        #return hash((self.pt1, self.pt2))
+        return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
 
     def gnu(self, visible=False):
         """String for Gnuplot."""
