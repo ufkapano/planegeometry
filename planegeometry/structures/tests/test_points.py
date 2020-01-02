@@ -12,6 +12,7 @@ class TestPoint(unittest.TestCase):
         self.p3 = Point(Fraction(1, 2), Fraction(2, 3))
 
     def test_print(self):
+        self.assertEqual(repr(Point()),"Point(0, 0)")
         self.assertEqual(repr(self.p2),"Point(4.5, 2.1)")
         self.assertEqual(repr(self.p1),"Point(3.4, 5.6)")
         self.assertEqual(repr(self.p3),"Point(Fraction(1, 2), Fraction(2, 3))")

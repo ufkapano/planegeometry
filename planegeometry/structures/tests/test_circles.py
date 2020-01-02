@@ -52,6 +52,7 @@ class TestCircle(unittest.TestCase):
         self.assertRaises(ValueError, Circle.move, self.c1, 1)
 
     def test_cmp(self):
+        self.assertEqual(Circle(), Circle(0, 0, 1))
         self.assertTrue(self.c1 == Circle(0, 0, 2))
         self.assertFalse(self.c1 == self.c2)
         self.assertTrue(self.c1 != self.c2)

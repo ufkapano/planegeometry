@@ -27,6 +27,7 @@ class TestSegment(unittest.TestCase):
         "Segment(Fraction(1, 2), Fraction(2, 3), Fraction(3, 4), Fraction(4, 5))")
 
     def test_cmp(self):
+        self.assertEqual(Segment(), Segment(0, 0, 1, 1))
         self.assertTrue(self.segment1 == Segment(0, 0, 2, 0))
         self.assertFalse(self.segment1 == self.segment2)
         self.assertTrue(self.segment1 != self.segment2)

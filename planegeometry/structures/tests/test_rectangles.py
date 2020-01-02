@@ -38,6 +38,7 @@ class TestRectangle(unittest.TestCase):
         "Rectangle(Fraction(1, 2), Fraction(2, 3), Fraction(3, 4), Fraction(4, 5))")
 
     def test_cmp(self):
+        self.assertEqual(Rectangle(), Rectangle(0, 0, 1, 1))
         self.assertTrue(self.r1 == Rectangle(0, 0, 5, 6))
         self.assertFalse(self.r1 == self.r2)
         self.assertTrue(self.r1 != self.r2)

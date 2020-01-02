@@ -35,6 +35,7 @@ class TestTriangle(unittest.TestCase):
         "Triangle(Fraction(1, 2), Fraction(2, 3), Fraction(3, 4), Fraction(4, 5), Fraction(5, 6), Fraction(6, 7))")
 
     def test_cmp(self):
+        self.assertEqual(Triangle(), Triangle(0, 0, 1, 0, 0, 1))
         self.assertTrue(self.t1 == Triangle(0, 0, 6, 0, 0, 12))
         self.assertFalse(self.t1 == self.t2)
         self.assertTrue(self.t1 != self.t2)

@@ -17,7 +17,7 @@ class Polygon:
     """The class defining a polygon."""
 
     def __init__(self, *arguments):
-        """Make a triangle in the plane."""
+        """Make a polygon in the plane."""
         if all(isinstance(pt, Point) for pt in arguments):
             if len(arguments) < 3:
                 raise ValueError("less then 3 points")
