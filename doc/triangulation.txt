@@ -1,0 +1,10 @@
+DELAUNAY TRIANGULATION
+----------------------------------------------------------------------
+from planegeometry.triangulations.bowyerwatson import BowyerWatson
+
+point_list = [...]
+algorithm = BowyerWatson(point_list)
+algorithm.run()
+print ( algorithm.tc )   # triangle collection
+----------------------------------------------------------------------
+EOF

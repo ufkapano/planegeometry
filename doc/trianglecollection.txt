@@ -6,6 +6,7 @@ tc.insert(triangle)
 tc.remove(triangle)
 tc.search(point)   # return a list of triangles
 tc.itertriangles()
+triangle in tc   # return bool
 tc.to_graph()   # return graph
 ----------------------------------------------------------------------
 EOF

@@ -13,6 +13,10 @@ class TriangleCollection:
         """Make a collection of triangles."""
         self.items = []
 
+    def __str__(self):
+        """String representation of a triangle collection."""
+        return str(self.items)
+
     def __len__(self):
         """Return the number of triangles in the collection."""
         return len(self.items)
@@ -41,6 +45,13 @@ class TriangleCollection:
             if point in triangle:
                 result.append(triangle)
         return result
+
+    def __contains__(self, other):
+        """Test if a triangle is in a collection."""
+        if isinstance(other, Triangle):
+            return other in self.items
+        else:
+            raise ValueError("not a triangle")
 
     def to_graph(self):
         """Return the triangulation as a graph."""
