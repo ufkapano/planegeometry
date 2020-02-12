@@ -4,6 +4,7 @@ segment = Segment(x1, y1, x2, y2)
 segment = Segment(p1, p2)
 segment = Segment()
 repr(segment)   # return string
+hash(segment)
 s1 == s2, s1 != s2, s1 < s2, s1 <= s2, s1 > s2, s1 >= s2
 segment.copy()    # return segment
 segment.center()   # return point
@@ -15,7 +16,6 @@ s1.intersect(s2)      # return bool
 s1.intersection_point(s2)      # return point
 segment.calculate_y(x)   # return y, Point(x, y) in segment
 segment.calculate_x(y)   # return x, Point(x, y) in segment
-hash(segment)
 segment.gnu()   # return gnuplot string
 ----------------------------------------------------------------------
 EOF

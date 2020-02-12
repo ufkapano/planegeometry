@@ -3,6 +3,7 @@ INTERFACE FOR POINTS
 point = Point(x, y)
 point = Point()
 repr(point)   # return string
+hash(point)
 p1 == p2, p1 != p2, p1 < p2, p1 <= p2, p1 > p2, p1 >= p2
 p1 + p2, p1 - p2, +point, -point
 p1 * p2     # scalar product
@@ -12,7 +13,6 @@ point.copy()
 point.length()
 abs(point)
 point.alpha()
-hash(point)
 point.gnu()   # return gnuplot string
 ----------------------------------------------------------------------
 EOF

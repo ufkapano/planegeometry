@@ -1,6 +1,11 @@
 INTERFACE FOR TRIANGLECOLLECTION
 ----------------------------------------------------------------------
-
-
+tc = TriangleCollection()
+len(tc)
+tc.insert(triangle)
+tc.remove(triangle)
+tc.search(point)   # return a list of triangles
+tc.itertriangles()
+tc.to_graph()   # return graph
 ----------------------------------------------------------------------
 EOF
