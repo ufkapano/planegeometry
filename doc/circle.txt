@@ -1,0 +1,18 @@
+INTERFACE FOR CIRCLES
+----------------------------------------------------------------------
+circle = Circle(x, y, radius)
+circle = Circle(point, radius)
+circle = Circle()
+repr(circle)
+circle.copy()
+circle.center()
+circle.area()
+circle.move(x, y)
+circle.move(point)
+c1 == c2, c1 != c2, c1 < c2, c1 <= c2, c1 > c2, c1 >= c2
+hash(circle)
+c1.cover(c2)   # return circle
+point in circle   # return bool
+circle.gnu()   # return gnuplot string
+----------------------------------------------------------------------
+EOF

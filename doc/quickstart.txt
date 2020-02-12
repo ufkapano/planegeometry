@@ -5,11 +5,12 @@ MAIN CLASSES
 # Total ordering in Point, Segment, Rectangle, Circle.
 
 from planegeometry.structures.points import Point
-from planegeometry.structures.segments Segment
-from planegeometry.structures.rectangles Rectangle
-from planegeometry.structures.polygons Polygon
-from planegeometry.structures.triangles Triangle
-from planegeometry.structures.trianglecollections TriangleCollection
+from planegeometry.structures.segments import Segment
+from planegeometry.structures.rectangles import Rectangle
+from planegeometry.structures.circles import Circle
+from planegeometry.structures.polygons import Polygon
+from planegeometry.structures.triangles import Triangle
+from planegeometry.structures.trianglecollections import TriangleCollection
 ----------------------------------------------------------------------
 GEOMTOOLS
 

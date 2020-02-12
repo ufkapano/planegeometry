@@ -1,0 +1,23 @@
+INTERFACE FOR TRIANGLES
+----------------------------------------------------------------------
+triangle = Triangle(x1, y1, x2, y2, x3, y3)
+triangle = Triangle(p1, p2, p3)
+triangle = Triangle()
+repr(triangle)   # return string
+triangle.copy()
+triangle.area()
+triangle.center()   # return point
+triangle.make4()
+triangle.move(x, y)
+triangle.move(point)
+t1 == t2, t1 != t2
+hash(triangle)
+point in triangle   # return bool
+triangle.orientation()   # return +1|0|-1
+t1.common_segment(t2)   # return segment
+t1.third_node(p1, p2)   # return point
+triangle.in_circumcircle(point)   # return bool
+triangle.itersegments()
+triangle.gnu()   # return gnuplot string
+----------------------------------------------------------------------
+EOF

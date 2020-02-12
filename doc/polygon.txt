@@ -1,0 +1,17 @@
+INTERFACE FOR POLYGONS
+----------------------------------------------------------------------
+polygon = Polygon(x1, y1, ..., xn, yn)
+polygon = Polygon(p1, ..., pn)
+repr(polygon)
+poly1 == poly2, poly1 != poly2
+polygon.move(x, y)
+polygon.move(point)
+polygon.copy()
+polygon.orientation(test_is_simple=False)   # return -1|+1, for simple polygons
+point in polygon   # return bool, using winding number
+polygon.is_simple()   # return bool (slow)
+polygon.is_convex(test_is_simple=False)   # return bool, for simple polygons
+polygon.itersegments()
+hash(polygon)
+----------------------------------------------------------------------
+EOF

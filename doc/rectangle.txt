@@ -1,0 +1,22 @@
+INTERFACE FOR RECTANGLES
+----------------------------------------------------------------------
+rectangle = Rectangle(x1, y1, x2, y2)   # bottom left, top right
+rectangle = Rectangle(p1, p2)
+rectangle = Rectangle()
+repr(rectangle)   # return string
+rectangle.copy()   # return rectangle
+rectangle.center()   # return point
+rectangle.area()
+rectangle.make4()
+r1.cover(r2)           # return rectangle
+r1.intersection(r2)    # return rectangle
+rectangle.move(x, y)
+rectangle.move(point)
+r1 == r2, r1 != r2, r1 < r2, r1 <= r2, r1 > r2, r1 >= r2
+hash(rectangle)
+point in rectangle   # return bool
+rectangle.is_square()   # return bool
+rectangle.itersegments()
+rectangle.gnu()   # return gnuplot string
+----------------------------------------------------------------------
+EOF
