@@ -1,6 +1,7 @@
 INTERFACE FOR TRIANGLECOLLECTION
 ----------------------------------------------------------------------
 tc = TriangleCollection()
+str(tc)   # return string
 len(tc)
 tc.insert(triangle)
 tc.remove(triangle)

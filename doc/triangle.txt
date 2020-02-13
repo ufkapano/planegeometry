@@ -5,12 +5,12 @@ triangle = Triangle(p1, p2, p3)
 triangle = Triangle()
 repr(triangle)   # return string
 hash(triangle)
-triangle.copy()
+triangle.copy()   # return triangle
 triangle.area()
 triangle.center()   # return point
-triangle.make4()
-triangle.move(x, y)
-triangle.move(point)
+triangle.make4()    # return four smaller triangles
+triangle.move(x, y)   # return triangle
+triangle.move(point)   # return triangle
 t1 == t2, t1 != t2
 point in triangle   # return bool
 triangle.orientation()   # return +1|0|-1

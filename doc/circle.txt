@@ -3,13 +3,13 @@ INTERFACE FOR CIRCLES
 circle = Circle(x, y, radius)
 circle = Circle(point, radius)
 circle = Circle()
-repr(circle)
+repr(circle)   # return string
 hash(circle)
-circle.copy()
+circle.copy()   # return circle
 circle.center()   # return point
 circle.area()
-circle.move(x, y)
-circle.move(point)
+circle.move(x, y)   # return circle
+circle.move(point)   # return circle
 c1 == c2, c1 != c2, c1 < c2, c1 <= c2, c1 > c2, c1 >= c2
 c1.cover(c2)   # return circle
 point in circle   # return bool

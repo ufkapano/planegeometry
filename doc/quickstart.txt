@@ -1,5 +1,23 @@
 QUICK START
 ----------------------------------------------------------------------
+LINUX WITH PYTHON AND GIT INSTALLED
+
+1. Clone the project into the home directory
+
+$ cd
+$ git clone https://github.com/ufkapano/planegeometry.git
+
+2. Add the planegeometry directory to the PYTHONPATH environment variable,
+for .bashrc file you can add:
+
+if [ -n "${PYTHONPATH}" ] ; then
+    PYTHONPATH="${PYTHONPATH}:$HOME/planegeometry"
+else
+    PYTHONPATH="$HOME/planegeometry"
+fi
+
+3. Start using the planegeometry package!
+----------------------------------------------------------------------
 MAIN CLASSES
 
 # Total ordering in Point, Segment, Rectangle, Circle.
