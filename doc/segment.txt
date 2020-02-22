@@ -5,6 +5,10 @@ segment = Segment(p1, p2)
 segment = Segment()
 repr(segment)   # return string
 hash(segment)
+segment.source == segment.pt1   # property (for graphs)
+segment.target == segment.pt2   # property (for graphs)
+segment.weight == segment.length()   # property (for graphs)
+~segment          # inverted segment
 s1 == s2, s1 != s2, s1 < s2, s1 <= s2, s1 > s2, s1 >= s2
 segment.copy()    # return segment
 segment.center()   # return point

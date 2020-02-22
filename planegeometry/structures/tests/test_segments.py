@@ -61,6 +61,10 @@ class TestSegment(unittest.TestCase):
         self.assertEqual(self.segment1.move(Point(1, 2)), Segment(1, 2, 3, 2))
         self.assertRaises(ValueError, Segment.move, self.segment1, 1)
 
+    def test_invert(self):
+        self.assertEqual(~self.segment1, Segment(2, 0, 0, 0))
+        self.assertEqual(~self.segment2, Segment(1, 1, 0, 0))
+
     def test_contains(self):
         self.assertTrue(Point(1, 0) in self.segment1)
         self.assertTrue(Point(1, 1) not in self.segment1)
@@ -110,6 +114,14 @@ class TestSegment(unittest.TestCase):
         s2 = 'set label "" at 2.0,0.0 point pt 7 ps 0.5\n'
         s3 = 'set arrow from 0.0,0.0 to 2.0,0.0 nohead\n'
         self.assertEqual(self.segment1.gnu(True), s1 + s2 + s3)
+
+    def test_property(self):
+        self.assertEqual(self.segment1.source, Point(0, 0))
+        self.assertEqual(self.segment1.target, Point(2, 0))
+        self.assertEqual(self.segment2.source, Point(0, 0))
+        self.assertEqual(self.segment2.target, Point(1, 1))
+        self.assertEqual(self.segment1.weight, self.segment1.length())
+        self.assertEqual(self.segment2.weight, self.segment2.length())
 
     def tearDown(self): pass
 

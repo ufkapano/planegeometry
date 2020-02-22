@@ -30,6 +30,21 @@ class Segment:   # odcinek skierowany
         return "Segment({0!r}, {1!r}, {2!r}, {3!r})".format(
             self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y)
 
+    @property
+    def source(self):
+        """I'm the 'source' property."""
+        return self.pt1
+
+    @property
+    def target(self):
+        """I'm the 'target' property."""
+        return self.pt2
+
+    @property
+    def weight(self):
+        """I'm the 'weight' property."""
+        return (self.pt2 - self.pt1).length()
+
     def __eq__(self, other):
         """Comparison of segments (s1 == s2)."""
         return other.pt1 == self.pt1 and other.pt2 == self.pt2
@@ -73,6 +88,10 @@ class Segment:   # odcinek skierowany
             return Segment(x1, y1, x2, y2)
         else:
             raise ValueError("bad arguments")
+
+    def __invert__(self):
+        """Return the segment with the opposite direction."""
+        return self.__class__(self.pt2, self.pt1)
 
     def __contains__(self, other):
         """Test if a point is in a segment."""
