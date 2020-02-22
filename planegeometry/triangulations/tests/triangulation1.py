@@ -23,8 +23,7 @@ G = algorithm.tc.to_graph()
 print ( "triangulation graph ..." )
 G.show()
 
-for edge in G.iteredges():
-    segment = Segment(edge.source, edge.target)
+for segment in G.iteredges():
     gnu(segment.gnu())
 
 for point in G.iternodes():
