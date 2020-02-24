@@ -91,7 +91,7 @@ class Segment:   # odcinek skierowany
 
     def __invert__(self):
         """Return the segment with the opposite direction."""
-        return self.__class__(self.pt2, self.pt1)
+        return Segment(self.pt2, self.pt1)
 
     def __contains__(self, other):
         """Test if a point is in a segment."""

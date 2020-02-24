@@ -8,6 +8,6 @@ tc.remove(triangle)
 tc.search(point)   # return a list of triangles
 tc.itertriangles()
 triangle in tc   # return bool
-tc.to_graph()   # return graph
+tc.to_graph()   # return a graph with points and segments
 ----------------------------------------------------------------------
 EOF
