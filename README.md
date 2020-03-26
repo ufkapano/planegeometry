@@ -22,6 +22,10 @@ divide and conquer approach
 * Monotone polygons: in progress
 * Connected planar maps: in progress (map overlay)
 
+## Installation
+
+See doc/quickstart.txt
+
 ## Contributors
 
 Andrzej Kapanowski (project leader)
