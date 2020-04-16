@@ -130,21 +130,23 @@ class Segment:   # odcinek skierowany
         return False
 
     def intersection_point(self, other):
-        """Return the intersection point of two segments."""
+        """Return the intersection point of two segments (not parallel)."""
         if self.intersect(other):
+            if self.parallel(other):
+                raise ValueError("segments are parallel")
             x1, y1, x2, y2 = self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y
             x3, y3, x4, y4 = other.pt1.x, other.pt1.y, other.pt2.x, other.pt2.y
             if x1 == x2:
-                assert x3 != x4
+                assert x3 != x4   # if x3==x4 then the segments are parallel
                 x5 = x1
                 y5 = y3 + Fraction(x1 - x3, x4 - x3) * (y4 - y3)
             elif x3 == x4:
-                assert x1 != x2
+                assert x1 != x2   # if x1==x2 then the segments are parallel
                 x5 = x3
                 y5 = y1 + Fraction(x3 - x1, x2 - x1) * (y2 - y1)
             else:
                 B = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)
-                assert B != 0   # inaczej odcinki rownolegle
+                assert B != 0   # if B==0 then the segments are parallel
                 A = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)
                 x5 = x1 + Fraction(A, B) * (x2 - x1)
                 y5 = y1 + Fraction(A, B) * (y2 - y1)

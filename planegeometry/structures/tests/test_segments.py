@@ -89,10 +89,21 @@ class TestSegment(unittest.TestCase):
     def test_intersection_point(self):
         s1 = Segment(0, 0, 3, 3)
         s2 = Segment(1, 3, 3, 1)
+        s3 = Segment(1, 0, 1, 2)
         self.assertEqual(s1.intersection_point(s2), Point(2, 2))
         self.assertEqual(self.segment1.intersection_point(s2), None)
-        self.assertEqual(s1.intersection_point(Segment(1, 0, 1, 2)), Point(1, 1))
+        self.assertEqual(s1.intersection_point(s3), Point(1, 1))
         self.assertEqual(s1.intersection_point(Segment(0, 1, 2, 1)), Point(1, 1))
+        # Intersections at ends.
+        self.assertEqual(self.segment1.intersection_point(self.segment2), Point(0, 0)) # L
+        self.assertEqual(self.segment2.intersection_point(s3), Point(1, 1)) # T
+        self.assertEqual(self.segment1.intersection_point(s3), Point(1, 0)) # T
+        self.assertRaises(ValueError, Segment.intersection_point,
+            self.segment2, s1)
+        self.assertRaises(ValueError, Segment.intersection_point,
+            self.segment1, Segment(1, 0, 3, 0))
+        self.assertRaises(ValueError, Segment.intersection_point,
+            s3, Segment(1, 1, 1, 3))
 
     def test_parallel(self):
         self.assertTrue(self.segment1.parallel(Segment(1, 1, 2, 1)))
