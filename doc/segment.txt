@@ -18,6 +18,8 @@ segment.move(point)    # return segment
 point in segment      # return bool
 s1.intersect(s2)      # return bool
 s1.intersection_point(s2)      # return point
+s1.parallel(s2)      # return bool
+s1.perpendicular(s2)      # return bool
 segment.calculate_y(x)   # return y, Point(x, y) in segment
 segment.calculate_x(y)   # return x, Point(x, y) in segment
 segment.gnu()   # return gnuplot string

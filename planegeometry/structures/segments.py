@@ -152,6 +152,14 @@ class Segment:   # odcinek skierowany
         else:
             return None
 
+    def parallel(self, other):
+        """Test if two segments are parallel."""
+        return (self.pt2 - self.pt1).cross(other.pt2 - other.pt1) == 0
+
+    def perpendicular(self, other):
+        """Test if two segments are perpendicular."""
+        return (self.pt2 - self.pt1) * (other.pt2 - other.pt1) == 0
+
     def calculate_y(self, x):
         """Calculate y for a given x in the segment."""
         # Is x between x1 and x2? Yes for a sweep line.

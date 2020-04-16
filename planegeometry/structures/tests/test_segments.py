@@ -94,6 +94,16 @@ class TestSegment(unittest.TestCase):
         self.assertEqual(s1.intersection_point(Segment(1, 0, 1, 2)), Point(1, 1))
         self.assertEqual(s1.intersection_point(Segment(0, 1, 2, 1)), Point(1, 1))
 
+    def test_parallel(self):
+        self.assertTrue(self.segment1.parallel(Segment(1, 1, 2, 1)))
+        self.assertTrue(self.segment2.parallel(Segment(1, 0, 2, 1)))
+        self.assertFalse(self.segment1.parallel(self.segment2))
+
+    def test_perpendicular(self):
+        self.assertTrue(self.segment1.perpendicular(Segment(1, 0, 1, 1)))
+        self.assertTrue(self.segment2.perpendicular(Segment(1, 1, 2, 0)))
+        self.assertFalse(self.segment1.perpendicular(self.segment2))
+
     def test_calculate(self):
         s1 = Segment(0, 0, 3, 3)
         self.assertEqual(s1.calculate_y(2), 2)
