@@ -1,0 +1,10 @@
+CONVEX HULL
+----------------------------------------------------------------------
+from planegeometry.hulls.graham import GrahamScan
+
+point_list = [...]
+algorithm = GrahamScan(point_list)
+algorithm.run()
+print ( algorithm.convex_hull )   # list of points
+----------------------------------------------------------------------
+EOF
