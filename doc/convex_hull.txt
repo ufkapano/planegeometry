@@ -1,9 +1,11 @@
 CONVEX HULL
 ----------------------------------------------------------------------
 from planegeometry.hulls.graham import GrahamScan
+from planegeometry.hulls.jarvis import JarvisMarch
 
 point_list = [...]
-algorithm = GrahamScan(point_list)
+algorithm = GrahamScan(point_list)   # O(n log n) time
+#algorithm = JarvisMarch(point_list)   # O(nh) time
 algorithm.run()
 print ( algorithm.convex_hull )   # list of points
 ----------------------------------------------------------------------
