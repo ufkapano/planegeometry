@@ -12,8 +12,8 @@ class ShamosHoey:
     """
 
     def __init__(self, segment_list):
-        self.eq = PriorityQueue()   # event queue
-        self.sl = SlowTree()        # sweep line
+        self.eq = PriorityQueue()   # event queue (sorted along x)
+        self.sl = SlowTree()        # sweep line (sorted along y)
 
         for segment in segment_list:
             # Zalozone segment.pt1.x < segment.pt2.x.
