@@ -7,6 +7,7 @@ from planegeometry.algorithms.geomtools import find_two_furthest_points1
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
 
+
 class TestOrientation(unittest.TestCase):
 
 #     o
