@@ -7,7 +7,7 @@ class QuickHull:
     
     https://en.wikipedia.org/wiki/Quickhull
     
-    Starting point are top and bottom 
+    Starting points are top and bottom.
     """
 
     def __init__(self, point_list):

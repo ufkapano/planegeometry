@@ -1,0 +1,21 @@
+QUADTREE
+----------------------------------------------------------------------
+from planegeometry.structures.points import Point
+from planegeometry.structures.rectangles import Rectangle
+from planegeometry.structures.quadtree import QuadTree
+
+main_rect = Rectangle(...)
+qt = QuadTree(main_rect, capacity=4)
+
+point_list = [...]
+for point in point_list:   # adding points to quadtree
+    qt.insert(point)
+print ( qt.height() )
+
+query_rect = Rectangle(...)
+print ( qt.query(query_rect) )   # return points in query_rect
+
+query_point = Point(...)
+print ( qt.nearest(query_point) )   # return the nearest point
+----------------------------------------------------------------------
+EOF

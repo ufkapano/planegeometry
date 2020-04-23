@@ -17,7 +17,7 @@ quadtrees, connected maps
 sweep line technique, divide and conquer approach
 * Finding two furthest points: brute force search O(n^2), rotating calipers
 * Convex hulls: Graham scan, Jarvis march (gift wrapping), 
-divide and conquer approach
+quickhull (divide and conquer approach)
 * Delaunay triangulations: naive approach O(n^4), edge flipping, Bowyer-Watson
 * Monotone polygons: in progress
 * Connected planar maps: in progress (map overlay)
