@@ -17,6 +17,8 @@ class PriorityQueue:
             heapq.heappush(self.heap, item)
             self.item_set.add(item)
 
+    put = push
+
     def pop(self):
         if not self.empty():
             item = heapq.heappop(self.heap)
@@ -24,6 +26,8 @@ class PriorityQueue:
             return item
         else:
             raise ValueError("priority queue is empty")
+
+    get = pop
 
     def empty(self):
         return len(self.heap) == 0
