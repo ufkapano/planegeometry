@@ -8,6 +8,7 @@ main_rect = Rectangle(...)
 qt = QuadTree(main_rect, capacity=4)
 
 point_list = [...]
+# points outside main_rect are ignored
 for point in point_list:   # adding points to quadtree
     qt.insert(point)
 print ( qt.height() )
