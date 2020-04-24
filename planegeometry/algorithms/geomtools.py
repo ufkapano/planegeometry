@@ -105,4 +105,15 @@ def find_two_furthest_points2(point_list):
             pair = pt1, pt2
     return pair
 
+def find_intersection_points(segment_list):
+    """Find intersection points for a segment list in O(n^2) time."""
+    intersection_list = []
+    n = len(segment_list)
+    for i in xrange(n):
+        for j in xrange(i+1, n):
+            point = segment_list[i].intersection_point(segment_list[j])
+            if point:
+                intersection_list.append(point)
+    return intersection_list
+
 # EOF

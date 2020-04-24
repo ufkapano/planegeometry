@@ -5,6 +5,18 @@ from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.algorithms.horizontalvertical import HorizontalVertical
 
+# 10      o
+# 9   o   |
+# 8   |   | o-------o
+# 7 o-+---+---o
+# 6   |   |       o
+# 5   | o-+-------+----o
+# 4   |   |     o |
+# 3   |   o     | |
+# 2   |         o |
+# 1   o           |
+# 0               o
+#   0 1 2 3 4 5 6 7 8 9
 
 class TestHorizontalVertical(unittest.TestCase):
 

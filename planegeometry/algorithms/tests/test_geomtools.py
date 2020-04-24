@@ -2,10 +2,12 @@
 
 import unittest
 from planegeometry.structures.points import Point
+from planegeometry.structures.segments import Segment
 from planegeometry.algorithms.geomtools import orientation
 from planegeometry.algorithms.geomtools import find_two_furthest_points1
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
+from planegeometry.algorithms.geomtools import find_intersection_points
 
 
 class TestOrientation(unittest.TestCase):
@@ -166,6 +168,24 @@ class TestAntipodalPoints(unittest.TestCase):
             (Point(0, 0), Point(1, 2)),
             (Point(2, 0), Point(1, 2))]
         result = list(iter_all_antipodal_pairs(L))
+        self.assertEqual(result, expected)
+
+    def tearDown(self): pass
+
+
+class TestIntersectionPoints(unittest.TestCase):
+
+    def setUp(self):
+        self.segment_list = []
+        self.segment_list.append(Segment(9, 11, 0, 2))
+        self.segment_list.append(Segment(4, 0, 11, 7))
+        self.segment_list.append(Segment(10, 2, 1, 11))
+        self.segment_list.append(Segment(2, 6, 7, 1))
+
+    def test_intersections(self):
+        result = find_intersection_points(self.segment_list)
+        result.sort()
+        expected = [Point(3, 5), Point(5, 7), Point(6, 2), Point(8, 4)]
         self.assertEqual(result, expected)
 
     def tearDown(self): pass

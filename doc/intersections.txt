@@ -4,13 +4,28 @@ from planegeometry.structures.segments import Segment
 # educational versions of algorithms
 from planegeometry.algorithms.bentleyottmann1 import BentleyOttmann
 from planegeometry.algorithms.shamoshoey1 import ShamosHoey
+from planegeometry.algorithms.horizontalvertical import HorizontalVertical
+from planegeometry.algorithms.geomtools import find_intersection_points
 
-segment_list = [...]
+segment_list = [...]   # segments in general position
+
+il = find_intersection_points(segment_list)   # O(n^2) time
+print ( il )   # list of intersection points
+
 algorithm = BentleyOttmann(segment_list)
 algorithm.run()
 print ( algorithm.il )   # list of intersection points
 
 algorithm = ShamosHoey(segment_list)
 print ( algorithm.run() )   # return True if segments intesect
+----------------------------------------------------------------------
+segment_list = [...]   # horizontal and vertical segments in general position
+
+il = find_intersection_points(segment_list) )   # O(n^2) time
+print ( il )   # list of intersection points
+
+algorithm = HorizontalVertical(segment_list)
+algorithm.run()
+print ( algorithm.il )   # list of intersection points
 ----------------------------------------------------------------------
 EOF
