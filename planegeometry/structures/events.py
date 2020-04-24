@@ -10,6 +10,8 @@ class Event:
     RIGHT = 2
     HORIZONTAL = 3
     VERTICAL = 4
+    BOTTOM = 5
+    TOP = 6
 
     def __init__(self, pt, event_type, *sequence):
         self.pt = pt
