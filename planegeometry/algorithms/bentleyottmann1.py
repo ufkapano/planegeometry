@@ -15,7 +15,7 @@ from planegeometry.structures.events import Event
 # http://www.bowdoin.edu/~ltoma/teaching/cs3250-CompGeom/spring16/Lectures/cg-segmintersect.pdf
 
 class BentleyOttmann:
-    """Bentley-Ottmann algorithm."""
+    """Bentley-Ottmann algorithm - educational version."""
 
     def __init__(self, segment_list):
         self.eq = PriorityQueue()  # event queue

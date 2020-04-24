@@ -6,7 +6,7 @@ from planegeometry.structures.slowtrees import SlowTree
 
 
 class ShamosHoey:
-    """Shamos-Hoey algorithm.
+    """Shamos-Hoey algorithm - educational version.
     
     http://geomalgorithms.com/a09-_intersect-3.html
     """
