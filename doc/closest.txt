@@ -1,0 +1,14 @@
+CLOSEST PAIR OF POINTS
+----------------------------------------------------------------------
+from planegeometry.algorithms.geomtools import find_two_closest_points
+from planegeometry.algorithms.closestpair1 import ClosestPairSweepLine
+
+point_list = [...]
+
+print ( find_two_closest_points(point_list) )   # O(n^2) time
+
+algorithm = ClosestPairSweepLine(point_list)   # O(n log n) time
+algorithm.run()
+print ( algorithm.closest_pair )
+----------------------------------------------------------------------
+EOF

@@ -11,6 +11,7 @@ class Node:
         self.parent = None
         self.left = None
         self.right = None
+        self.height = 1
 
     def __repr__(self):
         return str(self.value)
@@ -47,38 +48,38 @@ class Node:
 
     def find_min(self):
         current = self
-        while current.left is not None:
+        while current.left:
             current = current.left
         return current
 
     def find_max(self):
         current = self
-        while current.right is not None:
+        while current.right:
             current = current.right
         return current
 
     def successor(self):
-        if self.right is not None:
+        if self.right:
             return self.right.find_min()
         current = self
-        while current.parent is not None and current is current.parent.right:
+        while current.parent and current is current.parent.right:
             current = current.parent
         return current.parent
 
     def predecessor(self):
-        if self.left is not None:
+        if self.left:
             return self.left.find_max()
         current = self
-        while current.parent is not None and current is current.parent.left:
+        while current.parent and current is current.parent.left:
             current = current.parent
         return current.parent
 
 
 def height(node):
-    if node is None:
-        return -1
-    else:
+    if node:
         return node.height
+    else:
+        return 0
 
 
 def update_height(node):
@@ -93,10 +94,10 @@ class AVLTree:
 
     def insert(self, value):
         node = Node(value)
-        if self.root is None:
-            self.root = node
-        else:
+        if self.root:
             self.root.insert(node)
+        else:
+            self.root = node
         self.rebalance(node)
 
     def find(self, value):
@@ -231,7 +232,7 @@ class AVLTree:
             elif y.parent.right is x:
                 y.parent.right = y
         x.right = y.left
-        if x.right is not None:
+        if x.right:
             x.right.parent = x
         y.left = x
         x.parent = y
@@ -249,7 +250,7 @@ class AVLTree:
             elif y.parent.right is x:
                 y.parent.right = y
         x.left = y.right
-        if x.left is not None:
+        if x.left:
             x.left.parent = x
         y.right = x
         x.parent = y
