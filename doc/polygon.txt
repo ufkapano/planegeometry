@@ -5,8 +5,8 @@ polygon = Polygon(p1, ..., pn)
 repr(polygon)   # return string
 hash(polygon)
 poly1 == poly2, poly1 != poly2
-polygon.move(x, y)   # return polygon
-polygon.move(point)   # return polygon
+polygon.move(x, y)   # return new polygon
+polygon.move(point)   # return new polygon
 polygon.copy()   # return polygon
 polygon.orientation(test_is_simple=False)   # return -1|+1, for simple polygons
 point in polygon   # return bool, using winding number

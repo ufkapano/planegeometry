@@ -9,8 +9,8 @@ triangle.copy()   # return triangle
 triangle.area()
 triangle.center()   # return point
 triangle.make4()    # return four smaller triangles
-triangle.move(x, y)   # return triangle
-triangle.move(point)   # return triangle
+triangle.move(x, y)   # return new triangle
+triangle.move(point)   # return new triangle
 t1 == t2, t1 != t2
 point in triangle   # return bool
 triangle.orientation()   # return +1|0|-1

@@ -4,8 +4,8 @@ from planegeometry.triangulations.naive import DelaunayNaive
 from planegeometry.triangulations.flipping import DelaunayFlipping
 from planegeometry.triangulations.bowyerwatson import BowyerWatson
 
-point_list = [...]
-#algorithm = DelaunayNaive(point_list)   # points in general position
+point_list = [...]   # points in general position
+#algorithm = DelaunayNaive(point_list)
 #algorithm = DelaunayFlipping(point_list)
 algorithm = BowyerWatson(point_list)
 algorithm.run()

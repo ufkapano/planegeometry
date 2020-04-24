@@ -108,6 +108,7 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(self.t1.third_node(p1, p2), p3)
         self.assertEqual(self.t1.third_node(p1, p3), p2)
         self.assertEqual(self.t1.third_node(p3, p2), p1)
+        self.assertRaises(KeyError, Triangle.third_node, self.t1, p1, Point(1, 1))
 
     def test_in_circumcircle(self):
         # Srodek okregu opisanego na t1 jest w Point(3, 6).

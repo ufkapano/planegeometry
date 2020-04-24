@@ -1,13 +1,14 @@
 INTERSECTIONS OF SEGMENTS
 ----------------------------------------------------------------------
 from planegeometry.structures.segments import Segment
+# educational versions of algorithms
 from planegeometry.algorithms.bentleyottmann1 import BentleyOttmann
 from planegeometry.algorithms.shamoshoey1 import ShamosHoey
 
 segment_list = [...]
 algorithm = BentleyOttmann(segment_list)
 algorithm.run()
-print ( algorithm.il )   # intersections
+print ( algorithm.il )   # list of intersection points
 
 algorithm = ShamosHoey(segment_list)
 print ( algorithm.run() )   # return True if segments intesect

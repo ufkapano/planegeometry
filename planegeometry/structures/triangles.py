@@ -128,22 +128,18 @@ class Triangle:
 
     def third_node(self, pt1, pt2):
         """Find a third node of a triangle."""
-        assert pt1 == self.pt1 or pt1 == self.pt2 or pt1 == self.pt3
-        assert pt2 == self.pt1 or pt2 == self.pt2 or pt2 == self.pt3
-        if self.pt1 != pt1 and self.pt1 != pt2:
-            return self.pt1
-        elif self.pt2 != pt1 and self.pt2 != pt2:
-            return self.pt2
-        elif self.pt3 != pt1 and self.pt3 != pt2:
-            return self.pt3
-        else:
-            raise ValueError("impossible")
+        node_set = set([self.pt1, self.pt2, self.pt3])
+        node_set.remove(pt1)
+        node_set.remove(pt2)
+        return node_set.pop()
 
-    # Formula is taken from
-    # https://en.wikipedia.org/wiki/Delaunay_triangulation#Algorithms
     def in_circumcircle(self, point):
-        """ Check if point is inside triangle circumcircle."""
-        # Preparing parameters for calculating det for 3x3 matrix
+        """Check if point is inside triangle circumcircle.
+        
+        Formula is taken from
+        https://en.wikipedia.org/wiki/Delaunay_triangulation#Algorithms
+        """
+        # Preparing parameters for calculating det for 3x3 matrix.
         a = self.pt1 - point
         b = self.pt2 - point
         c = self.pt3 - point

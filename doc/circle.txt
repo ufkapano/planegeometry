@@ -8,8 +8,8 @@ hash(circle)
 circle.copy()   # return circle
 circle.center()   # return point
 circle.area()
-circle.move(x, y)   # return circle
-circle.move(point)   # return circle
+circle.move(x, y)   # return new circle
+circle.move(point)   # return new circle
 c1 == c2, c1 != c2, c1 < c2, c1 <= c2, c1 > c2, c1 >= c2
 c1.cover(c2)   # return circle
 point in circle   # return bool
