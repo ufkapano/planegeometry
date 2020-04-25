@@ -2,18 +2,18 @@
 
 from planegeometry.structures.pqueues import PriorityQueue
 from planegeometry.structures.events import Event
-from planegeometry.structures.slowtrees import SlowTree
+from planegeometry.structures.avltree2 import AVLTreeModified
 
 
 class ShamosHoey:
-    """Shamos-Hoey algorithm - educational version.
+    """Shamos-Hoey algorithm.
     
     http://geomalgorithms.com/a09-_intersect-3.html
     """
 
     def __init__(self, segment_list):
         self.eq = PriorityQueue()   # event queue (sorted along x)
-        self.sl = SlowTree()        # sweep line (sorted along y)
+        self.sl = AVLTreeModified()   # sweep line (sorted along y)
 
         for segment in segment_list:
             # Zalozone segment.pt1.x < segment.pt2.x.
@@ -38,6 +38,8 @@ class ShamosHoey:
 
     def _handle_left_endpoint(self, event):
         segment_e = event.segment   # Let segE = E's segment
+
+        self.sl.current_x = event.pt.x
         self.sl.insert(segment_e)   # Add segE to SL
 
         segment_above = self.sl.successor(segment_e)    # Let segA = the segment Above segE in SL
@@ -57,6 +59,7 @@ class ShamosHoey:
 
     def _handle_right_endpoint(self, event):
         segment_e = event.segment  # Let segE = E's segment
+
         segment_above = self.sl.successor(segment_e)  # Let segA = the segment Above segE in SL
         segment_below = self.sl.predecessor(segment_e)  # Let segB = the segment Below segE in SL
 
@@ -66,5 +69,5 @@ class ShamosHoey:
             if segment_above.intersect(segment_below):    # If (I = Intersect( segA with segB) exists)
                 return True
 
-        self.sl.remove(segment_e)
+        self.sl.delete(segment_e)
         return False

@@ -1,9 +1,14 @@
 INTERSECTIONS OF SEGMENTS
 ----------------------------------------------------------------------
 from planegeometry.structures.segments import Segment
-# educational versions of algorithms
-from planegeometry.algorithms.bentleyottmann1 import BentleyOttmann
-from planegeometry.algorithms.shamoshoey1 import ShamosHoey
+
+# educational versions of algorithms with SlowTree
+#from planegeometry.algorithms.bentleyottmann1 import BentleyOttmann
+#from planegeometry.algorithms.shamoshoey1 import ShamosHoey
+
+# final versions of algorithms with AVLTreeModified
+from planegeometry.algorithms.bentleyottmann2 import BentleyOttmann
+from planegeometry.algorithms.shamoshoey2 import ShamosHoey
 from planegeometry.algorithms.horizontalvertical import HorizontalVertical
 from planegeometry.algorithms.geomtools import find_intersection_points
 

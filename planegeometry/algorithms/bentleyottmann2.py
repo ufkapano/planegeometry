@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from planegeometry.structures.pqueues import PriorityQueue
-from planegeometry.structures.slowtrees import SlowTree
+from planegeometry.structures.avltree2 import AVLTreeModified
 from planegeometry.structures.events import Event
 
 # No two line segment endpoints or crossings have the same x-coordinate
@@ -15,11 +15,11 @@ from planegeometry.structures.events import Event
 # http://www.bowdoin.edu/~ltoma/teaching/cs3250-CompGeom/spring16/Lectures/cg-segmintersect.pdf
 
 class BentleyOttmann:
-    """Bentley-Ottmann algorithm - educational version."""
+    """Bentley-Ottmann algorithm."""
 
     def __init__(self, segment_list):
-        self.eq = PriorityQueue()  # event queue (sorted along x)
-        self.sl = SlowTree()  # sweep line (sorted along y)
+        self.eq = PriorityQueue()  # event queue
+        self.sl = AVLTreeModified()  # sweep line
 
         for segment in segment_list:
             # Zalozone segment.pt1.x < segment.pt2.x.
@@ -48,6 +48,7 @@ class BentleyOttmann:
 
     def _handle_left_endpoint(self, event):
         segment_e = event.segment  # Let segE = E's segment
+        self.sl.current_x = event.pt.x
         self.sl.insert(segment_e)  # Add segE to SL
 
         segment_above = self.sl.successor(segment_e)  # Let segA = the segment Above segE in SL
@@ -67,6 +68,8 @@ class BentleyOttmann:
 
     def _handle_right_endpoint(self, event):
         segment_e = event.segment  # Let segE = E's segment
+
+        self.sl.current_x = event.pt.x
         segment_above = self.sl.successor(segment_e)  # Let segA = the segment Above segE in SL
         segment_below = self.sl.predecessor(segment_e)  # Let segB = the segment Below segE in SL
 
@@ -77,10 +80,12 @@ class BentleyOttmann:
             if point and point.x > event.pt.x:
                 self.eq.push(Event(point, Event.CROSSING, segment_above, segment_below))
 
-        self.sl.remove(segment_e)
+        self.sl.delete(segment_e)
 
     def _handle_crossing(self, event):
         self.il.append(event.pt)  # Add Es intersect point to the output list IL
+
+        self.sl.current_x = event.pt.x
         # Let segE1 above segE2 be E's intersecting segments in SL
         segment_e1 = event.segment_above
         segment_e2 = event.segment_below
@@ -102,5 +107,3 @@ class BentleyOttmann:
             point = segment_below_e1.intersection_point(segment_e1)
             if point and point.x > event.pt.x:
                 self.eq.push(Event(point, Event.CROSSING, segment_e1, segment_below_e1))
-
-# EOF
