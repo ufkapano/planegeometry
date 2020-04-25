@@ -3,6 +3,7 @@ CLOSEST PAIR OF POINTS
 from planegeometry.algorithms.geomtools import find_two_closest_points
 from planegeometry.algorithms.closestpair1 import ClosestPairSweepLine
 from planegeometry.algorithms.closestpair3 import ClosestPairDivideConquer
+from planegeometry.algorithms.closestpair4 import ClosestPairSortXY
 
 point_list = [...]
 
@@ -13,6 +14,10 @@ algorithm.run()
 print ( algorithm.closest_pair )
 
 algorithm = ClosestPairDivideConquer(point_list)   # O(n (log n)^2) time
+algorithm.run()
+print ( algorithm.closest_pair )
+
+algorithm = ClosestPairSortXY(point_list)   # O(n log n) time
 algorithm.run()
 print ( algorithm.closest_pair )
 ----------------------------------------------------------------------
