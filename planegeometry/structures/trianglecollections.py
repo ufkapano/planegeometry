@@ -4,7 +4,6 @@ from planegeometry.structures.points import Point
 from planegeometry.structures.triangles import Triangle
 from planegeometry.structures.graphs import Graph
 
-
 class TriangleCollection:
     """The class defining a triangle collection."""
 

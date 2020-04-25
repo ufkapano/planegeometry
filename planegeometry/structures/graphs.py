@@ -3,7 +3,6 @@
 import random
 from planegeometry.structures.edges import Edge
 
-
 class Graph(dict):
     """The class defining a graph.
     
