@@ -4,7 +4,7 @@
 
 import random
 import math
-import Gnuplot
+import Gnuplot   # Python 2 only
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 

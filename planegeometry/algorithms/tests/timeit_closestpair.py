@@ -5,6 +5,7 @@ import random
 from planegeometry.structures.points import Point
 from planegeometry.algorithms.geomtools import find_two_closest_points
 from planegeometry.algorithms.closestpair1 import ClosestPairSweepLine
+from planegeometry.algorithms.closestpair3 import ClosestPairDivideConquer
 
 
 def make_point_list(n):
@@ -24,6 +25,10 @@ print ( "{} {}".format(N, t1.timeit(1)) )   # single run
 
 print ( "Testing ClosestPairSweepLine ..." )
 t1 = timeit.Timer(lambda: ClosestPairSweepLine(point_list).run())
+print ( "{} {}".format(N, t1.timeit(1)) )   # single run
+
+print ( "Testing ClosestPairDivideConquer ..." )
+t1 = timeit.Timer(lambda: ClosestPairDivideConquer(point_list).run())
 print ( "{} {}".format(N, t1.timeit(1)) )   # single run
 
 # EOF
