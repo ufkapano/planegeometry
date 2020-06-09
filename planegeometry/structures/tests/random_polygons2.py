@@ -3,16 +3,18 @@
 import random
 import matplotlib.pyplot as plt
 from planegeometry.structures.points import Point
+from planegeometry.structures.polygons import Polygon
 
-point_list = []
-for i in range(100):
-    point_list.append(Point(random.random(), random.random()))
+point_list = [Point(random.random(), random.random()) for _ in range(5)]
 
 x = [p.x for p in point_list]
 y = [p.y for p in point_list]
-plt.plot(x, y, 'k.')   # black points
+x.append(x[0])
+y.append(y[0])
 
-plt.title("Random points")
+plt.plot(x, y, 'ko-')
+
+plt.title("Random polygon")
 plt.xlabel("x")
 plt.ylabel("y")
 plt.show()

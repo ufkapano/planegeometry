@@ -20,7 +20,6 @@ class ClosestPairSweepLine:
         """Initialize structures."""
         if len(point_list) < 2:
             raise ValueError("minimum 2 points")
-
         self.point_list = point_list
         self.point_list.sort(key=lambda point: point.y) # sorted along y
         self.active_points = AVLTree()   # sorted along x
