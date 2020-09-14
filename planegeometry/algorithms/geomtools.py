@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import math
 try:
     integer_types = (int, long)
 except NameError:   # Python 3
@@ -32,6 +33,15 @@ def oriented_area(pt1, pt2, pt3):
     """Return the oriented area of a parallelogram."""
     return (pt2 - pt1).cross(pt3 - pt1)
 
+def angle3points(a, b, c):
+    """Counterclockwise angle in radians by turning from a to c around b
+        Returns a float between 0.0 and 2*math.pi.
+    
+    https://python-forum.io/Thread-finding-angle-between-three-points-on-a-2d-graph
+    """
+    angle = math.atan2(c.y-b.y, c.x-b.x) - math.atan2(a.y-b.y, a.x-b.x)
+    return angle + 2*math.pi if angle < 0 else angle
+ 
 def find_two_furthest_points1(point_list):
     """Find two furthest points in O(n^2) time (brute force)."""
     dist2 = 0

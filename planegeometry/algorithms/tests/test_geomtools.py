@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
 import unittest
+import math
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.algorithms.geomtools import orientation
+from planegeometry.algorithms.geomtools import angle3points
 from planegeometry.algorithms.geomtools import find_two_furthest_points1
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
@@ -31,6 +33,12 @@ class TestOrientation(unittest.TestCase):
         self.assertEqual(orientation(self.p00, self.p01, self.p22), -1)
         self.assertEqual(orientation(self.p00, self.p01, self.p11), -1)
         self.assertEqual(orientation(self.p01, self.p11, self.p10), -1)
+
+    def test_angle3points(self):
+        self.assertEqual(angle3points(self.p10, self.p00, self.p01), 0.5*math.pi)
+        self.assertEqual(angle3points(self.p11, self.p01, self.p00), 1.5*math.pi)
+        self.assertEqual(angle3points(self.p22, self.p11, self.p01), 0.75*math.pi)
+        self.assertEqual(angle3points(self.p10, self.p01, self.p11), 0.25*math.pi)
 
     def tearDown(self): pass
 
