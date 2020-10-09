@@ -2,7 +2,7 @@ INTERFACE FOR GRAPHS
 ----------------------------------------------------------------------
 Method name         Short description
 ----------------------------------------------------------------------
-edge = Edge(source, target, weight)     return a directed edge
+edge = Edge(source, target, weight=1)     return a directed edge
 repr(edge)          return a string
 hash(edge)          return hash
 e1 == e2, e1 != e2, e1 < e2, e1 <= e2, e1 > e2, e1 >= e2

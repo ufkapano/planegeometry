@@ -1,7 +1,7 @@
 INTERFACE FOR RECTANGLES
 ----------------------------------------------------------------------
 rectangle = Rectangle(x1, y1, x2, y2)   # bottom left, top right
-rectangle = Rectangle(p1, p2)
+rectangle = Rectangle(point1, point2)
 rectangle = Rectangle()
 repr(rectangle)   # return string
 hash(rectangle)

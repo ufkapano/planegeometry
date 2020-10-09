@@ -12,7 +12,7 @@ quadtrees, connected maps
 * Point in polygon problem: the winding number, the crossing number
 * Polygon orientation
 * Bounding box
-* Line segment intersection problem: Shamos-Hoey, Bentley-Ottmann
+* Line segment intersection problem: brute force O(n^2), Shamos-Hoey, Bentley-Ottmann
 * Closest pair of points problem: brute force search O(n^2), 
 sweep line technique, divide and conquer approach
 * Finding two furthest points: brute force search O(n^2), rotating calipers
@@ -35,6 +35,8 @@ Marcin Permus (convex hull, rotating calipers)
 Wojciech Chrobak (sweep line technique, quadtree, closest pair problem)
 
 Monika Wiech (Delaunay triangulation)
+
+Anna Sarnavska (planar maps overlay)
 
 Gabriela Mazur (monotone polygons)
 

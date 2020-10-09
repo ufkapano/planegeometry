@@ -133,6 +133,7 @@ class Segment:   # odcinek skierowany
         """Return the intersection point of two segments (not parallel)."""
         if self.intersect(other):
             if self.parallel(other):
+                # o--o----o is forbidden.
                 raise ValueError("segments are parallel")
             x1, y1, x2, y2 = self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y
             x3, y3, x4, y4 = other.pt1.x, other.pt1.y, other.pt2.x, other.pt2.y
