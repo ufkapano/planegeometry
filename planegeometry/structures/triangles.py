@@ -50,6 +50,14 @@ class Triangle:
         # Jakby szukanie srodka masy.
         return (self.pt1 + self.pt2 + self.pt3) * Fraction(1, 3)
 
+    def make3(self):
+        """Return three smaller triangles (division)."""
+        pt4 = self.center()
+        t1 = Triangle(self.pt1, self.pt2, pt4)
+        t2 = Triangle(self.pt2, self.pt3, pt4)
+        t3 = Triangle(self.pt3, self.pt1, pt4)
+        return (t1, t2, t3)
+
     def make4(self):
         """Return four smaller triangles (division)."""
         pt4 = Fraction(1, 2) * (self.pt1 + self.pt2)

@@ -8,6 +8,7 @@ hash(triangle)
 triangle.copy()   # return triangle
 triangle.area()
 triangle.center()   # return point
+triangle.make3()    # return three smaller triangles
 triangle.make4()    # return four smaller triangles
 triangle.move(x, y)   # return new triangle
 triangle.move(point)   # return new triangle

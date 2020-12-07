@@ -59,6 +59,15 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(self.t1.move(Point(1, 2)), Triangle(1, 2, 7, 2, 1, 14))
         self.assertRaises(ValueError, Triangle.move, self.t1, 1)
 
+    def test_make3(self):
+        t1 = Triangle(0, 0, 6, 0, 2, 4)
+        t2 = Triangle(6, 0, 0, 12, 2, 4)
+        t3 = Triangle(0, 12, 0, 0, 2, 4)
+        result = self.t1.make3()
+        self.assertTrue(t1 in result)
+        self.assertTrue(t2 in result)
+        self.assertTrue(t3 in result)
+
     def test_make4(self):
         t1 = Triangle(0, 0, 3, 0, 0, 6)
         t2 = Triangle(6, 0, 3, 6, 3, 0)
