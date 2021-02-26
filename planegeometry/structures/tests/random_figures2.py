@@ -38,6 +38,7 @@ ax.add_patch(rectangle2)
 plt.title("Random figures")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.gca().set_aspect('equal')
 plt.show()
 
 # EOF

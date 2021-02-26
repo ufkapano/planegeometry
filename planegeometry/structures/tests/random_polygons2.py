@@ -17,6 +17,7 @@ plt.plot(x, y, 'ko-')
 plt.title("Random polygon")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.gca().set_aspect('equal')
 plt.show()
 
 # EOF

@@ -40,4 +40,8 @@ Anna Sarnavska (planar maps overlay)
 
 Gabriela Mazur (monotone polygons)
 
+Mateusz Malczewski (Voronoi diagrams)
+
+Maciej Mularski (range searching)
+
 EOF

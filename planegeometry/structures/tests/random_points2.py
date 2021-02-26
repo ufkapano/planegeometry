@@ -15,6 +15,7 @@ plt.plot(x, y, 'k.')   # black points
 plt.title("Random points")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.gca().set_aspect('equal')
 plt.show()
 
 # EOF

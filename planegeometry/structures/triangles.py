@@ -139,6 +139,7 @@ class Triangle:
         node_set = set([self.pt1, self.pt2, self.pt3])
         node_set.remove(pt1)
         node_set.remove(pt2)
+        assert len(node_set) == 1
         return node_set.pop()
 
     def in_circumcircle(self, point):

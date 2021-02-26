@@ -15,6 +15,7 @@ for i in range(10):
 plt.title("Random segments")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.gca().set_aspect('equal')
 plt.show()
 
 # EOF

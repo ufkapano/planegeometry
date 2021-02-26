@@ -32,6 +32,7 @@ plt.plot(x, y, 'bo')
 plt.title("Delaunay triangulation")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.gca().set_aspect('equal')
 plt.show()
 
 # EOF
