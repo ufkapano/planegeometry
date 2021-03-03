@@ -28,18 +28,20 @@ class TriangleCollection:
         """Insert a triangle to the collection."""
         if not isinstance(triangle, Triangle):
             raise ValueError("not a triangle")
+        if triangle in self.items:   # O(n_t) time
+            raise ValueError("repeated triangle")
         self.items.append(triangle)
         #print ( "tc.insert {}".format(triangle) )
 
     def remove(self, triangle):
         """Remove a triangle from the collection."""
-        self.items.remove(triangle)
+        self.items.remove(triangle)   # O(n_t) time
         #print ( "tc.remove {}".format(triangle) )
 
     def search(self, point):
         """Finding triangles containing a point."""
         result = []
-        for triangle in self.items:
+        for triangle in self.items:   # O(n_t) time
             if point in triangle:
                 result.append(triangle)
         return result
@@ -47,7 +49,7 @@ class TriangleCollection:
     def __contains__(self, other):
         """Test if a triangle is in a collection."""
         if isinstance(other, Triangle):
-            return other in self.items
+            return other in self.items   # O(n_t) time
         else:
             raise ValueError("not a triangle")
 

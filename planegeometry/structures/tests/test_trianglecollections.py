@@ -18,6 +18,9 @@ class TestTriangleCollection(unittest.TestCase):
         self.assertEqual(len(self.tc), 1)
         self.tc.insert(self.t2)
         self.assertEqual(len(self.tc), 2)
+        self.assertRaises(ValueError, self.tc.insert, Point(0, 0))
+        self.assertRaises(ValueError, self.tc.insert, self.t1)
+        # testing search
         tlist = self.tc.search(Point(1, 1))
         self.assertEqual(len(tlist), 2)
         G = self.tc.to_graph()
