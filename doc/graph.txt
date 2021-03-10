@@ -3,6 +3,9 @@ INTERFACE FOR GRAPHS
 Method name         Short description
 ----------------------------------------------------------------------
 edge = Edge(source, target, weight=1)     return a directed edge
+edge.source         the edge source
+edge.target         the edge target
+edge.weight         the edge weight (default 1)
 repr(edge)          return a string
 hash(edge)          return hash
 e1 == e2, e1 != e2, e1 < e2, e1 <= e2, e1 > e2, e1 >= e2
@@ -26,7 +29,9 @@ G.weight(edge)      return the edge weight or zero
 
 G.iternodes()            generate nodes on demand
 G.iteredges()            generate edges on demand
+G.iteredges_connected(start_edge) generate connected edges on demand
 G.iterfaces()            generate all faces on demand (for planar graphs)
+G.iterface(start_edge)   generate edges from the same face on demand (for planar graphs)
 
 G.iteroutedges(node)     generate outedges on demand
 G.iterinedges(node)      generate inedges on demand
@@ -41,5 +46,6 @@ G.copy()            return the graph copy
 G.transpose()       return the transpose of G
 G.complement()      return the complement of G
 G.subgraph(nodes)   return the induced subgraph
+G == H, G != H      comparisons
 ----------------------------------------------------------------------
 EOF

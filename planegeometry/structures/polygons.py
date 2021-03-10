@@ -69,7 +69,7 @@ class Polygon:
         rmin = 0
         xmin = self.point_list[0].x
         ymin = self.point_list[0].y
-        for i in range(1, len(self.point_list)):
+        for i in xrange(1, len(self.point_list)):
             if self.point_list[i].y > ymin:
                 continue
             if self.point_list[i].y == ymin:

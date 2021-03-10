@@ -1,0 +1,13 @@
+CHANGELOG
+
+2021-03-10
+* Graph updated from graphtheory package (iteredges_connected, iterface).
+
+2021-03-04
+* TriangleCollection with sets, faster searching and removing triangles.
+No the same triangles in collections.
+
+2020-06-09
+* Plots with matplotlib added.
+
+EOF
