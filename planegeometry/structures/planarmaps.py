@@ -345,4 +345,192 @@ class PlanarMap(dict):
             if edge1 == ~edge:
                 break
 
+    def map_overlay(self, other):
+        """Both maps should have a common point."""
+        #M1 = self
+        #M2 = other
+        M3 = self.copy()
+        M4 = other.copy()
+
+        # Finding edge2 from M2.
+        for edge2 in other.iteredges():
+            if any(edge2.intersect(edge1) for edge1 in self.iteredges()):
+                break
+
+        for edge4 in other.iteredges_connected(edge2):
+            stack = []
+            for edge3 in M3.iteredges():
+                if edge4.intersect(edge3):
+                    stack.append(edge3)
+            divide_points = set()
+            set4 = set([edge4.source, edge4.target])
+
+            while stack:
+                edge3 = stack.pop()
+                if edge3.parallel(edge4):
+                    set3 = set([edge3.source, edge3.target])
+                    if len(set3 & set4) == 2:
+                        continue
+                    elif len(set3 & set4) == 1:
+                        if edge3.source == edge4.source:
+                            if edge3.target in edge4:
+                                divide_points.add(edge3.target)
+                            elif edge4.target in edge3:
+                                M3.divide_edge(edge3, edge4.target)
+                            else:
+                                continue
+                        elif edge3.source == edge4.target:
+                            if edge3.target in edge4:
+                                divide_points.add(edge3.target)
+                            elif edge4.source in edge3:
+                                M3.divide_edge(edge3, edge4.source)
+                            else:
+                                continue
+                        elif edge3.target == edge4.source:
+                            if edge3.source in edge4:
+                                divide_points.add(edge3.source)
+                            elif edge4.target in edge3:
+                                M3.divide_edge(edge3, edge4.target)
+                            else:
+                                continue
+                        elif edge3.target == edge4.target:
+                            if edge3.source in edge4:
+                                divide_points.add(edge3.source)
+                            elif edge4.source in edge3:
+                                M3.divide_edge(edge3, edge4.source)
+                            else:
+                                continue
+                        else:
+                            raise ValueError("impossible")
+                    else:
+                        if edge3.source in edge4 and edge3.target in edge4:
+                            divide_points.add(edge3.source)
+                            divide_points.add(edge3.target)
+                        elif edge4.source in edge3 and edge4.target in edge3:
+                            M3.divide_edge(edge3, edge4.source)
+                            edge31, edge32 = M3.iteroutedges(edge4.source)
+                            if edge4.target in edge31:
+                                M3.divide_edge(edge31, edge4.target)
+                            else:
+                                M3.divide_edge(edge32, edge4.target)
+                        elif edge3.source in edge4 and edge4.source in edge3:
+                            divide_points.add(edge3.source)
+                            M3.divide_edge(edge3, edge4.source)
+                        elif edge3.source in edge4 and edge4.target in edge3:
+                            divide_points.add(edge3.source)
+                            M3.divide_edge(edge3, edge4.target)
+                        elif edge3.target in edge4 and edge4.source in edge3:
+                            divide_points.add(edge3.target)
+                            M3.divide_edge(edge3, edge4.source)
+                        elif edge3.target in edge4 and edge4.target in edge3:
+                            divide_points.add(edge3.target)
+                            M3.divide_edge(edge3, edge4.target)
+                        else:
+                            raise ValueError("impossible")
+                else:
+                    set3 = set([edge3.source, edge3.target])
+                    if len(set3 & set4) == 1:
+                        continue
+                    if edge3.source in edge4:
+                        divide_points.add(edge3.source)
+                    elif edge3.target in edge4:
+                        divide_points.add(edge3.target)
+                    elif edge4.source in edge3:
+                        M3.divide_edge(edge3, edge4.source)
+                    elif edge4.target in edge3:
+                        M3.divide_edge(edge3, edge4.target)
+                    else:
+                        point = edge3.intersection_point(edge4)
+                        M3.divide_edge(edge3, point)
+                        divide_points.add(point)
+
+            edge_set = set([edge4])
+            while divide_points:  # do wyczerpania punktow podzialu
+                point = divide_points.pop()
+                for edge in edge_set:  # jedna z krawedzi zawiera punkt
+                    if point in edge:
+                        M4.divide_edge(edge, point)
+                        edge_set.remove(edge)
+                        edge_set.update(M4.iteroutedges(point))  # nowe mniejsze krawedzie
+                        break
+
+            # Nakladanie podzielonej krawedzi edge4.
+            for edge in edge_set:
+                if M3.has_edge(edge):
+                    continue
+                elif M3.has_node(edge.source) and M3.has_node(edge.target):
+                    M3.add_chord(edge)
+                elif M3.has_node(edge.source) or M3.has_node(edge.target):
+                    M3.add_leaf(edge)
+                else:
+                    raise ValueError("impossible")
+        return M3
+
+    def divide_edge(self, edge, node):
+        """Divide edge at node."""
+        assert node in edge   # for segment only
+        assert self.has_edge(edge)
+        edge18 = Segment(edge.source, node)
+        edge28 = Segment(edge.target, node)
+        # Aktualizacja scian. Czasem face1 == face2.
+        # Liczba scian sie nie zmieni.
+        face1 = self.edge2face[edge]
+        face2 = self.edge2face[~edge]
+        self.edge2face[edge18] = face1
+        self.edge2face[~edge28] = face1
+        self.edge2face[edge28] = face2
+        self.edge2face[~edge18] = face2
+        self.face2edge[face1] = edge18
+        self.face2edge[face2] = edge28
+        # Aktualizacja grafu abstrakcyjnego.
+        self.del_edge(edge)
+        self.add_edge(edge18)
+        self.add_edge(edge28)
+        if self.degree(edge.source) == 1 and self.degree(edge.target) == 1:
+            #print ( "case: single edge divided" )
+            # face2edge[0] bedzie zawieralo edge lub ~edge, trzeba naprawic.
+            # Aktualizacja grafu planarnego.
+            self._update_del(edge)
+            self._update1(edge18)
+            self._update1(edge28)
+            self._update3(~edge28, ~edge18, ~edge28)
+        elif self.degree(edge.target) == 1:
+            #print ( "case: degree(edge.target) == 1" )
+            edge13 = self.edge_next[edge]
+            edge14 = self.edge_prev[edge]
+            # Aktualizacja grafu planarnego.
+            self._update_del(edge)
+            self._update1(edge28)
+            self._update3(~edge28, ~edge18, ~edge28)
+            self._update3(edge14, edge18, edge13)
+        elif self.degree(edge.source) == 1:
+            #print ( "case: degree(edge.source) == 1" )
+            edge25 = self.edge_next[~edge]
+            edge26 = self.edge_prev[~edge]
+            # Aktualizacja grafu planarnego.
+            self._update_del(edge)
+            self._update1(edge18)
+            self._update3(~edge28, ~edge18, ~edge28)
+            self._update3(edge26, edge28, edge25)
+        else:
+            #print ( "case: both ends connected" )
+            edge13 = self.edge_next[edge]
+            edge14 = self.edge_prev[edge]
+            edge25 = self.edge_next[~edge]
+            edge26 = self.edge_prev[~edge]
+            # Aktualizacja grafu planarnego.
+            self._update_del(edge)
+            self._update3(~edge28, ~edge18, ~edge28)
+            self._update3(edge14, edge18, edge13)
+            self._update3(edge26, edge28, edge25)
+
+    def _update_del(self, edge):
+        """Update structures for the edge."""
+        del self.edge_next[edge]
+        del self.edge_next[~edge]
+        del self.edge_prev[edge]
+        del self.edge_prev[~edge]
+        del self.edge2face[edge]
+        del self.edge2face[~edge]
+
 # EOF

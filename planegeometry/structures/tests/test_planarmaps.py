@@ -58,6 +58,18 @@ class TestPlanarMap(unittest.TestCase):
         self.assertRaises(ValueError, M1.add_chord, Segment(A, B))
         #M1.show()
 
+    def test_divide_edge(self):
+        M1 = PlanarMap()
+        A, B, C, D = Point(0, 2), Point(2, 2), Point(0, 0), Point(2, 0)
+        AB = Segment(A, B)
+        M1.add_first_edge(AB)
+        #M1.divide_edge(AB, Point(1, 2))
+        M1.divide_edge(Segment(A, B), Point(1, 2))   # it works
+        self.assertEqual(M1.v(), 3)
+        self.assertEqual(M1.e(), 2)
+        self.assertEqual(M1.f(), 1)
+        #M1.show()
+
     def test_parameters(self):
         self.assertEqual(self.M.v(), 4)
         self.assertEqual(self.M.e(), 4)
