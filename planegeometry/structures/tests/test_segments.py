@@ -19,6 +19,8 @@ class TestSegment(unittest.TestCase):
         self.assertRaises(ValueError, Segment, 0, 1, 2)
         self.assertRaises(ValueError, Segment, Point(0, 1), 2)
         self.assertRaises(ValueError, Segment, 2, Point(0, 1))
+        self.assertRaises(ValueError, Segment, 0, 1, 0, 1)
+        self.assertRaises(ValueError, Segment, Point(0, 1), Point(0, 1))
 
     def test_print(self):
         self.assertEqual(repr(self.segment1), "Segment(0, 0, 2, 0)")

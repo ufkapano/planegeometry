@@ -30,6 +30,8 @@ class Polygon:
                 i += 2
         else:
             raise ValueError("bad arguments")
+        if len(self.point_list) != len(set(self.point_list)):
+            raise ValueError("repeated points")
 
     def __repr__(self):
         """String representation of a polygon."""

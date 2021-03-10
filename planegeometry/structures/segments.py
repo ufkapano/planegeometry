@@ -24,6 +24,8 @@ class Segment:   # odcinek skierowany
             self.pt2 = Point(x2, y2)
         else:
             raise ValueError("bad number of arguments")
+        if self.pt1 == self.pt2:
+            raise ValueError("equal points")
 
     def __repr__(self):
         """String representation of a segment."""

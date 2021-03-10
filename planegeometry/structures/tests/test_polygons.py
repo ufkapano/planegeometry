@@ -32,6 +32,8 @@ class TestPolygon(unittest.TestCase):
         self.assertRaises(ValueError, Polygon, 0, 1, 2, 3)
         self.assertRaises(ValueError, Polygon, 0, 1, 2, 3, 4, 5, 6)
         self.assertRaises(ValueError, Polygon, Point(0, 1), Point(2, 3))
+        self.assertRaises(ValueError, Polygon, Point(0, 1), Point(2, 3), Point(2, 3))
+        self.assertRaises(ValueError, Polygon, 0, 0, 1, 0, 1, 1, 0, 0)
 
     def test_cmp(self):
         polygon3 = Polygon(0, 0, 2, 0, 1, 2)
