@@ -92,9 +92,11 @@ class TestSegment(unittest.TestCase):
         s1 = Segment(0, 0, 3, 3)
         s2 = Segment(1, 3, 3, 1)
         s3 = Segment(1, 0, 1, 2)
+        #print(s1.intersection_point(s2))
         self.assertEqual(s1.intersection_point(s2), Point(2, 2))
         self.assertEqual(self.segment1.intersection_point(s2), None)
         self.assertEqual(s1.intersection_point(s3), Point(1, 1))
+        #print(s1.intersection_point(s3))
         self.assertEqual(s1.intersection_point(Segment(0, 1, 2, 1)), Point(1, 1))
         # Intersections at ends.
         self.assertEqual(self.segment1.intersection_point(self.segment2), Point(0, 0)) # L

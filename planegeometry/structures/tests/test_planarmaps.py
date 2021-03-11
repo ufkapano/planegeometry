@@ -14,7 +14,7 @@ from planegeometry.structures.planarmaps import PlanarMap
 # | /   |
 # C     D
 
-class TestPlanarMap(unittest.TestCase):
+class TestPlanarMap1(unittest.TestCase):
 
     def setUp(self):
         self.M = PlanarMap()
@@ -24,30 +24,6 @@ class TestPlanarMap(unittest.TestCase):
         self.M.add_leaf(Segment(B, D))
         self.M.add_chord(Segment(C, B))
         #self.G.show()
-
-    def test_init_segment(self):
-        M1 = PlanarMap(Segment(0, 1, 2, 3))
-        self.assertEqual(M1.v(), 2)
-        self.assertEqual(M1.e(), 1)
-        self.assertEqual(M1.f(), 1)
-
-    def test_init_triangle(self):
-        M1 = PlanarMap(Triangle(0, 0, 1, 0, 1, 1))
-        self.assertEqual(M1.v(), 3)
-        self.assertEqual(M1.e(), 3)
-        self.assertEqual(M1.f(), 2)
-
-    def test_init_rectangle(self):
-        M1 = PlanarMap(Rectangle(0, 0, 1, 2))
-        self.assertEqual(M1.v(), 4)
-        self.assertEqual(M1.e(), 4)
-        self.assertEqual(M1.f(), 2)
-
-    def test_init_polygon(self):
-        M1 = PlanarMap(Polygon(0, 0, 2, 0, 2, 1, 1, 2, 0, 1))
-        self.assertEqual(M1.v(), 5)
-        self.assertEqual(M1.e(), 5)
-        self.assertEqual(M1.f(), 2)
 
     def test_add_first_edge(self):
         M1 = PlanarMap()
@@ -142,6 +118,124 @@ class TestPlanarMap(unittest.TestCase):
         #self.assertRaises(ValueError, self.M.add_edge, Segment(Point(0, 0), Point(0, 0)))
         self.assertRaises(ValueError, self.M.add_edge, Segment(Point(1, 0), Point(1, 1)))
         self.assertRaises(AssertionError, self.M.add_node, "A")
+
+    def test_init_segment(self):
+        M1 = PlanarMap(Segment(0, 1, 2, 3))
+        self.assertEqual(M1.v(), 2)
+        self.assertEqual(M1.e(), 1)
+        self.assertEqual(M1.f(), 1)
+
+    def test_init_triangle(self):
+        M1 = PlanarMap(Triangle(0, 0, 1, 0, 1, 1))
+        self.assertEqual(M1.v(), 3)
+        self.assertEqual(M1.e(), 3)
+        self.assertEqual(M1.f(), 2)
+
+    def test_init_rectangle(self):
+        M1 = PlanarMap(Rectangle(0, 0, 1, 2))
+        self.assertEqual(M1.v(), 4)
+        self.assertEqual(M1.e(), 4)
+        self.assertEqual(M1.f(), 2)
+
+#     D
+#   /   \
+# E       C
+# |       |
+# A-------B
+    def test_init_polygon(self):
+        M1 = PlanarMap(Polygon(0, 0, 2, 0, 2, 1, 1, 2, 0, 1))
+        self.assertEqual(M1.v(), 5)
+        self.assertEqual(M1.e(), 5)
+        self.assertEqual(M1.f(), 2)
+
+#     D
+#     |
+# A---+---B
+#     |
+#     C
+    def test_mapoverlay1(self):
+        M1 = PlanarMap(Segment(0, 1, 2, 1))
+        M2 = PlanarMap(Segment(1, 0, 1, 2))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 5)
+        self.assertEqual(M3.e(), 4)
+        self.assertEqual(M3.f(), 1)
+        #print(list(M3.iternodes()))
+        #print(list(M3.iteredges()))
+
+    def tearDown(self): pass
+
+
+class TestPlanarMap2(unittest.TestCase):
+
+    def setUp(self): pass
+
+#      B4------B3   dwa punkty przeciecia map,
+#      |       |    na koncu 4 faces
+# A4---+---A3  |
+# |    |   |   |
+# |    B1--+---B2
+# |        |
+# A1-------A2
+    def test_mapoverlay1(self):
+        M1 = PlanarMap(Rectangle(0, 0, 2, 2))
+        M2 = PlanarMap(Rectangle(1, 1, 3, 3))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 10)
+        self.assertEqual(M3.e(), 12)
+        self.assertEqual(M3.f(), 4)
+
+#      B4--B3       punkt przeciecia i wspolna czesc krawedzi,
+#      |   |        na koncu 4 faces
+# A4---+---A3
+# |    |   |
+# |    B1--B2
+# |        |
+# A1-------A2
+    def test_mapoverlay2(self):
+        M1 = PlanarMap(Rectangle(0, 0, 2, 2))
+        M2 = PlanarMap(Rectangle(1, 1, 2, 3))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 9)
+        self.assertEqual(M3.e(), 11)
+        self.assertEqual(M3.f(), 4)
+
+#      B4--B3       4 punkty przeciecia,
+#      |   |        na koncu 6 faces
+# A4---+---+---A3
+# |    |   |   |
+# A1---+---+---A2
+#      |   |
+#      B1--B2
+    def test_mapoverlay3(self):
+        M1 = PlanarMap(Rectangle(0, 1, 3, 2))
+        M2 = PlanarMap(Rectangle(1, 0, 2, 3))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 12)
+        self.assertEqual(M3.e(), 16)
+        self.assertEqual(M3.f(), 6)
+        #print(list(M3.iternodes()))
+        #print(list(M3.iteredges()))
+
+#       B1       6 punktow przeciecia,
+#      / \         na koncu 8 faces
+# A3--x---x---A2
+#  \ /     \ /
+#   x       x
+#  / \     / \
+# B2--x---x--B3
+#      \ /
+#       A1
+    def test_mapoverlay4(self):
+        M1 = PlanarMap(Triangle(3, 0, 6, 6, 0, 6))
+        #M1 = PlanarMap(Triangle(3., 0., 6., 6., 0., 6.))
+        M2 = PlanarMap(Triangle(3, 8, 0, 2, 6, 2))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 12)
+        self.assertEqual(M3.e(), 18)
+        self.assertEqual(M3.f(), 8)
+        #print(list(M3.iternodes()))
+        #print(list(M3.iteredges()))
 
     def tearDown(self): pass
 

@@ -142,17 +142,27 @@ class Segment:   # odcinek skierowany
             if x1 == x2:
                 assert x3 != x4   # if x3==x4 then the segments are parallel
                 x5 = x1
-                y5 = y3 + Fraction(x1 - x3, x4 - x3) * (y4 - y3)
+                if isinstance((x1+x3+x4), float):
+                    y5 = y3 + (y4 - y3) * (x1 - x3) / float(x4 - x3)
+                else:
+                    y5 = y3 + (y4 - y3) * Fraction(x1 - x3, x4 - x3)
             elif x3 == x4:
                 assert x1 != x2   # if x1==x2 then the segments are parallel
                 x5 = x3
-                y5 = y1 + Fraction(x3 - x1, x2 - x1) * (y2 - y1)
+                if isinstance((x1+x3+x2), float):
+                    y5 = y1 + (y2 - y1) * (x3 - x1) / float(x2 - x1)
+                else:
+                    y5 = y1 + (y2 - y1) * Fraction(x3 - x1, x2 - x1)
             else:
                 B = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)
                 assert B != 0   # if B==0 then the segments are parallel
                 A = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)
-                x5 = x1 + Fraction(A, B) * (x2 - x1)
-                y5 = y1 + Fraction(A, B) * (y2 - y1)
+                if isinstance((A*B), float):
+                    x5 = x1 + (A / B) * (x2 - x1)
+                    y5 = y1 + (A / B) * (y2 - y1)
+                else:
+                    x5 = x1 + Fraction(A, B) * (x2 - x1)
+                    y5 = y1 + Fraction(A, B) * (y2 - y1)
             return Point(x5, y5)
         else:
             return None
@@ -172,7 +182,10 @@ class Segment:   # odcinek skierowany
         y1 = self.pt1.y
         x2 = self.pt2.x
         y2 = self.pt2.y
-        return y1 + Fraction(y2 - y1, x2 - x1) * (x - x1)
+        if isinstance((y2 - y1)*(x2 - x1), float):
+            return y1 + (x - x1) * (y2 - y1) / float(x2 - x1)
+        else:
+            return y1 + (x - x1) * Fraction(y2 - y1, x2 - x1)
 
     def calculate_x(self, y):
         """Calculate x for a given y in the segment."""
@@ -181,7 +194,10 @@ class Segment:   # odcinek skierowany
         y1 = self.pt1.y
         x2 = self.pt2.x
         y2 = self.pt2.y
-        return x1 + Fraction(x2 - x1, y2 - y1) * (y - y1)
+        if isinstance((x2 - x1)*(y2 - y1), float):
+            return x1 + (y - y1) * (x2 - x1) / float(y2 - y1)
+        else:
+            return x1 + (y - y1) * Fraction(x2 - x1, y2 - y1)
 
     def __hash__(self):
         """Hashable segments."""

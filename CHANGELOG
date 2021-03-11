@@ -3,6 +3,10 @@ CHANGELOG
 2021-03-11
 * Making simple planar maps: PlanarMap(segment), PlanarMap(triangle), 
 PlanarMap(rectangle), PlanarMap(polygon).
+* Segment.intersection_point() with Fraction and float separately.
+* Segment.calculate_y() with Fraction and float separately.
+* Segment.calculate_x() with Fraction and float separately.
+* Point.alpha() with Fraction and float separately.
 
 2021-03-10
 * Graph updated from graphtheory package (iteredges_connected, iterface).
