@@ -3,6 +3,9 @@
 import unittest
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
+from planegeometry.structures.triangles import Triangle
+from planegeometry.structures.rectangles import Rectangle
+from planegeometry.structures.polygons import Polygon
 from planegeometry.structures.edges import Edge
 from planegeometry.structures.planarmaps import PlanarMap
 
@@ -21,6 +24,30 @@ class TestPlanarMap(unittest.TestCase):
         self.M.add_leaf(Segment(B, D))
         self.M.add_chord(Segment(C, B))
         #self.G.show()
+
+    def test_init_segment(self):
+        M1 = PlanarMap(Segment(0, 1, 2, 3))
+        self.assertEqual(M1.v(), 2)
+        self.assertEqual(M1.e(), 1)
+        self.assertEqual(M1.f(), 1)
+
+    def test_init_triangle(self):
+        M1 = PlanarMap(Triangle(0, 0, 1, 0, 1, 1))
+        self.assertEqual(M1.v(), 3)
+        self.assertEqual(M1.e(), 3)
+        self.assertEqual(M1.f(), 2)
+
+    def test_init_rectangle(self):
+        M1 = PlanarMap(Rectangle(0, 0, 1, 2))
+        self.assertEqual(M1.v(), 4)
+        self.assertEqual(M1.e(), 4)
+        self.assertEqual(M1.f(), 2)
+
+    def test_init_polygon(self):
+        M1 = PlanarMap(Polygon(0, 0, 2, 0, 2, 1, 1, 2, 0, 1))
+        self.assertEqual(M1.v(), 5)
+        self.assertEqual(M1.e(), 5)
+        self.assertEqual(M1.f(), 2)
 
     def test_add_first_edge(self):
         M1 = PlanarMap()

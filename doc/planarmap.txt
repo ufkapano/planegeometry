@@ -1,0 +1,43 @@
+INTERFACE FOR PLANAR MAPS
+----------------------------------------------------------------------
+Method name         Short description
+----------------------------------------------------------------------
+M = PlanarMap()     return empty planar map
+M = PlanarMap(segment) return planar map from segment
+M = PlanarMap(triangle) return planar map from triangle
+M = PlanarMap(rectangle) return planar map from rectangle
+M = PlanarMap(simple_polygon) return planar map from a simple polygon
+M.v()               return the number of nodes
+M.e()               return the number of edges
+M.f()               return the number of faces
+
+M.add_first_edge(edge) add the first edge to M
+M.add_leaf(edge)    add a leaf to M
+M.add_chord(edge)   add a chord to M
+
+M.add_node(node)    add node to M, isinstance(node, Point)
+M.del_node(node)    remove node form M
+M.has_node(node)    return True if node is in M
+M.degree(node)      return the degree of node
+
+M.add_edge(edge)    add edge to M, isinstance(edge, Segment)
+M.del_edge(edge)    remove edge form M
+M.has_edge(edge)    return True if edge is in M
+
+M.iternodes()       generate nodes on demand
+M.iteredges()       generate edges on demand
+M.itersegments() == M.iteredges()
+M.iteredges_connected(start_edge) generate connected edges on demand
+M.itersegments_connected() == M.iteredges_connected()
+M.iterfaces()       generate all faces on demand
+M.iterface(start_edge) generate edges from the same face on demand
+
+M.iteroutedges(node) generate outedges on demand
+M.iterinedges(node) generate inedges on demand
+M.iteradjacent(node) generate adjacent nodes on demand
+
+M.show()            graph presentation
+M.copy()            return graph copy
+M == H, M != H      comparisons
+----------------------------------------------------------------------
+EOF

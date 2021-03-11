@@ -4,21 +4,48 @@ try:
     from Queue import Queue
 except ImportError:   # Python 3
     from queue import Queue
+    xrange = range
 
 import random
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
+from planegeometry.structures.triangles import Triangle
+from planegeometry.structures.rectangles import Rectangle
+from planegeometry.structures.polygons import Polygon
 
 class PlanarMap(dict):
     """The class defining a planar map (an undirected graph)."""
 
-    def __init__(self):
+    def __init__(self, item=None):
         """Load up a PlanarMap instance."""
         # Structures defining a topological graph.
         self.edge_next = None
         self.edge_prev = None
         self.face2edge = None
         self.edge2face = None
+        # Create a planar map from item.
+        if isinstance(item, Segment):
+            self.add_first_edge(item)
+        elif isinstance(item, Triangle):
+            s1, s2, s3 = list(item.itersegments())
+            self.add_first_edge(s1)
+            self.add_leaf(s2)
+            self.add_chord(s3)
+        elif isinstance(item, Rectangle):
+            s1, s2, s3, s4 = list(item.itersegments())
+            self.add_first_edge(s1)
+            self.add_leaf(s2)
+            self.add_leaf(s3)
+            self.add_chord(s4)
+        elif isinstance(item, Polygon):
+            slist = list(item.itersegments())
+            n = len(slist)
+            self.add_first_edge(slist[0])
+            for i in xrange(1, n-1):
+                self.add_leaf(slist[i])
+            self.add_chord(slist[-1])
+        else:
+            pass   # ignored
 
     def v(self):
         """Return the number of nodes (the graph order)."""
@@ -110,14 +137,6 @@ class PlanarMap(dict):
         assert isinstance(edge, Segment)
         return edge.source in self and edge.target in self[edge.source]
 
-    def weight(self, edge):
-        """Return the edge weight or zero."""
-        assert isinstance(edge, Segment)
-        if edge.source in self and edge.target in self[edge.source]:
-            return self[edge.source][edge.target].weight
-        else:
-            return 0
-
     def iternodes(self):
         """Generate all nodes from the graph on demand."""
         return iter(self)
@@ -176,6 +195,8 @@ class PlanarMap(dict):
                 if edge not in used:   # start_edge will be detected
                     used.add(edge)
                     yield edge
+
+    itersegments_connected = iteredges_connected
 
     def show(self):
         """The planar map presentation."""
@@ -237,6 +258,7 @@ class PlanarMap(dict):
 
     def _update1(self, edge):
         """Update structures at a edge.source with the degree 1."""
+        assert self.degree(edge.source) == 1
         self.edge_next[edge] = edge
         self.edge_prev[edge] = edge
 
@@ -278,6 +300,7 @@ class PlanarMap(dict):
         edge2 is a new edge inserted between edge1 and edge3
         (counterclockwise direction).
         """
+        assert self.degree(edge2.source) > 1
         assert edge1.source == edge2.source
         assert edge2.source == edge3.source
         self.edge_next[edge1] = edge2

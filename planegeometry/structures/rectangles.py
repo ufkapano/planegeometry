@@ -125,10 +125,10 @@ class Rectangle:
 
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""
-        yield Segment(self.pt1.x, self.pt1.y, self.pt2.x, self.pt1.y)
-        yield Segment(self.pt1.x, self.pt1.y, self.pt1.x, self.pt2.y)
-        yield Segment(self.pt1.x, self.pt2.y, self.pt2.x, self.pt2.y)
-        yield Segment(self.pt2.x, self.pt1.y, self.pt2.x, self.pt2.y)
+        yield Segment(self.pt1.x, self.pt1.y, self.pt2.x, self.pt1.y) # bottom
+        yield Segment(self.pt1.x, self.pt1.y, self.pt1.x, self.pt2.y) # left
+        yield Segment(self.pt1.x, self.pt2.y, self.pt2.x, self.pt2.y) # top
+        yield Segment(self.pt2.x, self.pt1.y, self.pt2.x, self.pt2.y) # right
 
     def gnu(self, visible=False):
         """Return a string for Gnuplot."""
