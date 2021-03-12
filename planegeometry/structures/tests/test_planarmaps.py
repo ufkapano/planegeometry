@@ -237,6 +237,29 @@ class TestPlanarMap2(unittest.TestCase):
         #print(list(M3.iternodes()))
         #print(list(M3.iteredges()))
 
+# A3  B4--B3
+# | \ |   |
+# |   x   |
+# |   | \ |
+# |   |   x
+# |   |   | \
+# |   |   |   A2
+# |   |   | /
+# |   |   x
+# |   | / |
+# |   x   |
+# | / |   |
+# A1  B1--B2
+    def test_mapoverlay5(self):
+        M1 = PlanarMap(Triangle(0, 0, 3, 1, 0, 2))
+        M2 = PlanarMap(Rectangle(1, 0, 2, 2))
+        M3 = M1.map_overlay(M2)
+        self.assertEqual(M3.v(), 11)
+        self.assertEqual(M3.e(), 15)
+        self.assertEqual(M3.f(), 6)
+        #print(list(M3.iternodes()))
+        #print(list(M3.iteredges()))
+
     def tearDown(self): pass
 
 if __name__ == "__main__":

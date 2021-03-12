@@ -10,7 +10,7 @@ PlanarMap(rectangle), PlanarMap(polygon).
 
 2021-03-10
 * Graph updated from graphtheory package (iteredges_connected, iterface).
-* PlanarMap with map overlay added.
+* PlanarMap with map overlay added, M3 = M1.map_overlay(M2).
 
 2021-03-04
 * TriangleCollection with sets, faster searching and removing triangles.

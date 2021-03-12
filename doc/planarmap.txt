@@ -14,6 +14,7 @@ M.f()               return the number of faces
 M.add_first_edge(edge) add the first edge to M
 M.add_leaf(edge)    add a leaf to M
 M.add_chord(edge)   add a chord to M
+M3 = M1.map_overlay(M2) map overlay procedure
 
 M.add_node(node)    add node to M, isinstance(node, Point)
 M.del_node(node)    remove node form M
