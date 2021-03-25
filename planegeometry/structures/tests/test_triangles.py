@@ -133,6 +133,12 @@ class TestTriangle(unittest.TestCase):
         self.assertTrue(Segment(0, 0, 0, 12) in L)
         self.assertTrue(Segment(0, 12, 6, 0) in L)
 
+    def test_itersegments_oriented(self):
+        L = list(self.t1.itersegments_oriented())
+        self.assertTrue(Segment(6, 0, 0, 0) in L)
+        self.assertTrue(Segment(0, 0, 0, 12) in L)
+        self.assertTrue(Segment(0, 12, 6, 0) in L)
+
     def tearDown(self): pass
 
 if __name__ == "__main__":

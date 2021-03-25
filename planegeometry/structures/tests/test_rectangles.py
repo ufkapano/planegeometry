@@ -121,12 +121,20 @@ class TestRectangle(unittest.TestCase):
         self.assertFalse(self.r1.is_square())
 
     def test_itersegments(self):
-        self.r1 = Rectangle(0, 0, 5, 6)
-        L = list(self.r1.itersegments())
+        r1 = Rectangle(0, 0, 5, 6)
+        L = list(r1.itersegments())
         self.assertTrue(Segment(0, 0, 5, 0) in L)
         self.assertTrue(Segment(0, 0, 0, 6) in L)
         self.assertTrue(Segment(0, 6, 5, 6) in L)
         self.assertTrue(Segment(5, 0, 5, 6) in L)
+
+    def test_itersegments_oriented(self):
+        r1 = Rectangle(0, 0, 5, 6)
+        L = list(r1.itersegments_oriented())
+        self.assertTrue(Segment(0, 0, 0, 6) in L)
+        self.assertTrue(Segment(0, 6, 5, 6) in L)
+        self.assertTrue(Segment(5, 6, 5, 0) in L)
+        self.assertTrue(Segment(5, 0, 0, 0) in L)
 
     def test_gnu(self):
         s1 = 'set label "" at 0.0,0.0 point pt 7 ps 0.5\n'

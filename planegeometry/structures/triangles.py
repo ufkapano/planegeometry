@@ -173,4 +173,15 @@ class Triangle:
         else:
             yield Segment(self.pt3, self.pt2)
 
+    def itersegments_oriented(self):
+        """Generate oriented segments (the face is on the right)."""
+        if orientation(self.pt1, self.pt2, self.pt3) > 0:
+            yield Segment(self.pt1, self.pt3)
+            yield Segment(self.pt3, self.pt2)
+            yield Segment(self.pt2, self.pt1)
+        else:
+            yield Segment(self.pt1, self.pt2)
+            yield Segment(self.pt2, self.pt3)
+            yield Segment(self.pt3, self.pt1)
+
 # EOF

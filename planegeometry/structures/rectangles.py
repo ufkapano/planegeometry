@@ -130,6 +130,13 @@ class Rectangle:
         yield Segment(self.pt1.x, self.pt2.y, self.pt2.x, self.pt2.y) # top
         yield Segment(self.pt2.x, self.pt1.y, self.pt2.x, self.pt2.y) # right
 
+    def itersegments_oriented(self):
+        """Generate oriented segments (the face is on the right)."""
+        yield Segment(self.pt1.x, self.pt1.y, self.pt1.x, self.pt2.y) # left
+        yield Segment(self.pt1.x, self.pt2.y, self.pt2.x, self.pt2.y) # top
+        yield Segment(self.pt2.x, self.pt2.y, self.pt2.x, self.pt1.y) # right
+        yield Segment(self.pt2.x, self.pt1.y, self.pt1.x, self.pt1.y) # bottom
+
     def gnu(self, visible=False):
         """Return a string for Gnuplot."""
         L = []
