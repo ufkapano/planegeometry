@@ -123,6 +123,13 @@ class TestRectangle(unittest.TestCase):
         self.assertTrue(self.r2.is_square())
         self.assertFalse(self.r1.is_square())
 
+    def test_iterpoints(self):
+        L = list(self.r1.iterpoints())
+        self.assertEqual(L[0], Point(0, 0))
+        self.assertEqual(L[1], Point(5, 0))
+        self.assertEqual(L[2], Point(5, 6))
+        self.assertEqual(L[3], Point(0, 6))
+
     def test_itersegments(self):
         r1 = Rectangle(0, 0, 5, 6)
         L = list(r1.itersegments())

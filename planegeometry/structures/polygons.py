@@ -148,6 +148,10 @@ class Polygon:
         """Test if a polygon is a square."""
         return self.is_rhombus() and self.is_rectangle()
 
+    def iterpoints(self):
+        """Generate all points on demand."""
+        return iter(self.point_list)
+
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""
         n = len(self.point_list)

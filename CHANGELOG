@@ -2,6 +2,7 @@ CHANGELOG
 
 2021-03-26
 * New tests: segment1 in segment2, segment in rectangle, segment in triangle.
+* iterpoints() in Polygon, Rectangle, Triangle.
 
 2021-03-11
 * Making simple planar maps: PlanarMap(segment), PlanarMap(triangle), 

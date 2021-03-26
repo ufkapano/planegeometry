@@ -130,6 +130,12 @@ class TestTriangle(unittest.TestCase):
 
         self.t1 = Triangle(0, 0, 6, 0, 0, 12)
 
+    def test_iterpoints(self):
+        L = list(self.t1.iterpoints())
+        self.assertEqual(L[0], self.t1.pt1)
+        self.assertEqual(L[1], self.t1.pt2)
+        self.assertEqual(L[2], self.t1.pt3)
+
     def test_itersegments(self):
         L = list(self.t1.itersegments())
         self.assertTrue(Segment(0, 0, 6, 0) in L)

@@ -19,6 +19,7 @@ triangle.orientation()   # return +1|0|-1
 t1.common_segment(t2)   # return segment
 t1.third_node(point1, point2)   # return a third point
 triangle.in_circumcircle(point)   # return bool
+triangle.iterpoints()   # counterclockwise
 triangle.itersegments()   # segment.pt1 < segment.pt2
 triangle.itersegments_oriented()   # the face in on the right
 triangle.gnu()   # return gnuplot string

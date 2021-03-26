@@ -89,6 +89,14 @@ class TestPolygon(unittest.TestCase):
         self.assertTrue(Point(1, 0) in self.polygon2)
         self.assertTrue(Point(Fraction(1, 2), 1) in self.polygon2)
 
+    def test_iterpoints(self):
+        self.polygon1 = Polygon(0, 0, 1, 0, 1, 1, 0, 1)
+        L = list(self.polygon1.iterpoints())
+        self.assertEqual(L[0], Point(0, 0))
+        self.assertEqual(L[1], Point(1, 0))
+        self.assertEqual(L[2], Point(1, 1))
+        self.assertEqual(L[3], Point(0, 1))
+
     def test_itersegments(self):
         L = list(self.polygon3.itersegments())
         self.assertTrue(Segment(0, 0, 0, 2) in L)

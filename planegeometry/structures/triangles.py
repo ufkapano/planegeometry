@@ -160,6 +160,17 @@ class Triangle:
         else:
             return det < 0
 
+    def iterpoints(self):
+        """Generate all points on demand (counterclockwise)."""
+        if orientation(self.pt1, self.pt2, self.pt3) > 0:
+            yield self.pt1
+            yield self.pt2
+            yield self.pt3
+        else:
+            yield self.pt1
+            yield self.pt3
+            yield self.pt2
+
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""
         if self.pt1 < self.pt2:

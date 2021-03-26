@@ -125,6 +125,13 @@ class Rectangle:
         """Test if a rectangle is a square."""
         return (self.pt2.x - self.pt1.x) == (self.pt2.y - self.pt1.y)
 
+    def iterpoints(self):
+        """Generate all points on demand (counterclockwise)."""
+        yield self.pt1
+        yield Point(self.pt2.x, self.pt1.y)
+        yield self.pt2
+        yield Point(self.pt1.x, self.pt2.y)
+
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""
         yield Segment(self.pt1.x, self.pt1.y, self.pt2.x, self.pt1.y) # bottom
