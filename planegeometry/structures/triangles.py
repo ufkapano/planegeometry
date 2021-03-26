@@ -107,8 +107,10 @@ class Triangle:
             a31 = orientation(self.pt3, self.pt1, self.pt2)
             b31 = orientation(self.pt3, self.pt1, other)
             return (a12 * b12 >= 0) and (a23 * b23 >= 0) and (a31 * b31 >= 0)
+        elif isinstance(other, Segment):
+            return other.pt1 in self and other.pt2 in self
         else:
-            raise ValueError("not a point")
+            raise ValueError()
 
     def orientation(self):
         """Triangle orientation."""

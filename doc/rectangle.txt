@@ -15,6 +15,7 @@ rectangle.move(x, y)    # return new rectangle
 rectangle.move(point)    # return new rectangle
 r1 == r2, r1 != r2, r1 < r2, r1 <= r2, r1 > r2, r1 >= r2
 point in rectangle   # return bool
+segment in rectangle   # return bool
 rectangle.is_square()   # return bool
 rectangle.itersegments()   # segment.pt1 < segment.pt2
 rectangle.itersegments_oriented()   # the face is on the right

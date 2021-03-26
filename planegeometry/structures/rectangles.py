@@ -116,6 +116,8 @@ class Rectangle:
             in_x = self.pt1.x <= other.x <= self.pt2.x
             in_y = self.pt1.y <= other.y <= self.pt2.y
             return in_x and in_y
+        elif isinstance(other, Segment):
+            return other.pt1 in self and other.pt2 in self
         else:
             raise ValueError()
 

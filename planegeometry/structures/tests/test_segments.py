@@ -79,6 +79,9 @@ class TestSegment(unittest.TestCase):
         self.assertTrue(Point(Fraction(1, 2), Fraction(1, 2)) in self.segment2)
         self.assertTrue(Point(Fraction(1, 3), Fraction(1, 3)) in self.segment2)
         self.assertRaises(ValueError, Segment.__contains__, self.segment1, 1)
+        # segment1 in segment2
+        self.assertTrue(Segment(0, 0, 1, 0) in self.segment1)
+        self.assertFalse(self.segment2 in self.segment1)
 
     def test_intersect(self):
         self.assertTrue(self.segment1.intersect(self.segment2))

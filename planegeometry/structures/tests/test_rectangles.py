@@ -115,6 +115,9 @@ class TestRectangle(unittest.TestCase):
         self.assertFalse(Point(1, 7) in self.r1)
         self.assertFalse(Point(7, 1) in self.r1)
         self.assertRaises(ValueError, Rectangle.__contains__, self.r1, 1)
+        # segment in rectangle
+        self.assertTrue(Segment(1, 1, 2, 2) in self.r1)
+        self.assertFalse(Segment(1, 1, 7, 7) in self.r1)
 
     def test_is_square(self):
         self.assertTrue(self.r2.is_square())

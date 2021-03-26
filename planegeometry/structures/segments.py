@@ -107,8 +107,10 @@ class Segment:   # odcinek skierowany
                 return True
             else:
                 return False
+        elif isinstance(other, Segment):
+            return other.pt1 in self and other.pt2 in self
         else:
-            raise ValueError("not a point")
+            raise ValueError()
 
     def intersect(self, other):
         """Test if two segments intersect."""

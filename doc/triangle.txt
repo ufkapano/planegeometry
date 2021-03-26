@@ -14,6 +14,7 @@ triangle.move(x, y)   # return new triangle
 triangle.move(point)   # return new triangle
 t1 == t2, t1 != t2
 point in triangle   # return bool
+segment in triangle   # return bool
 triangle.orientation()   # return +1|0|-1
 t1.common_segment(t2)   # return segment
 t1.third_node(point1, point2)   # return a third point

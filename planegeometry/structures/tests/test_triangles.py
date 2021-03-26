@@ -96,6 +96,9 @@ class TestTriangle(unittest.TestCase):
         self.assertFalse(Point(7, 0) in self.t1)
         self.assertFalse(Point(0, 13) in self.t1)
         self.assertRaises(ValueError, Triangle.__contains__, self.t1, 1)
+        # segment in tringle
+        self.assertTrue(Segment(1, 1, 2, 2) in self.t1)
+        self.assertFalse(Segment(1, 1, 6, 6) in self.t1)
 
     def test_orientation(self):
         self.assertEqual(self.t1.orientation(), 1)
