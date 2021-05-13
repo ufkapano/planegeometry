@@ -4,6 +4,9 @@ CHANGELOG
 * New tests: segment1 in segment2, segment in rectangle, segment in triangle.
 * iterpoints() in Polygon, Rectangle, Triangle.
 
+2021-03-25
+* itersegments_oriented() in Triangle and Rectangle. Faces are on the right.
+
 2021-03-11
 * Making simple planar maps: PlanarMap(segment), PlanarMap(triangle), 
 PlanarMap(rectangle), PlanarMap(polygon).

@@ -12,20 +12,20 @@ class ShamosHoey:
     """
 
     def __init__(self, segment_list):
-        self.eq = PriorityQueue()   # event queue (sorted along x)
-        self.sl = SlowTree()        # sweep line (sorted along y)
+        self.event_queue = PriorityQueue()   # sorted along x
+        self.sweep_line = SlowTree()        # sorted along y
 
         for segment in segment_list:
             # Zalozone segment.pt1.x < segment.pt2.x.
             # Trzeba obsluzyc druga mozliwosc.
             if segment.pt1.x > segment.pt2.x:
                 segment = ~segment
-            self.eq.push(Event(segment.pt1, Event.LEFT, segment))
-            self.eq.push(Event(segment.pt2, Event.RIGHT, segment))
+            self.event_queue.push(Event(segment.pt1, Event.LEFT, segment))
+            self.event_queue.push(Event(segment.pt2, Event.RIGHT, segment))
 
     def run(self):
-        while not self.eq.empty():
-            event = self.eq.pop()
+        while not self.event_queue.empty():
+            event = self.event_queue.pop()
             if event.type == Event.LEFT:
                 if self._handle_left_endpoint(event):
                     return True
@@ -38,10 +38,10 @@ class ShamosHoey:
 
     def _handle_left_endpoint(self, event):
         segment_e = event.segment   # Let segE = E's segment
-        self.sl.insert(segment_e)   # Add segE to SL
+        self.sweep_line.insert(segment_e)   # Add segE to SL
 
-        segment_above = self.sl.successor(segment_e)    # Let segA = the segment Above segE in SL
-        segment_below = self.sl.predecessor(segment_e)  # Let segB = the segment Below segE in SL
+        segment_above = self.sweep_line.successor(segment_e)    # Let segA = the segment Above segE in SL
+        segment_below = self.sweep_line.predecessor(segment_e)  # Let segB = the segment Below segE in SL
 
         if segment_above:   # if exists
             segment_above = segment_above.value     # get segment from node
@@ -57,8 +57,8 @@ class ShamosHoey:
 
     def _handle_right_endpoint(self, event):
         segment_e = event.segment  # Let segE = E's segment
-        segment_above = self.sl.successor(segment_e)  # Let segA = the segment Above segE in SL
-        segment_below = self.sl.predecessor(segment_e)  # Let segB = the segment Below segE in SL
+        segment_above = self.sweep_line.successor(segment_e)  # Let segA = the segment Above segE in SL
+        segment_below = self.sweep_line.predecessor(segment_e)  # Let segB = the segment Below segE in SL
 
         if segment_above and segment_below:     # if exists
             segment_above = segment_above.value     # get segment from node
@@ -66,5 +66,5 @@ class ShamosHoey:
             if segment_above.intersect(segment_below):    # If (I = Intersect( segA with segB) exists)
                 return True
 
-        self.sl.remove(segment_e)
+        self.sweep_line.remove(segment_e)
         return False
