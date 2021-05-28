@@ -17,7 +17,8 @@ point in triangle   # return bool
 segment in triangle   # return bool
 triangle.orientation()   # return +1|0|-1
 t1.common_segment(t2)   # return segment
-t1.third_node(point1, point2)   # return a third point
+triangle.third_node(point1, point2)   # return a third point
+triangle.circumcenter()   # return point
 triangle.in_circumcircle(point)   # return bool
 triangle.iterpoints()   # counterclockwise
 triangle.itersegments()   # segment.pt1 < segment.pt2

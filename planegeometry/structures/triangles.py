@@ -160,6 +160,20 @@ class Triangle:
         else:
             return det < 0
 
+    def circumcenter(self):
+        """Return the circumcenter for the triangle.
+        
+        https://en.wikipedia.org/wiki/Circumscribed_circle#Circumcircle_equations
+        """
+        a, b, c = self.pt1, self.pt2, self.pt3
+        d = 2 * ( a.cross(b) - a.cross(c) + b.cross(c) )
+        x = ((a*a)*(b.y - c.y) + (b*b)*(c.y - a.y) + (c*c)*(a.y - b.y))
+        y = ((a*a)*(c.x - b.x) + (b*b)*(a.x - c.x) + (c*c)*(b.x - a.x))
+        if isinstance((x+y+d), float):
+            return Point(x / float(d), y / float(d))
+        else:
+            return Point(Fraction(x, d), Fraction(y, d))
+
     def iterpoints(self):
         """Generate all points on demand (counterclockwise)."""
         if orientation(self.pt1, self.pt2, self.pt3) > 0:

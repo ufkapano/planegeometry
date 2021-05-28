@@ -128,7 +128,10 @@ class TestTriangle(unittest.TestCase):
         self.assertTrue(self.t1.in_circumcircle(Point(6, 11)))
         self.assertFalse(self.t1.in_circumcircle(Point(7, 0)))
 
-        self.t1 = Triangle(0, 0, 6, 0, 0, 12)
+    def test_circumcenter(self):
+        self.assertEqual(self.t1.circumcenter(), Point(3, 6))
+        self.assertEqual(self.t2.circumcenter(), Point(6, Fraction(9, 4)))
+        self.assertEqual(self.t3.circumcenter(), Point(1, Fraction(3, 4)))
 
     def test_iterpoints(self):
         L = list(self.t1.iterpoints())
