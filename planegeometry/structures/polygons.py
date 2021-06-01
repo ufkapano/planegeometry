@@ -40,7 +40,29 @@ class Polygon:
 
     def __eq__(self, other):
         """Comparison of polygones (polygon1 == polygon2)."""
-        return self.point_list == other.point_list
+        #return self.point_list == other.point_list
+        n = len(self.point_list)
+        if len(other.point_list) != n:
+            return False
+        ia = None
+        for i in xrange(n):
+            if self.point_list[0] == other.point_list[i]:
+                ia = i
+                break
+        if ia is None:
+            return False
+        if self.point_list[1] == other.point_list[(ia+1) % n]:
+            orient = 1   # zgodne kolejnosci punktow
+        elif self.point_list[1] == other.point_list[(ia+n-1) % n]:
+            orient = -1   # przeciwne kolejnosci punktow
+        else:
+            orient = None
+        if orient is None:
+            return False
+        for i in xrange(2, n):
+            if self.point_list[i] != other.point_list[(ia+n+i*orient) % n]:
+                return False
+        return True
 
     def __ne__(self, other):
         """Comparison of polygones (polygon1 != polygon2)."""

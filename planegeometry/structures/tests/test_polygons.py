@@ -39,6 +39,14 @@ class TestPolygon(unittest.TestCase):
         polygon3 = Polygon(0, 0, 2, 0, 1, 2)
         self.assertEqual(polygon3, self.polygon2)
         self.assertNotEqual(polygon3, self.polygon1)
+        p1, p2, p3, p4 = Point(0, 0), Point(1, 0), Point(1, 1), Point(0, 1)
+        p5 = Point(2, 2)
+        self.assertNotEqual(self.polygon1, Polygon(p1, p2, p3)) # different n
+        self.assertNotEqual(self.polygon1, Polygon(p1, p2, p3, p5, p4)) # different n
+        self.assertNotEqual(self.polygon1, Polygon(p4, p1, p2, p5)) # p5!=p3
+        self.assertNotEqual(self.polygon1, Polygon(p2, p1, p4, p5)) # p5!=p3
+        self.assertEqual(self.polygon1, Polygon(p3, p4, p1, p2)) # orient=1
+        self.assertEqual(self.polygon1, Polygon(p3, p2, p1, p4)) # orient=-1
 
     def test_print(self):
         self.assertEqual(repr(self.polygon1),
