@@ -90,10 +90,11 @@ class Polygon:
                 # Nie mamy wersji dla wielokata zlozonego.
                 raise ValueError("polygon is not simple")
         # First find rightmost lowest vertex of the polygon.
+        n = len(self.point_list)
         rmin = 0
         xmin = self.point_list[0].x
         ymin = self.point_list[0].y
-        for i in xrange(1, len(self.point_list)):
+        for i in xrange(1, n):
             if self.point_list[i].y > ymin:
                 continue
             if self.point_list[i].y == ymin:
@@ -103,18 +104,9 @@ class Polygon:
             xmin = self.point_list[i].x
             ymin = self.point_list[i].y
         # Test orientation at the rmin vertex.
-        if rmin == 0:
-            return orientation(self.point_list[-1],
-                               self.point_list[0],
-                               self.point_list[1])
-        elif rmin == len(self.point_list)-1:
-            return orientation(self.point_list[-2],
-                               self.point_list[-1],
-                               self.point_list[0])
-        else:
-            return orientation(self.point_list[rmin-1],
-                               self.point_list[rmin],
-                               self.point_list[rmin+1])
+        return orientation(self.point_list[(rmin+n-1) % n],
+                           self.point_list[rmin],
+                           self.point_list[(rmin+1) % n])
 
     def __contains__(self, other):
         """Test if a point is in a polygon."""
