@@ -1,7 +1,7 @@
 INTERFACE FOR SEGMENTS
 ----------------------------------------------------------------------
-segment = Segment(x1, y1, x2, y2)
-segment = Segment(point1, point2)
+segment = Segment(x1, y1, x2, y2)   # Point(x1, y1) != Point(x2, y2)
+segment = Segment(point1, point2)   # point1 != point2
 segment = Segment()
 repr(segment)   # return string
 hash(segment)

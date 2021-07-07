@@ -184,7 +184,7 @@ class Segment:   # odcinek skierowany
         y1 = self.pt1.y
         x2 = self.pt2.x
         y2 = self.pt2.y
-        if isinstance((y2 - y1)*(x2 - x1), float):
+        if isinstance((y2 - y1) * (x2 - x1), float):
             return y1 + (x - x1) * (y2 - y1) / float(x2 - x1)
         else:
             return y1 + (x - x1) * Fraction(y2 - y1, x2 - x1)
@@ -196,7 +196,7 @@ class Segment:   # odcinek skierowany
         y1 = self.pt1.y
         x2 = self.pt2.x
         y2 = self.pt2.y
-        if isinstance((x2 - x1)*(y2 - y1), float):
+        if isinstance((x2 - x1) * (y2 - y1), float):
             return x1 + (y - y1) * (x2 - x1) / float(y2 - y1)
         else:
             return x1 + (y - y1) * Fraction(x2 - x1, y2 - y1)

@@ -41,7 +41,7 @@ class JarvisMarch:
         while True:
             i = (m + 1) % len(self.point_list)   # new candidate
             for j in xrange(len(self.point_list)):
-                if i == j:   # the same point
+                if i == j or j == m:   # the same point
                     continue
                 orient = oriented_area(self.point_list[m],
                                        self.point_list[i],

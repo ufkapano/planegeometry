@@ -17,7 +17,7 @@ brute force O(n^2), Shamos-Hoey, Bentley-Ottmann
 * Closest pair of points problem: brute force search O(n^2), 
 sweep line technique, divide and conquer approach
 * Finding two furthest points: brute force search O(n^2), rotating calipers
-* Convex hulls: Graham scan, Jarvis march (gift wrapping), 
+* Convex hulls: Graham scan O(n log n), Jarvis march (gift wrapping) O(n h), 
 quickhull (divide and conquer approach)
 * Delaunay triangulations: naive approach O(n^4), edge flipping, Bowyer-Watson
 * Convex polygons: recognition, fan triangulation O(n)

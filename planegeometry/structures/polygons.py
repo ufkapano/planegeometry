@@ -39,7 +39,7 @@ class Polygon:
         ", ".join(repr(pt) for pt in self.point_list))
 
     def __eq__(self, other):
-        """Comparison of polygones (polygon1 == polygon2)."""
+        """Comparison of polygons (polygon1 == polygon2)."""
         #return self.point_list == other.point_list
         n = len(self.point_list)
         if len(other.point_list) != n:
@@ -65,7 +65,7 @@ class Polygon:
         return True
 
     def __ne__(self, other):
-        """Comparison of polygones (polygon1 != polygon2)."""
+        """Comparison of polygons (polygon1 != polygon2)."""
         return not self == other
 
     def move(self, *arguments):   # przesuniecie o (x, y)
