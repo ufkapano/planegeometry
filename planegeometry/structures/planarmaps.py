@@ -167,6 +167,8 @@ class PlanarMap(dict):
 
     itersegments = iteredges
 
+    iterpoints = iternodes
+
     def iteredges_connected(self, start_edge):
         """Generate all connected edges from the planar map on demand."""
         assert isinstance(start_edge, Segment)

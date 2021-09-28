@@ -13,6 +13,6 @@ point in polygon   # return bool, using winding number
 polygon.is_simple()   # return bool (slow)
 polygon.is_convex(test_is_simple=False)   # return bool, for simple polygons
 polygon.iterpoints()
-polygon.itersegments()
+polygon.itersegments()   # segment.pt1 < segment.pt2
 ----------------------------------------------------------------------
 EOF

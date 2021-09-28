@@ -26,6 +26,7 @@ M.del_edge(edge)    remove edge form M
 M.has_edge(edge)    return True if edge is in M
 
 M.iternodes()       generate nodes on demand
+M.iterpoints() == M.iternodes()
 M.iteredges()       generate edges on demand
 M.itersegments() == M.iteredges()
 M.iteredges_connected(start_edge) generate connected edges on demand
