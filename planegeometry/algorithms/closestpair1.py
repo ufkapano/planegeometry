@@ -2,9 +2,9 @@
 
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 from planegeometry.structures.avltree1 import AVLTree
 
@@ -37,7 +37,7 @@ class ClosestPairSweepLine:
         while self.point_list[bottom].y <= new_point.y - self.min_distance:
             bottom += 1
         # Inicjalizacja X-struktury.
-        for i in xrange(bottom, top):
+        for i in range(bottom, top):
             self.active_points.insert(self.point_list[i])
 
         while top < len(self.point_list):
@@ -45,7 +45,7 @@ class ClosestPairSweepLine:
             neighbors = []
             # Szukamy trzech punktow w prawo.
             point = new_point
-            for _ in xrange(3):
+            for _ in range(3):
                 node = self.active_points.successor(point)
                 if node:
                     point = node.value
@@ -54,7 +54,7 @@ class ClosestPairSweepLine:
                     break
             # Szukamy trzech punktow w lewo.
             point = new_point
-            for _ in xrange(3):
+            for _ in range(3):
                 node = self.active_points.predecessor(point)
                 if node:
                     point = node.value

@@ -3,9 +3,9 @@
 import math
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 # https://www.geeksforgeeks.org/orientation-3-ordered-points/
 #
@@ -47,8 +47,8 @@ def find_two_furthest_points1(point_list):
     dist2 = 0
     pair = None
     n = len(point_list)
-    for i in xrange(n):
-        for j in xrange(i+1, n):
+    for i in range(n):
+        for j in range(i+1, n):
             vec = point_list[j] - point_list[i]
             new_dist2 = vec * vec
             if new_dist2 > dist2:
@@ -119,8 +119,8 @@ def find_intersection_points(segment_list):
     """Find intersection points for a segment list in O(n^2) time."""
     intersection_list = []
     n = len(segment_list)
-    for i in xrange(n):
-        for j in xrange(i+1, n):
+    for i in range(n):
+        for j in range(i+1, n):
             point = segment_list[i].intersection_point(segment_list[j])
             if point:
                 intersection_list.append(point)
@@ -132,8 +132,8 @@ def find_two_closest_points(point_list):
     vec = point_list[1] - point_list[0]
     dist2 = vec * vec
     n = len(point_list)
-    for i in xrange(n):
-        for j in xrange(i+1, n):
+    for i in range(n):
+        for j in range(i+1, n):
             vec = point_list[j] - point_list[i]
             new_dist2 = vec * vec
             if new_dist2 < dist2:

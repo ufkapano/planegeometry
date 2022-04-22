@@ -1,11 +1,5 @@
 #!/usr/bin/python
 
-try:
-    integer_types = (int, long)
-except NameError:   # Python 3
-    integer_types = (int,)
-    xrange = range
-
 import itertools
 from planegeometry.structures.points import Point
 from planegeometry.structures.triangles import Triangle

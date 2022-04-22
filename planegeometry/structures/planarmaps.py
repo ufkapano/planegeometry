@@ -2,9 +2,9 @@
 
 try:
     from Queue import Queue
+    range = xrange
 except ImportError:   # Python 3
     from queue import Queue
-    xrange = range
 
 import random
 from planegeometry.structures.points import Point
@@ -41,7 +41,7 @@ class PlanarMap(dict):
             slist = list(item.itersegments())
             n = len(slist)
             self.add_first_edge(slist[0])
-            for i in xrange(1, n-1):
+            for i in range(1, n-1):
                 self.add_leaf(slist[i])
             self.add_chord(slist[-1])
         else:

@@ -2,9 +2,9 @@
 
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 from planegeometry.algorithms.geomtools import find_two_closest_points
 
@@ -85,8 +85,8 @@ class ClosestPairSortXY:
     def _closest_on_strip(self, strip, distance):   # O(n) time
         min_distance = distance
         closest_pair = strip[0], strip[1]
-        for i in xrange(len(strip)):
-            for j in xrange(i + 1, len(strip)):
+        for i in range(len(strip)):
+            for j in range(i + 1, len(strip)):
                 # Roznica wspolrzednych y ma byc nie wieksza od d.
                 # Druga petla przebiegnie najwyzej 7(?) razy.
                 if strip[j].y - strip[i].y > min_distance:

@@ -1,5 +1,8 @@
 CHANGELOG
 
+2022-04-22
+* Using 'range = xrange' in Py2.
+
 2021-03-26
 * New tests: segment1 in segment2, segment in rectangle, segment in triangle.
 * iterpoints() in Polygon, Rectangle, Triangle.

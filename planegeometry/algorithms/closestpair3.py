@@ -2,9 +2,9 @@
 
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 from planegeometry.algorithms.geomtools import find_two_closest_points
 
@@ -49,7 +49,7 @@ class ClosestPairDivideConquer:
             current_d = right_d
         # Build a strip (the width is 2*d).
         strip = []
-        for i in xrange(left, right+1):   # O(n) time
+        for i in range(left, right+1):   # O(n) time
             if abs(self.point_list[middle].x - self.point_list[i].x) < current_d:
                 strip.append(self.point_list[i])
 
@@ -67,8 +67,8 @@ class ClosestPairDivideConquer:
         min_distance = distance
         strip.sort(key=lambda point: point.y)
         closest_pair = strip[0], strip[1]
-        for i in xrange(len(strip)):
-            for j in xrange(i + 1, len(strip)):
+        for i in range(len(strip)):
+            for j in range(i + 1, len(strip)):
                 # Roznica wspolrzednych y ma byc nie wieksza od d.
                 # Druga petla przebiegnie najwyzej 7(?) razy.
                 if strip[j].y - strip[i].y > min_distance:

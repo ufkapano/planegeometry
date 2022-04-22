@@ -5,9 +5,9 @@
 
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
@@ -45,7 +45,7 @@ class Polygon:
         if len(other.point_list) != n:
             return False
         ia = None
-        for i in xrange(n):
+        for i in range(n):
             if self.point_list[0] == other.point_list[i]:
                 ia = i
                 break
@@ -59,7 +59,7 @@ class Polygon:
             orient = None
         if orient is None:
             return False
-        for i in xrange(2, n):
+        for i in range(2, n):
             if self.point_list[i] != other.point_list[(ia+n+i*orient) % n]:
                 return False
         return True
@@ -94,7 +94,7 @@ class Polygon:
         rmin = 0
         xmin = self.point_list[0].x
         ymin = self.point_list[0].y
-        for i in xrange(1, n):
+        for i in range(1, n):
             if self.point_list[i].y > ymin:
                 continue
             if self.point_list[i].y == ymin:
@@ -121,8 +121,8 @@ class Polygon:
     def is_simple(self):
         """Test if a polygon is simple in O(n^2) time (slow)."""
         n = len(self.point_list)
-        for i in xrange(n):
-            for j in xrange(2, n-1): # krawedz niesasiednia
+        for i in range(n):
+            for j in range(2, n-1): # krawedz niesasiednia
                 k = (i+j) % n
                 if k < i:   # bylo sprawdzone
                     continue
@@ -142,7 +142,7 @@ class Polygon:
         orient = self.orientation()
         # Sprawdzamy katy wewnetrzne.
         n = len(self.point_list)
-        for i in xrange(n):
+        for i in range(n):
             pt1 = self.point_list[i]
             pt2 = self.point_list[(i+1) % n]
             pt3 = self.point_list[(i+2) % n]
@@ -169,7 +169,7 @@ class Polygon:
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""
         n = len(self.point_list)
-        for i in xrange(n):
+        for i in range(n):
             pt1 = self.point_list[i]
             pt2 = self.point_list[(i + 1) % n]
             if pt1 < pt2:
@@ -200,7 +200,7 @@ def crossing_number(polygon, point):
     """Return the crossing number for a point."""
     cn = 0
     n = len(polygon.point_list)
-    for i in xrange(n):
+    for i in range(n):
         a = polygon.point_list[i]
         b = polygon.point_list[(i+1) % n]
         if a.y <= point.y:
@@ -216,7 +216,7 @@ def crossing_number2(polygon, point):
     """Return the crossing number for a point."""
     cn = 0
     n = len(polygon.point_list)
-    for i in xrange(n):
+    for i in range(n):
         a = polygon.point_list[i]
         b = polygon.point_list[(i+1) % n]
         if ((a.y <= point.y and b.y > point.y) or 
@@ -232,7 +232,7 @@ def winding_number(polygon, point):
     """Return the winding number for a point."""
     wn = 0
     n = len(polygon.point_list)
-    for i in xrange(n):
+    for i in range(n):
         a = polygon.point_list[i]
         b = polygon.point_list[(i+1) % n]
         if a.y <= point.y:

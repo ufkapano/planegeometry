@@ -2,9 +2,9 @@
 
 try:
     integer_types = (int, long)
+    range = xrange
 except NameError:   # Python 3
     integer_types = (int,)
-    xrange = range
 
 from planegeometry.algorithms.geomtools import oriented_area
 from planegeometry.structures.points import Point
@@ -40,7 +40,7 @@ class JarvisMarch:
         m = 0   # index of the last point included to convex hull
         while True:
             i = (m + 1) % len(self.point_list)   # new candidate
-            for j in xrange(len(self.point_list)):
+            for j in range(len(self.point_list)):
                 if i == j or j == m:   # the same point
                     continue
                 orient = oriented_area(self.point_list[m],
