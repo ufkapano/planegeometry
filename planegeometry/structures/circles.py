@@ -3,6 +3,7 @@
 import math
 from functools import total_ordering
 from planegeometry.structures.points import Point
+from planegeometry.structures.segments import Segment
 
 @total_ordering
 class Circle:
@@ -101,6 +102,8 @@ class Circle:
             # Chce unikac pierwiastkowania i liczb float.
             vector = self.pt - other
             return vector * vector <= self.radius * self.radius
+        elif isinstance(other, Segment):
+            return other.pt1 in self and other.pt2 in self
         else:
             raise ValueError()
 

@@ -1,0 +1,16 @@
+MODULE DEPENDENCIES
+----------------------------------------------------------------------
+(points, geomtools) --> segments
+
+(points, segments, geomtools) --> triangles
+(points, segments) --> rectangles
+(points, segments) --> circles
+(points, segments, geomtools) --> polygons
+
+edges --> graphs
+
+(points, segments, triangles, rectangles, polygons) --> planarmaps
+
+(points, triangles, graphs) --> trianglecollections
+----------------------------------------------------------------------
+EOF

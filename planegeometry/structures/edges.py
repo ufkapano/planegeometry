@@ -42,11 +42,10 @@ class Edge:
     def __repr__(self):
         """Compute the string representation of the edge."""
         if self.weight == 1:
-            return "Edge({}, {})".format(
-                repr(self.source), repr(self.target))
+            return "Edge({0!r}, {1!r})".format(self.source, self.target)
         else:
-            return "Edge({}, {}, {})".format(
-                repr(self.source), repr(self.target), repr(self.weight))
+            return "Edge({0!r}, {1!r}, {2!r})".format(
+                self.source, self.target, self.weight)
 
     def __eq__(self, other):
         """Comparing of edges (the weight first)."""

@@ -4,6 +4,7 @@ import math
 import unittest
 from fractions import Fraction
 from planegeometry.structures.points import Point
+from planegeometry.structures.segments import Segment
 from planegeometry.structures.circles import Circle
 
 class TestCircle(unittest.TestCase):
@@ -89,6 +90,8 @@ class TestCircle(unittest.TestCase):
     def test_contains(self):
         self.assertTrue(Point(1, 1) in self.c1)
         self.assertFalse(Point(2, 2) in self.c1)
+        self.assertTrue(Segment(0, 1, 1, 0) in self.c1)
+        self.assertFalse(Segment(0, 0, 2, 2) in self.c1)
         self.assertRaises(ValueError, Circle.__contains__, self.c1, 1)
 
     def test_gnu(self):

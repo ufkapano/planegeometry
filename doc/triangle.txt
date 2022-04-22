@@ -2,7 +2,7 @@ INTERFACE FOR TRIANGLES
 ----------------------------------------------------------------------
 triangle = Triangle(x1, y1, x2, y2, x3, y3)
 triangle = Triangle(point1, point2, point3)
-triangle = Triangle()
+triangle = Triangle()   # Triangle(0, 0, 1, 0, 0, 1)
 repr(triangle)   # return string
 hash(triangle)
 triangle.copy()   # return triangle
