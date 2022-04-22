@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 #
 # Rzucamy odcinkami o jednakowej dlugosci, jak zapalkami.
 

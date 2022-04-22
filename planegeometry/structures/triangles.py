@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 from fractions import Fraction
 from planegeometry.structures.points import Point

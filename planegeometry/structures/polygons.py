@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Polygon.orientation() based on the C++ code from
 # http://geomalgorithms.com/a01-_area.html

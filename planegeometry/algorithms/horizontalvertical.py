@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Wygodnie jest events sortowac po y, bo potem miotla automatycznie
 # sortuje po x. Miotla przesuwa sie z dolu do gory.

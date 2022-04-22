@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Symulacja drzewa AVL w celu sprawdzenia dzialania kodu.
 # Nie pozwala na wstawienie powtarzajacego sie elementu.

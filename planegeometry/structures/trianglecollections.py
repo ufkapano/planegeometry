@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 from planegeometry.structures.points import Point
 from planegeometry.structures.triangles import Triangle

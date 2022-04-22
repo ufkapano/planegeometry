@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 from planegeometry.structures.pqueues import PriorityQueue
 from planegeometry.structures.slowtrees import SlowTree

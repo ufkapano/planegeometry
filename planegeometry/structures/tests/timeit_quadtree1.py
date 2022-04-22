@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Porownanie quadtree i metody silowej.
 # 1. Powyzej 200~1000 punktow QuadTree.nearest() jest szybsze od

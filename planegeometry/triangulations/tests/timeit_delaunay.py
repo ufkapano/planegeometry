@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Testing Delaunay triangulation.
 # General position of points is not tested.

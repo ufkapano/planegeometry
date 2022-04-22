@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # https://rosettacode.org/wiki/AVL_tree#Python
 # https://github.com/TylerSandman/py-bst
