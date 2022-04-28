@@ -3,6 +3,10 @@
 # Backup files.
 *~
 
+# Build files.
+dist/*
+pyquats.egg-info/*
+
 # Figures from tests.
 planegeometry/*/tests/*.pdf
 
