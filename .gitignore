@@ -5,7 +5,7 @@
 
 # Build files.
 dist/*
-pyquats.egg-info/*
+*.egg-info/*
 
 # Figures from tests.
 planegeometry/*/tests/*.pdf

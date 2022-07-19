@@ -25,9 +25,19 @@ quickhull (divide and conquer approach)
 constructors, map overlay procedure.
 * Voronoi diagrams: from Delaunay triangulation
 
-## Installation
+## Download
 
-See doc/quickstart.txt
+To install an official release do
+
+    python3 -m pip install planegeometry
+
+To get the git version do
+
+    git clone https://github.com/ufkapano/planegeometry.git
+
+## Usage
+
+See doc/quickstart.txt and other doc/*.txt files.
 
 ## Contributors
 

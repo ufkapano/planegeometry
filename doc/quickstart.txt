@@ -1,22 +1,26 @@
 QUICK START
 ----------------------------------------------------------------------
-LINUX WITH PYTHON AND GIT INSTALLED
+INSTALLING AN OFFICIAL RELEASE
 
-1. Clone the project into the home directory
+Requires: Python >= 3.7, numpy
 
-$ cd
-$ git clone https://github.com/ufkapano/planegeometry.git
+python3 -m pip install --upgrade pip
+python3 -m pip install planegeometry
+----------------------------------------------------------------------
+INSTALLING FROM SOURCE
 
-2. Add the planegeometry directory to the PYTHONPATH environment variable,
-for .bashrc file you can add:
+1. Clone the project into the git repository
 
-if [ -n "${PYTHONPATH}" ] ; then
-    PYTHONPATH="${PYTHONPATH}:$HOME/planegeometry"
-else
-    PYTHONPATH="$HOME/planegeometry"
-fi
+git clone https://github.com/ufkapano/planegeometry.git
 
-3. Start using the planegeometry package!
+2. Install the package in the editable mode
+
+cd planegeometry
+python3 -m pip install -e .
+
+3. You can update the package any time
+
+git pull
 ----------------------------------------------------------------------
 MAIN CLASSES
 
