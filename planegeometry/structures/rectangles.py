@@ -127,10 +127,10 @@ class Rectangle:
 
     def iterpoints(self):
         """Generate all points on demand (counterclockwise)."""
-        yield self.pt1
-        yield Point(self.pt2.x, self.pt1.y)
-        yield self.pt2
-        yield Point(self.pt1.x, self.pt2.y)
+        yield self.pt1                        # bottom left
+        yield Point(self.pt2.x, self.pt1.y)   # bottom right
+        yield self.pt2                        # top right
+        yield Point(self.pt1.x, self.pt2.y)   # top left
 
     def itersegments(self):
         """Generate all segments on demand (segment.pt1 < segment.pt2)."""

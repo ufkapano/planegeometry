@@ -9,6 +9,8 @@ for i in range(10):
         random.random(), random.random())
     x = [segment.pt1.x, segment.pt2.x]
     y = [segment.pt1.y, segment.pt2.y]
+    #x = [random.random(), random.random()]
+    #y = [random.random(), random.random()]
     #plt.plot(x, y, 'ko-')
     plt.plot(x, y, 'k.-')
 

@@ -8,7 +8,7 @@ hash(rectangle)
 rectangle.copy()   # return rectangle
 rectangle.center()   # return point
 rectangle.area()
-rectangle.make4()    # return four smaller rectangles
+rectangle.make4()    # return four smaller rectangles (tuple)
 r1.cover(r2)           # return rectangle
 r1.intersection(r2)    # return rectangle
 rectangle.move(x, y)    # return new rectangle
