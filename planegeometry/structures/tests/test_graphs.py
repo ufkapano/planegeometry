@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
+from planegeometry.structures.segments import Segment
 from planegeometry.structures.edges import Edge
 from planegeometry.structures.graphs import Graph
 
@@ -81,17 +82,6 @@ class TestGraphDirected(unittest.TestCase):
             self.assertTrue(self.G.has_node(node))
         for edge in T.iteredges():
             self.assertTrue(self.G.has_edge(~edge))
-
-    def test_complement(self):
-        T = self.G.complement()
-        self.assertEqual(T.v(), self.G.v())
-        self.assertEqual(T.e(), self.N*(self.N-1) - self.G.e())
-        for node in T.iternodes():
-            self.assertTrue(self.G.has_node(node))
-        for edge in T.iteredges():
-            self.assertFalse(self.G.has_edge(edge))
-        for edge in self.G.iteredges():
-            self.assertFalse(T.has_edge(edge))
 
     def test_subgraph(self):
         T = self.G.subgraph(["A", "B", "C"])
@@ -179,17 +169,6 @@ class TestGraphUndirected(unittest.TestCase):
         for edge in T.iteredges():
             self.assertTrue(self.G.has_edge(~edge))
 
-    def test_complement(self):
-        T = self.G.complement()
-        self.assertEqual(T.v(), self.G.v())
-        self.assertEqual(T.e(), self.N*(self.N-1)/2 - self.G.e())
-        for node in T.iternodes():
-            self.assertTrue(self.G.has_node(node))
-        for edge in T.iteredges():
-            self.assertFalse(self.G.has_edge(edge))
-        for edge in self.G.iteredges():
-            self.assertFalse(T.has_edge(edge))
-
     def test_subgraph(self):
         T = self.G.subgraph(["A", "B", "C"])
         self.assertEqual(T.v(), 3)
@@ -247,6 +226,31 @@ class TestGraphLadder(unittest.TestCase):
             self.assertTrue(node in [0, 3, 4])
 
     def tearDown(self): pass
+
+
+class TestGraphWithSegments(unittest.TestCase):
+
+    def setUp(self):
+        self.N = 3           # number of nodes
+        self.G = Graph(self.N)
+        self.edges = [
+            Segment(0, 0, 2, 0), Segment(0, 0, 1, 2), Segment(2, 0, 1, 2)]
+        for edge in self.edges:
+            self.G.add_edge(edge)
+
+    def test_basic(self):
+        self.assertFalse(self.G.is_directed())
+        self.assertEqual(self.G.v(), self.N)
+        self.assertEqual(self.G.e(), len(self.edges))
+        #print(list(self.G.iternodes()))
+        #print(list(self.G.iteredges()))
+
+    def test_edges(self):
+        for edge in self.edges:
+            self.assertTrue(self.G.has_edge(edge))
+            self.assertEqual(self.G.weight(edge), edge.weight)
+        self.assertFalse(self.G.has_edge(Segment(0, 0, 1, 1)))
+        self.assertEqual(self.G.weight(Segment(0, 0, 1, 1)), 0)  # no edge
 
 if __name__ == "__main__":
 

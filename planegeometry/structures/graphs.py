@@ -6,7 +6,6 @@ except ImportError:   # Python 3
     from queue import Queue
 
 import random
-from planegeometry.structures.edges import Edge
 
 class Graph(dict):
     """The class defining a graph.
@@ -123,18 +122,30 @@ class Graph(dict):
 
     def del_edge(self, edge):
         """Remove an edge from the graph."""
-        del self[edge.source][edge.target]
+        try:   # checking Edge interface
+            source, target = edge.source, edge.target
+        except AttributeError:
+            source, target = edge   # tuple or list
+        del self[source][target]
         if not self.is_directed():
-            del self[edge.target][edge.source]
+            del self[target][source]
 
     def has_edge(self, edge):
         """Test if an edge exists (the weight is not checked)."""
-        return edge.source in self and edge.target in self[edge.source]
+        try:   # checking Edge interface
+            source, target = edge.source, edge.target
+        except AttributeError:
+            source, target = edge   # tuple or list
+        return source in self and target in self[source]
 
     def weight(self, edge):
         """Return the edge weight or zero."""
-        if edge.source in self and edge.target in self[edge.source]:
-            return self[edge.source][edge.target].weight
+        try:   # checking Edge interface
+            source, target = edge.source, edge.target
+        except AttributeError:
+            source, target = edge   # tuple or list
+        if source in self and target in self[source]:
+            return self[source][target].weight
         else:
             return 0
 
@@ -232,24 +243,11 @@ class Graph(dict):
 
     def transpose(self):
         """Return the transpose of the graph."""
-        new_graph = Graph(n=self.n, directed=self.directed)
+        new_graph = self.__class__(n=self.n, directed=self.directed)
         for node in self.iternodes():
             new_graph.add_node(node)
         for edge in self.iteredges():
             new_graph.add_edge(~edge)
-        return new_graph
-
-    def complement(self):
-        """Return the complement of the graph."""
-        new_graph = Graph(n=self.n, directed=self.directed)
-        for node in self.iternodes():
-            new_graph.add_node(node)
-        for source in self.iternodes():
-            for target in self.iternodes():
-                if source != target:   # no loops
-                    edge = Edge(source, target)
-                    if not self.has_edge(edge) and not new_graph.has_edge(edge):
-                        new_graph.add_edge(edge)
         return new_graph
 
     def subgraph(self, nodes):
@@ -257,7 +255,7 @@ class Graph(dict):
         node_set = set(nodes)
         if any(not self.has_node(node) for node in node_set):
             raise ValueError("nodes not from the graph")
-        new_graph = Graph(n=len(node_set), directed=self.directed)
+        new_graph = self.__class__(n=len(node_set), directed=self.directed)
         for node in node_set:
             new_graph.add_node(node)
         for edge in self.iteredges():

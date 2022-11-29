@@ -22,7 +22,7 @@ class TestSlowTree(unittest.TestCase):
     def test_insert(self):
         self.assertEqual(len(self.st), 2)
         # Now s2 is above s1.
-        print ( self.st )
+        #print ( self.st )
         self.assertEqual(self.st.successor(self.s1).value, self.s2)
         self.assertEqual(self.st.successor(self.s2), None)
         self.assertEqual(self.st.predecessor(self.s1), None)
@@ -30,7 +30,7 @@ class TestSlowTree(unittest.TestCase):
         # W punkcie przeciecia nastepuje zamiana odcinkow miejscami.
         self.st.swap(self.s1, self.s2)
         # Now s1 is above s2.
-        print ( self.st )
+        #print ( self.st )
         self.assertEqual(self.st.successor(self.s2).value, self.s1)
         self.assertEqual(self.st.successor(self.s1), None)
         self.assertEqual(self.st.predecessor(self.s2), None)
