@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
+from fractions import Fraction
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.structures.triangles import Triangle
@@ -23,7 +24,14 @@ class TestPlanarMap1(unittest.TestCase):
         self.M.add_leaf(Segment(A, C))
         self.M.add_leaf(Segment(B, D))
         self.M.add_chord(Segment(C, B))
-        #self.G.show()
+        #self.M.show()
+
+    def test_show_with_repr(self):
+        M1 = PlanarMap(Segment(Fraction(1,2), 1, 2, Fraction(7,2)))
+        self.assertEqual(M1.v(), 2)
+        self.assertEqual(M1.e(), 1)
+        self.assertEqual(M1.f(), 1)
+        #M1.show()
 
     def test_add_first_edge(self):
         M1 = PlanarMap()
@@ -115,6 +123,7 @@ class TestPlanarMap1(unittest.TestCase):
 
     def test_exceptions(self):
         self.assertRaises(AssertionError, self.M.add_edge, Edge(Point(0, 0), Point(1, 0)))
+        # exception in Segment.__init__(), not in add_edge()
         #self.assertRaises(ValueError, self.M.add_edge, Segment(Point(0, 0), Point(0, 0)))
         self.assertRaises(ValueError, self.M.add_edge, Segment(Point(1, 0), Point(1, 1)))
         self.assertRaises(AssertionError, self.M.add_node, "A")

@@ -204,12 +204,9 @@ class PlanarMap(dict):
         """The planar map presentation."""
         L = []
         for source in self.iternodes():
-            L.append("{} : ".format(source))
+            L.append("{0!r} : ".format(source))
             for edge in self.iteroutedges(source):
-                if edge.weight == 1:
-                    L.append("{} ".format(edge.target))
-                else:
-                    L.append("{}({}) ".format(edge.target, edge.weight))
+                L.append("{0!r} ".format(edge.target))
             L.append("\n")
         print("".join(L))
 
