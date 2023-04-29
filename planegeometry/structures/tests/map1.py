@@ -8,6 +8,7 @@ from planegeometry.structures.rectangles import Rectangle
 from planegeometry.structures.polygons import Polygon
 from planegeometry.structures.edges import Edge
 from planegeometry.structures.planarmaps import PlanarMap
+import matplotlib.pyplot as plt
 
 # 6  A7------A6--------------A5
 #    |     / /\            / |
@@ -57,7 +58,20 @@ print("points ...")
 print(list(M1.iterpoints()))
 
 print("\nfaces ...")
+print(list(M1.face2edge))
 for face in M1.iterfaces():
     print(face)
+
+# Plotting planar maps.
+for segment in M1.itersegments():
+    x = [segment.pt1.x, segment.pt2.x]
+    y = [segment.pt1.y, segment.pt2.y]
+    plt.plot(x, y, 'k.-')
+
+plt.title("Mesh")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.gca().set_aspect('equal')
+plt.show()
 
 # EOF
