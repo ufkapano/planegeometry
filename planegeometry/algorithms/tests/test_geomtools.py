@@ -8,6 +8,8 @@ from planegeometry.algorithms.geomtools import orientation
 from planegeometry.algorithms.geomtools import angle3points
 from planegeometry.algorithms.geomtools import find_two_furthest_points1
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
+from planegeometry.algorithms.geomtools import find_two_furthest_points3
+from planegeometry.algorithms.geomtools import find_two_furthest_points4
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
 from planegeometry.algorithms.geomtools import find_intersection_points
 from planegeometry.algorithms.geomtools import find_two_closest_points
@@ -66,6 +68,14 @@ class TestFurthestPoints(unittest.TestCase):
         # Musze przygotowac otoczke wypukla.
         L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
         result = find_two_furthest_points2(L)
+        self.assertEqual(result, pair)
+        # Musze przygotowac otoczke wypukla.
+        L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
+        result = find_two_furthest_points3(L)
+        self.assertEqual(result, pair)
+        # Musze przygotowac otoczke wypukla.
+        L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
+        result = find_two_furthest_points4(L)
         self.assertEqual(result, pair)
 
     def tearDown(self): pass

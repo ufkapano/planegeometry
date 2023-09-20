@@ -12,7 +12,7 @@ y = [p.y for p in point_list]
 x.append(x[0])
 y.append(y[0])
 
-plt.plot(x, y, 'ko-')
+plt.plot(x, y, 'k.-')
 
 plt.title("Random polygon")
 plt.xlabel("x")

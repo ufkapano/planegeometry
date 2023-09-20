@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import math
+import itertools
 try:
     integer_types = (int, long)
     range = xrange
@@ -41,7 +42,7 @@ def angle3points(a, b, c):
     """
     angle = math.atan2(c.y-b.y, c.x-b.x) - math.atan2(a.y-b.y, a.x-b.x)
     return angle + 2*math.pi if angle < 0 else angle
- 
+
 def find_two_furthest_points1(point_list):
     """Find two furthest points in O(n^2) time (brute force)."""
     dist2 = 0
@@ -55,6 +56,11 @@ def find_two_furthest_points1(point_list):
                 dist2 = new_dist2
                 pair = point_list[i], point_list[j]
     return pair
+
+def find_two_furthest_points3(point_list):
+    """Find two furthest points in O(n^2) time (brute force)."""
+    return max(itertools.combinations(point_list, 2),
+        key=lambda pair: (pair[0]-pair[1])*(pair[0]-pair[1]))
 
 def iter_all_antipodal_pairs(point_list):
     """Generate all antipodal pairs for a convex polygon (rotating calipers)."""
@@ -114,6 +120,11 @@ def find_two_furthest_points2(point_list):
             dist2 = new_dist2
             pair = pt1, pt2
     return pair
+
+def find_two_furthest_points4(point_list):
+    """Find two furthest points in O(n) time for a convex polygon."""
+    return max(iter_all_antipodal_pairs(point_list),
+        key=lambda pair: (pair[0]-pair[1])*(pair[0]-pair[1]))
 
 def find_intersection_points(segment_list):
     """Find intersection points for a segment list in O(n^2) time."""

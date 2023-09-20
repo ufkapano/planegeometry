@@ -48,7 +48,7 @@ class TriangleCollection:
         return result
 
     def __contains__(self, other):
-        """Test if a triangle is in a collection."""
+        """Test if a triangle is in a collection in O(1) time."""
         if isinstance(other, Triangle):
             return other in self.items   # O(1) time for sets
         else:

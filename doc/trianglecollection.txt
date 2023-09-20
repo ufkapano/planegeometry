@@ -2,12 +2,12 @@ INTERFACE FOR TRIANGLECOLLECTION
 ----------------------------------------------------------------------
 tc = TriangleCollection()
 str(tc)   # return string
-len(tc)
+len(tc)   # return the number of triangles in a collection
 tc.insert(triangle)
 tc.remove(triangle)
 tc.search(point)   # return a list of triangles
 tc.itertriangles()
-triangle in tc   # return bool
+triangle in tc   # return bool, O(1) time
 tc.to_graph()   # return a graph with points and segments
 ----------------------------------------------------------------------
 EOF

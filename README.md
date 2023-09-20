@@ -8,7 +8,7 @@ from plane geometry is presented.
 * Geometric objects: points, segments, polygons, rectangles, triangles, circles
 * Data structures: edges, graphs, triangle collections, AVL trees, 
 quadtrees, connected planar maps
-* Point in polygon problem: the winding number, the crossing number
+* Point in polygon problem: the winding number method, the crossing number method
 * Polygon orientation
 * Bounding box
 * Line segment intersection problem: 
