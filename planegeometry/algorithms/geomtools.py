@@ -139,9 +139,8 @@ def find_intersection_points(segment_list):
 
 def find_two_closest_points(point_list):
     """Find two closest points in O(n^2) time (brute force)."""
-    pair = point_list[0], point_list[1]
-    vec = point_list[1] - point_list[0]
-    dist2 = vec * vec
+    pair = None
+    dist2 = float("inf")
     n = len(point_list)
     for i in range(n):
         for j in range(i+1, n):
@@ -150,6 +149,23 @@ def find_two_closest_points(point_list):
             if new_dist2 < dist2:
                 dist2 = new_dist2
                 pair = point_list[i], point_list[j]
+    return pair
+
+def find_two_closest_points2(point_list):   # 70% slower
+    """Find two closest points in O(n^2) time (brute force)."""
+    return min(itertools.combinations(point_list, 2),
+        key=lambda pair: (pair[0]-pair[1])*(pair[0]-pair[1]))
+
+def find_two_closest_points3(point_list): # faster than version 1
+    """Find two closest points in O(n^2) time (brute force)."""
+    pair = None
+    dist2 = float("inf")
+    for (pt1, pt2) in itertools.combinations(point_list, 2):
+        vec = pt1 - pt2
+        new_dist2 = vec * vec
+        if new_dist2 < dist2:
+            dist2 = new_dist2
+            pair = pt1, pt2
     return pair
 
 # EOF

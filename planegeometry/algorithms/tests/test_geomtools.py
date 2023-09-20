@@ -13,6 +13,8 @@ from planegeometry.algorithms.geomtools import find_two_furthest_points4
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
 from planegeometry.algorithms.geomtools import find_intersection_points
 from planegeometry.algorithms.geomtools import find_two_closest_points
+from planegeometry.algorithms.geomtools import find_two_closest_points2
+from planegeometry.algorithms.geomtools import find_two_closest_points3
 
 
 class TestOrientation(unittest.TestCase):
@@ -58,23 +60,24 @@ class TestFurthestPoints(unittest.TestCase):
         self.assertEqual(result, pair)
         result = find_two_furthest_points2(L)
         self.assertEqual(result, pair)
+        result = find_two_furthest_points3(L)
+        self.assertEqual(result, pair)
+        result = find_two_furthest_points4(L)
+        self.assertEqual(result, pair)
 
     def test_set2(self):
         s = 5
         L = [Point(i, j) for i in range(s) for j in range(s)]
         pair = Point(0, 0), Point(s-1, s-1)
+        # Przy rozwiazaiu silowym L to dowolny zbior punktow.
         result = find_two_furthest_points1(L)
         self.assertEqual(result, pair)
-        # Musze przygotowac otoczke wypukla.
+        result = find_two_furthest_points3(L)
+        self.assertEqual(result, pair)
+        # Musze przygotowac otoczke wypukla dla rotating callipers.
         L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
         result = find_two_furthest_points2(L)
         self.assertEqual(result, pair)
-        # Musze przygotowac otoczke wypukla.
-        L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
-        result = find_two_furthest_points3(L)
-        self.assertEqual(result, pair)
-        # Musze przygotowac otoczke wypukla.
-        L = [Point(0, 0), Point(s-1, 0), Point(s-1, s-1), Point(0, s-1)]
         result = find_two_furthest_points4(L)
         self.assertEqual(result, pair)
 
@@ -260,6 +263,26 @@ class TestClosestPoints(unittest.TestCase):
         pair1 = find_two_closest_points(self.points1)
         pair2 = find_two_closest_points(self.points2)
         pair3 = find_two_closest_points(self.points3)
+        self.assertEqual(sorted(pair), sorted(self.result))
+        self.assertEqual(sorted(pair1), sorted(self.result1))
+        self.assertEqual(sorted(pair2), sorted(self.result2))
+        self.assertEqual(sorted(pair3), sorted(self.result3))
+
+    def test_closest_points2(self):
+        pair = find_two_closest_points2(self.point_list)
+        pair1 = find_two_closest_points2(self.points1)
+        pair2 = find_two_closest_points2(self.points2)
+        pair3 = find_two_closest_points2(self.points3)
+        self.assertEqual(sorted(pair), sorted(self.result))
+        self.assertEqual(sorted(pair1), sorted(self.result1))
+        self.assertEqual(sorted(pair2), sorted(self.result2))
+        self.assertEqual(sorted(pair3), sorted(self.result3))
+
+    def test_closest_points3(self):
+        pair = find_two_closest_points3(self.point_list)
+        pair1 = find_two_closest_points3(self.points1)
+        pair2 = find_two_closest_points3(self.points2)
+        pair3 = find_two_closest_points3(self.points3)
         self.assertEqual(sorted(pair), sorted(self.result))
         self.assertEqual(sorted(pair1), sorted(self.result1))
         self.assertEqual(sorted(pair2), sorted(self.result2))
