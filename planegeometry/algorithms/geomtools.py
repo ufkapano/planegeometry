@@ -63,7 +63,9 @@ def find_two_furthest_points3(point_list):
         key=lambda pair: (pair[0]-pair[1])*(pair[0]-pair[1]))
 
 def iter_all_antipodal_pairs(point_list):
-    """Generate all antipodal pairs for a convex polygon (rotating calipers)."""
+    """Generate all antipodal pairs for a convex polygon (rotating calipers).
+    Anti-clockwise orientation of points is required.
+    """
     # Orientacja punktow powinna byc anti-clockwise.
     # Wielokat nie moze miec sasiednich krawedzi wspolliniowych.
     # Preparata, Shamos, s.183

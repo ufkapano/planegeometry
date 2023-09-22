@@ -87,11 +87,11 @@ class TestFurthestPoints(unittest.TestCase):
 class TestAntipodalPoints(unittest.TestCase):
 
     def setUp(self): pass
-# o
-# | \
-# |   o
-# |  /
-# o-o
+# 4   .   .
+# |    \
+# |   .   3
+# |     /
+# 1---2   .
     def test_polygon1(self): # nie ma rownoleglych krawedzi
         L = [Point(0, 0), Point(1, 0), Point(2, 1), Point(0, 2)]
         expected = [(Point(0, 0), Point(2, 1)),
@@ -100,9 +100,9 @@ class TestAntipodalPoints(unittest.TestCase):
             (Point(2, 1), Point(0, 2))]
         result = list(iter_all_antipodal_pairs(L))
         self.assertEqual(result, expected)
-# o---o
-# |  /
-# o-o
+# 4-------3
+# |     /
+# 1---2   .
     def test_polygon2(self): # jedna para krawedzi rownoleglych
         L = [Point(0, 0), Point(1, 0), Point(2, 1), Point(0, 1)]
         expected = [(Point(0, 0), Point(2, 1)),
@@ -112,11 +112,11 @@ class TestAntipodalPoints(unittest.TestCase):
             (Point(2, 1), Point(0, 1))]
         result = list(iter_all_antipodal_pairs(L))
         self.assertEqual(result, expected)
-# o
-# |\
-# | o
-# | |
-# o-o
+# 4   .
+# | \
+# |   3
+# |   |
+# 1---2
     def test_polygon3(self): # jedna para krawedzi rownoleglych
         L = [Point(0, 0), Point(1, 0), Point(1, 1), Point(0, 2)]
         expected = [(Point(0, 0), Point(1, 0)),
@@ -126,9 +126,9 @@ class TestAntipodalPoints(unittest.TestCase):
             (Point(1, 1), Point(0, 2))]
         result = list(iter_all_antipodal_pairs(L))
         self.assertEqual(result, expected)
-# o---o
-# |   |
-# o---o
+# 4-------3
+# |       |
+# 1-------2
     def test_polygon4(self): # prostokat
         L = [Point(0, 0), Point(2, 0), Point(2, 1), Point(0, 1)]
         expected = [(Point(0, 0), Point(2, 0)),
@@ -164,13 +164,13 @@ class TestAntipodalPoints(unittest.TestCase):
             (Point(2, 4), Point(0, 1))]
         result = list(iter_all_antipodal_pairs(L))
         self.assertEqual(result, expected)
-#       o
-#     //
-#   o  /
-#  /   /
-# o   o
-# |  /
-# o-o
+# .   .   .   4
+#         /  /
+# .   5     /
+#   /      /
+# 6   .   3
+# |     /
+# 1---2
     def test_polygon7(self): # szesciokat
         L = [Point(0, 0), Point(1, 0), Point(2, 1), Point(3, 3),
             Point(1, 2), Point(0, 1)]
@@ -189,6 +189,19 @@ class TestAntipodalPoints(unittest.TestCase):
         expected = [(Point(0, 0), Point(2, 0)),
             (Point(0, 0), Point(1, 2)),
             (Point(2, 0), Point(1, 2))]
+        result = list(iter_all_antipodal_pairs(L))
+        self.assertEqual(result, expected)
+# 4---3
+#   \     \
+# .   \   .   2
+#       \   /
+# .   .   1
+    def test_polygon9(self): # 4 points
+        L = [Point(2, 0), Point(3, 1), Point(1, 2), Point(0, 2)]
+        expected = [(Point(2, 0), Point(3, 1)),
+            (Point(2, 0), Point(1, 2)),
+            (Point(2, 0), Point(0, 2)),
+            (Point(3, 1), Point(0, 2))]
         result = list(iter_all_antipodal_pairs(L))
         self.assertEqual(result, expected)
 
