@@ -2,7 +2,7 @@ QUICK START
 ----------------------------------------------------------------------
 INSTALLING AN OFFICIAL RELEASE
 
-Requires: Python >= 3.7, numpy
+Requires: Python >= 3.7, numpy, matplotlib
 
 python3 -m pip install --upgrade pip
 python3 -m pip install planegeometry
@@ -37,9 +37,15 @@ from planegeometry.structures.trianglecollections import TriangleCollection
 GEOMTOOLS
 
 from planegeometry.algorithms.geomtools import orientation
+
 from planegeometry.algorithms.geomtools import find_two_furthest_points1
+# brute force, O(n^2) time
+
 from planegeometry.algorithms.geomtools import find_two_furthest_points2
+# anti-clockwise orientation of points is required, O(n) time
+
 from planegeometry.algorithms.geomtools import iter_all_antipodal_pairs
+# anti-clockwise orientation of points is required, O(n) time
 ----------------------------------------------------------------------
 BOUNDING BOX
 

@@ -112,7 +112,9 @@ def iter_all_antipodal_pairs(point_list):
                 yield L[i], L[(j+1) % n]
 
 def find_two_furthest_points2(point_list):
-    """Find two furthest points in O(n) time for a convex polygon."""
+    """Find two furthest points in O(n) time for a convex polygon.
+    Anti-clockwise orientation of points is required.
+    """
     dist2 = 0
     pair = None
     for (pt1, pt2) in iter_all_antipodal_pairs(point_list):
@@ -124,7 +126,9 @@ def find_two_furthest_points2(point_list):
     return pair
 
 def find_two_furthest_points4(point_list):
-    """Find two furthest points in O(n) time for a convex polygon."""
+    """Find two furthest points in O(n) time for a convex polygon.
+    Anti-clockwise orientation of points is required.
+    """
     return max(iter_all_antipodal_pairs(point_list),
         key=lambda pair: (pair[0]-pair[1])*(pair[0]-pair[1]))
 
