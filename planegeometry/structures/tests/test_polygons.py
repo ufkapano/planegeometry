@@ -114,6 +114,24 @@ class TestPolygon(unittest.TestCase):
         self.assertTrue(Segment(2, 0, 2, 1) in L)
         self.assertTrue(Segment(0, 0, 2, 0) in L)
 
+    def test_itersegments_oriented(self):
+        #self.polygon1 = Polygon(0, 0, 1, 0, 1, 1, 0, 1)
+        list1 = list(self.polygon1.itersegments_oriented())
+        list2 = [Segment(0, 0, 0, 1), Segment(0, 1, 1, 1),
+            Segment(1, 1, 1, 0), Segment(1, 0, 0, 0)]
+        self.assertEqual(list1, list2)
+        # o-o   nie jest wypukly, orientacja clockwise -1
+        # | |
+        # | o-o
+        # |   |
+        # o---o
+        #self.polygon3 = Polygon(0, 0, 0, 2, 1, 2, 1, 1, 2, 1, 2, 0)
+        list1 = list(self.polygon3.itersegments_oriented())
+        list2 = [Segment(0, 0, 0, 2), Segment(0, 2, 1, 2),
+            Segment(1, 2, 1, 1), Segment(1, 1, 2, 1),
+            Segment(2, 1, 2, 0), Segment(2, 0, 0, 0)]
+        self.assertEqual(list1, list2)
+
     def test_hash(self):
         aset = set()
         aset.add(self.polygon1)

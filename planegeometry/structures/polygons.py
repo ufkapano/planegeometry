@@ -84,7 +84,7 @@ class Polygon:
         return Polygon(*self.point_list)
 
     def orientation(self, test_is_simple=True):
-        """Simple polygon orientation."""
+        """Simple polygon orientation (+1 counterclockwise, -1 clockwise)."""
         if test_is_simple:   # mozemy pominac test
             if not self.is_simple():
                 # Nie mamy wersji dla wielokata zlozonego.
@@ -176,6 +176,15 @@ class Polygon:
                 yield Segment(pt1, pt2)
             else:
                 yield Segment(pt2, pt1)
+
+    def itersegments_oriented(self):
+        """Generate oriented segments (the face is on the right)."""
+        n = len(self.point_list)
+        orient = self.orientation(test_is_simple=False) * (-1)
+        for i in range(n):
+            pt1 = self.point_list[(n + i*orient) % n]
+            pt2 = self.point_list[(n + (i+1)*orient) % n]
+            yield Segment(pt1, pt2)
 
     def __hash__(self):
         """Hashable polygons."""

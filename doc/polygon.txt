@@ -8,11 +8,13 @@ poly1 == poly2, poly1 != poly2
 polygon.move(x, y)   # return new polygon
 polygon.move(point)   # return new polygon
 polygon.copy()   # return polygon
-polygon.orientation(test_is_simple=False)   # return -1|+1, for simple polygons
+polygon.orientation(test_is_simple=False)   # return -1|+1, for simple polygons,
+# +1 counterclockwise orientation, -1 clockwise orientation
 point in polygon   # return bool, using winding number
 polygon.is_simple()   # return bool (slow)
 polygon.is_convex(test_is_simple=False)   # return bool, for simple polygons
 polygon.iterpoints()
 polygon.itersegments()   # segment.pt1 < segment.pt2
+polygon.itersegments_oriented()   # the face is on the right
 ----------------------------------------------------------------------
 EOF
