@@ -53,6 +53,9 @@ class TestPlanarMap1(unittest.TestCase):
         self.assertRaises(AssertionError, M1.add_leaf, Segment(B, C))
         # adding the same leaf
         self.assertRaises(AssertionError, M1.add_leaf, Segment(A, C))
+        # adding parallel leaf
+        self.assertRaises(AssertionError, M1.add_leaf, Segment(C, Point(0, 2)))
+        self.assertRaises(AssertionError, M1.add_leaf, Segment(C, Point(0, Fraction(1,2))))
         #M1.show()
 
     def test_add_chord(self):

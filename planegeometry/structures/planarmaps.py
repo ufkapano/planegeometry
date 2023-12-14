@@ -267,6 +267,10 @@ class PlanarMap(dict):
             edge = ~edge
         assert self.has_node(edge.source)
         assert not self.has_node(edge.target)
+        # Nie mozemy miec nakladajacych sie krawedzi!
+        for edge2 in self.iteroutedges(edge.source):
+            assert edge.target not in edge2
+            assert edge2.target not in edge
         # Aktualizacja grafu abstrakcyjnego.
         self.add_edge(edge)
         # Aktualizacja grafu planarnego.
