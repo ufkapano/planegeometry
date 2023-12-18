@@ -2,7 +2,7 @@
 
 from planegeometry.structures.pqueues import PriorityQueue
 from planegeometry.structures.events import Event
-from planegeometry.structures.slowtrees import SlowTree
+from planegeometry.structures.slowtrees import SlowTreeY
 
 
 class ShamosHoey:
@@ -13,7 +13,7 @@ class ShamosHoey:
 
     def __init__(self, segment_list):
         self.event_queue = PriorityQueue()   # sorted along x
-        self.sweep_line = SlowTree()        # sorted along y
+        self.sweep_line = SlowTreeY()        # sorted along y
 
         for segment in segment_list:
             # Zalozone segment.pt1.x < segment.pt2.x.
