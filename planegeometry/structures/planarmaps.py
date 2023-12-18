@@ -249,11 +249,12 @@ class PlanarMap(dict):
         self.add_edge(edge)
         assert self.degree(edge.source) == 1
         assert self.degree(edge.target) == 1
+        rev_edge = ~edge   # save reference
         self._update1(edge)
-        self._update1(~edge)
+        self._update1(rev_edge)
         self.face2edge[0] = edge
         self.edge2face[edge] = 0
-        self.edge2face[~edge] = 0
+        self.edge2face[rev_edge] = 0
 
     def _update1(self, edge):
         """Update structures at a edge.source with the degree 1."""
@@ -263,8 +264,12 @@ class PlanarMap(dict):
 
     def add_leaf(self, edge):
         """Add edge (leaf)."""
+        # Chcemy, aby edge.target byl nowym wierzcholkiem.
         if self.has_node(edge.target):
+            rev_edge = edge   # save reference
             edge = ~edge
+        else:
+            rev_edge = ~edge   # save reference
         assert self.has_node(edge.source)
         assert not self.has_node(edge.target)
         # Nie mozemy miec nakladajacych sie krawedzi!
@@ -281,22 +286,22 @@ class PlanarMap(dict):
             for edge2 in self.iteroutedges(edge.source):
                 if edge2.target != edge.target:
                     break
-            self._update1(~edge)
+            self._update1(rev_edge)
             self._update3(edge2, edge, edge2)
             # Aktualizacja scian. Nie powstaje nowa sciana.
             face = self.edge2face[edge2]
             self.edge2face[edge] = face
-            self.edge2face[~edge] = face
+            self.edge2face[rev_edge] = face
         else:
             #print ( "add_leaf: degree(edge.source) > 2" )
             # Znajdujemy edge4 i edge5 wychodzace z edge.source.
             edge4, edge5 = self._locate(edge)
-            self._update1(~edge)
+            self._update1(rev_edge)
             self._update3(edge4, edge, edge5)
             # Aktualizacja scian.
             face = self.edge2face[edge5]   # lub ~edge4
             self.edge2face[edge] = face
-            self.edge2face[~edge] = face
+            self.edge2face[rev_edge] = face
 
     def _update3(self, edge1, edge2, edge3):
         """Update structures at a node with the degree greater than 1.

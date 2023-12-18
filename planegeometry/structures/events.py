@@ -12,11 +12,21 @@ class Event:
     VERTICAL = 4   #  HorizontalVertical
     BOTTOM = 5   #  HorizontalVertical
     TOP = 6   #  HorizontalVertical
+    START_VERTEX = 7   # monotone partition
+    END_VERTEX = 8   # monotone partition
+    SPLIT_VERTEX = 9   # monotone partition
+    MERGE_VERTEX = 10   # monotone partition
+    REGULAR_VERTEX = 11   # monotone partition
 
     def __init__(self, point, event_type, *sequence):
         self.point = point
         self.type = event_type
-        if self.type == Event.CROSSING:
+        if (self.type == Event.CROSSING or
+            self.type == Event.START_VERTEX or
+            self.type == Event.END_VERTEX or
+            self.type == Event.SPLIT_VERTEX or
+            self.type == Event.MERGE_VERTEX or
+            self.type == Event.REGULAR_VERTEX):
             self.segment_above = sequence[0]
             self.segment_below = sequence[1]
         else:
