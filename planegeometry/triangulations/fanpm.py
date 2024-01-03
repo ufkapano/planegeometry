@@ -16,8 +16,8 @@ from planegeometry.structures.planarmaps import PlanarMap
 from planegeometry.algorithms.geomtools import orientation
 
 
-class FanTriangulationPlanarMap:
-    """Fan triangulation of a simple polygon in O(n) time."""
+class FanTriangulationPM:
+    """Fan triangulation of a convex polygon in O(n) time."""
 
     def __init__(self, polygon):
         if polygon.orientation(test_is_simple=False) < 0:

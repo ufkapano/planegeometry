@@ -3,7 +3,7 @@ FAN TRIANGULATION OF CONVEX POLYGONS
 # Triangulation with a triangle collection.
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
-from planegeometry.triangulations.fantc import FanTriangulation as Triangulation
+from planegeometry.triangulations.fantc import FanTriangulationTC as Triangulation
 
 point_list = [...]   # points for a convex polygon
 polygon = Polygon(*point_list)
@@ -18,7 +18,7 @@ for segment in G.iteredges():
 # Triangulation with a planar map.
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
-from planegeometry.triangulations.fanpm import FanTriangulationPlanarMap as Triangulation
+from planegeometry.triangulations.fanpm import FanTriangulationPM as Triangulation
 
 point_list = [...]   # points for a convex polygon
 polygon = Polygon(*point_list)

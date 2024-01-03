@@ -4,7 +4,7 @@ import random
 import matplotlib.pyplot as plt
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
-from planegeometry.triangulations.fantc import FanTriangulation as Triangulation
+from planegeometry.triangulations.fantc import FanTriangulationTC as Triangulation
 
 point_list = [Point(15, 2), Point(12, 4), Point(9, 6), Point(6, 8),
     Point(3, 10), Point(3, 2), Point(10, 2), Point(12, 2)]

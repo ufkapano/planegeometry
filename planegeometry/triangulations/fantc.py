@@ -16,8 +16,8 @@ from planegeometry.structures.trianglecollections import TriangleCollection
 from planegeometry.algorithms.geomtools import orientation
 
 
-class FanTriangulation:
-    """Fan triangulation of a simple polygon in O(n) time."""
+class FanTriangulationTC:
+    """Fan triangulation of a convex polygon in O(n) time."""
 
     def __init__(self, polygon):
         if polygon.orientation(test_is_simple=False) < 0:

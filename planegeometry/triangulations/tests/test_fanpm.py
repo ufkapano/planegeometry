@@ -4,7 +4,7 @@ import unittest
 from fractions import Fraction
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
-from planegeometry.triangulations.fanpm import FanTriangulationPlanarMap as Triangulation
+from planegeometry.triangulations.fanpm import FanTriangulationPM as Triangulation
 
 #     4
 #  5     3   najprostszy przypadek

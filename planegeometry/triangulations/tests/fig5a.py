@@ -4,7 +4,7 @@ import random
 import matplotlib.pyplot as plt
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
-from planegeometry.triangulations.fantc import FanTriangulation as Triangulation
+from planegeometry.triangulations.fantc import FanTriangulationTC as Triangulation
 #from triangulation1 import YMonotoneTriangulation as Triangulation
 
 # 6|. . . o
