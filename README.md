@@ -20,10 +20,12 @@ sweep line technique, divide and conquer approach
 quickhull (divide and conquer approach)
 * Delaunay triangulations: naive approach O(n^4), edge flipping, Bowyer-Watson
 * Convex polygons: recognition, fan triangulation O(n)
-* Monotone polygons: in progress (recognition, triangulation)
+* Monotone polygons: recognition (in progress),
+monotone triangulation, monotone partition
 * Connected planar maps based on the doubly connected edge list (DCEL): 
-constructors, map overlay procedure.
+constructors, map overlay procedure, mesh refinement (longest edge)
 * Voronoi diagrams: from Delaunay triangulation
+* Range searching: in progress
 
 ## Download
 
@@ -53,7 +55,7 @@ Anna Sarnavska (planar maps overlay)
 
 Gabriela Mazur (monotone polygons)
 
-Mateusz Malczewski (Voronoi diagrams)
+Mateusz Malczewski (Voronoi diagrams, polygon partition)
 
 Maciej Mularski (range searching)
 

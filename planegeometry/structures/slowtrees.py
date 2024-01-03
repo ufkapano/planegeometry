@@ -4,7 +4,7 @@
 # Nie pozwala na wstawienie powtarzajacego sie elementu.
 # Ale Y-struktura nie zajmuje sie powtarzajacymi sie elementami!
 # Klasa Node symuluje wezel drzewa AVL.
-# Zachodzi segment.pt1 < segment.pt2 (prownywanie X, potem Y).
+# Zachodzi segment.pt1 < segment.pt2 (porownywanie X, potem Y).
 
 class Node:
     """The class defining a node with a segment."""
