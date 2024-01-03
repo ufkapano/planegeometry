@@ -1,5 +1,8 @@
 CHANGELOG
 
+2024-01-03
+* Using collections.deque for queue.
+
 2022-04-22
 * Using 'range = xrange' in Py2.
 

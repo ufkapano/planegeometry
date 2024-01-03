@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 try:
-    from Queue import Queue
     range = xrange
-except ImportError:   # Python 3
-    from queue import Queue
+except NameError:   # Python 3
+    pass
 
 import random
+import collections
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.structures.triangles import Triangle
@@ -181,17 +181,17 @@ class PlanarMap(dict):
         parent = dict()   # for BFS tree
         parent[start_edge.source] = None
         parent[start_edge.target] = start_edge.source
-        Q = Queue()
-        Q.put(start_edge.source)
-        Q.put(start_edge.target)
+        queue = collections.deque()
+        queue.append(start_edge.source)
+        queue.append(start_edge.target)
         used.add(start_edge)
         yield start_edge
-        while not Q.empty():   # BFS continued
-            source = Q.get()
+        while len(queue) > 0:   # BFS continued
+            source = queue.popleft()
             for edge in self.iteroutedges(source):
                 if edge.target not in parent:
-                    parent[edge.target] = source   # before Q.put
-                    Q.put(edge.target)
+                    parent[edge.target] = source   # before queue.append
+                    queue.append(edge.target)
                 if edge.source > edge.target:
                     edge = ~edge
                 if edge not in used:   # start_edge will be detected
