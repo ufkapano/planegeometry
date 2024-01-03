@@ -1,16 +1,31 @@
-DELAUNAY TRIANGULATION
+FAN TRIANGULATION OF CONVEX POLYGONS
 ----------------------------------------------------------------------
-from planegeometry.triangulations.naive import DelaunayNaive
-from planegeometry.triangulations.flipping import DelaunayFlipping
-from planegeometry.triangulations.bowyerwatson import BowyerWatson
+# Triangulation with a triangle collection.
+from planegeometry.structures.points import Point
+from planegeometry.structures.polygons import Polygon
+from planegeometry.triangulations.fantc import FanTriangulation as Triangulation
 
-point_list = [...]   # points in general position
-#algorithm = DelaunayNaive(point_list)
-#algorithm = DelaunayFlipping(point_list)
-algorithm = BowyerWatson(point_list)
+point_list = [...]   # points for a convex polygon
+polygon = Polygon(*point_list)
+algorithm = Triangulation(polygon)
 algorithm.run()
 print ( algorithm.tc )   # triangle collection
+assert len(algorithm.tc) == len(point_list)-2
 G = algorithm.tc.to_graph()   # graph with segments
+for segment in G.iteredges():
+    print ( segment )
+----------------------------------------------------------------------
+# Triangulation with a planar map.
+from planegeometry.structures.points import Point
+from planegeometry.structures.polygons import Polygon
+from planegeometry.triangulations.fanpm import FanTriangulationPlanarMap as Triangulation
+
+point_list = [...]   # points for a convex polygon
+polygon = Polygon(*point_list)
+algorithm = Triangulation(polygon)
+algorithm.run()
+assert len(algorithm.planar_map.face2edge) == len(point_list)-1
+G = algorithm.planar_map   # graph with segments
 for segment in G.iteredges():
     print ( segment )
 ----------------------------------------------------------------------
