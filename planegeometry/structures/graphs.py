@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import random
 import collections
 
 class Graph(dict):
@@ -176,10 +175,7 @@ class Graph(dict):
                     yield self[source][target]
 
     def iteredges_connected(self, start_edge):
-        """Generate all connected edges from the graph on demand.
-        
-        Used for ConnectedSequentialEdgeColoring.
-        """
+        """Generate all connected edges from the graph on demand."""
         if self.is_directed():
             raise ValueError("the graph is directed")
         if not self.has_edge(start_edge):
@@ -208,16 +204,22 @@ class Graph(dict):
                     used.add(edge)
                     yield edge
 
+    iterpoints = iternodes
+
+    itersegments = iteredges
+
+    itersegments_connected = iteredges_connected
+
     def show(self):
         """The graph presentation."""
         L = []
         for source in self.iternodes():
-            L.append("{} : ".format(source))
+            L.append("{0!r} : ".format(source))
             for edge in self.iteroutedges(source):
                 if edge.weight == 1:
-                    L.append("{} ".format(edge.target))
+                    L.append("{0!r} ".format(edge.target))
                 else:
-                    L.append("{}({}) ".format(edge.target, edge.weight))
+                    L.append("{0!r}({}) ".format(edge.target, edge.weight))
             L.append("\n")
         print("".join(L))
 

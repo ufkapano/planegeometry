@@ -5,24 +5,19 @@ try:
 except NameError:   # Python 3
     pass
 
-import random
-import collections
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
 from planegeometry.structures.triangles import Triangle
 from planegeometry.structures.rectangles import Rectangle
 from planegeometry.structures.polygons import Polygon
+from planegeometry.structures.graphs import Graph
 
-class PlanarMap(dict):
+class PlanarMap(Graph):
     """The class defining a planar map (an undirected graph)."""
 
-    def __init__(self, item=None):
+    def __init__(self, item=None, n=0, directed=False):
         """Load up a PlanarMap instance."""
-        # Structures defining a topological graph.
-        self.edge_next = None
-        self.edge_prev = None
-        self.face2edge = None
-        self.edge2face = None
+        Graph.__init__(self)
         # Create a planar map from item.
         if isinstance(item, Segment):
             self.add_first_edge(item)
@@ -47,72 +42,11 @@ class PlanarMap(dict):
         else:
             pass   # ignored
 
-    def v(self):
-        """Return the number of nodes (the graph order)."""
-        return len(self)
-
-    def e(self):
-        """Return the number of edges in O(V) time."""
-        return sum(len(self[node]) for node in self) // 2
-
-    def degree(self, source):
-        """Return the degree of the node in the undirected graph."""
-        assert isinstance(source, Point)
-        return len(self[source])
-
-    def f(self):
-        """Return the number of faces."""
-        if not self.edge_next:
-            raise ValueError("empty planar map")
-        return self.e() + 2 - self.v()   # Euler's formula
-
-    def iterfaces(self):
-        """Generate all faces on demand."""
-        if not self.edge_next:
-            raise ValueError("empty planar map")
-        used = set()
-        for edge in self.edge_next:
-            if edge in used:
-                continue
-            used.add(edge)
-            face = [edge]
-            edge = self.edge_next[~edge]
-            while edge not in used:
-                used.add(edge)
-                face.append(edge)
-                edge = self.edge_next[~edge]
-            yield face
-
-    def iterface(self, start_edge):
-        """Generate edges from the same face on demand."""
-        assert isinstance(start_edge, Segment)
-        if not self.edge_next:
-            raise ValueError("empty planar map")
-        edge = start_edge
-        while True:
-            yield edge
-            edge = self.edge_next[~edge]
-            if edge == start_edge:
-                break
-
     def add_node(self, node):
         """Add a node to the planar map."""
         assert isinstance(node, Point)
         if node not in self:
             self[node] = dict()
-
-    def has_node(self, node):
-        """Test if a node exists."""
-        assert isinstance(node, Point)
-        return node in self
-
-    def del_node(self, node):
-        """Remove a node from the planar map (with edges)."""
-        # The dictionary changes size during iteration.
-        assert isinstance(node, Point)
-        for edge in list(self.iteroutedges(node)):
-            self.del_edge(edge)
-        del self[node]
 
     def add_edge(self, edge):
         """Add a segment to the planar map (missing nodes are created)."""
@@ -126,80 +60,6 @@ class PlanarMap(dict):
         self[edge.source][edge.target] = edge
         self[edge.target][edge.source] = ~edge
 
-    def del_edge(self, edge):
-        """Remove an edge from the planar map."""
-        assert isinstance(edge, Segment)
-        del self[edge.source][edge.target]
-        del self[edge.target][edge.source]
-
-    def has_edge(self, edge):
-        """Test if an edge exists (the weight is not checked)."""
-        assert isinstance(edge, Segment)
-        return edge.source in self and edge.target in self[edge.source]
-
-    def iternodes(self):
-        """Generate all nodes from the graph on demand."""
-        return iter(self)
-
-    def iteradjacent(self, source):
-        """Generate the adjacent nodes from the graph on demand."""
-        assert isinstance(source, Point)
-        return iter(self[source])
-
-    def iteroutedges(self, source):
-        """Generate the outedges from the graph on demand."""
-        assert isinstance(source, Point)
-        for target in self[source]:
-            yield self[source][target]
-
-    def iterinedges(self, source):
-        """Generate the inedges from the graph on demand."""
-        assert isinstance(source, Point)
-        for target in self[source]:
-            yield self[target][source]
-
-    def iteredges(self):
-        """Generate all edges from the planar map on demand."""
-        for source in self.iternodes():
-            for target in self[source]:
-                if source < target:
-                    yield self[source][target]
-
-    itersegments = iteredges
-
-    iterpoints = iternodes
-
-    def iteredges_connected(self, start_edge):
-        """Generate all connected edges from the planar map on demand."""
-        assert isinstance(start_edge, Segment)
-        if not self.has_edge(start_edge):
-            raise ValueError("edge not in the planar map")
-        if start_edge.source > start_edge.target:
-            start_edge = ~start_edge
-        # Modified BFS starts from here, before while.
-        used = set()   # for yielded edges
-        parent = dict()   # for BFS tree
-        parent[start_edge.source] = None
-        parent[start_edge.target] = start_edge.source
-        queue = collections.deque()
-        queue.append(start_edge.source)
-        queue.append(start_edge.target)
-        used.add(start_edge)
-        yield start_edge
-        while len(queue) > 0:   # BFS continued
-            source = queue.popleft()
-            for edge in self.iteroutedges(source):
-                if edge.target not in parent:
-                    parent[edge.target] = source   # before queue.append
-                    queue.append(edge.target)
-                if edge.source > edge.target:
-                    edge = ~edge
-                if edge not in used:   # start_edge will be detected
-                    used.add(edge)
-                    yield edge
-
-    itersegments_connected = iteredges_connected
-
     def show(self):
         """The planar map presentation."""
         L = []
@@ -209,35 +69,6 @@ class PlanarMap(dict):
                 L.append("{0!r} ".format(edge.target))
             L.append("\n")
         print("".join(L))
-
-    def copy(self):
-        """Return the planar map copy."""
-        new_map = PlanarMap()
-        for node in self.iternodes():
-            new_map[node] = dict(self[node])
-        # Structures defining a topological graph.
-        if self.edge_next:
-            new_map.edge_next = dict(self.edge_next)
-        if self.edge_prev:
-            new_map.edge_prev = dict(self.edge_prev)
-        if self.face2edge:
-            new_map.face2edge = dict(self.face2edge)
-        if self.edge2face:
-            new_map.edge2face = dict(self.edge2face)
-        return new_map
-
-    def __eq__(self, other):
-        """Test if the planar maps are equal."""
-        if set(self) != set(other):   # checking nodes
-            return False
-        for node in self.iternodes():   # comparing neighbors
-            if self[node] != other[node]:   # different dicts
-                return False
-        return True
-
-    def __ne__(self, other):
-        """Test if the planar maps are not equal."""
-        return not self == other
 
     def add_first_edge(self, edge):
         """Add a first edge to the planar graph."""
