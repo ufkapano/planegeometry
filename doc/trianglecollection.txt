@@ -1,5 +1,7 @@
 INTERFACE FOR TRIANGLECOLLECTION
 ----------------------------------------------------------------------
+from planegeometry.structures.trianglecollections import TriangleCollection
+
 tc = TriangleCollection()
 str(tc)   # return string
 len(tc)   # return the number of triangles in a collection

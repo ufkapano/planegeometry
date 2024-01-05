@@ -1,13 +1,15 @@
 INTERFACE FOR POINTS
 ----------------------------------------------------------------------
+from planegeometry.structures.points import Point
+
 point = Point(x, y)
-point = Point()
+point = Point()   # Point(0, 0)
 repr(point)   # return string
 hash(point)
 p1 == p2, p1 != p2, p1 < p2, p1 <= p2, p1 > p2, p1 >= p2
 p1 + p2, p1 - p2, +point, -point
 p1 * p2     # scalar product
-number * point, point * number
+number * point, point * number   # as for vectors
 p1.cross(p2)   # cross product
 point.copy()   # return point
 point.length()

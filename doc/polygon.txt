@@ -1,5 +1,7 @@
 INTERFACE FOR POLYGONS
 ----------------------------------------------------------------------
+from planegeometry.structures.polygons import Polygon
+
 polygon = Polygon(x1, y1, ..., xn, yn)
 polygon = Polygon(p1, ..., pn)
 repr(polygon)   # return string

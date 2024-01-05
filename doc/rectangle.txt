@@ -1,5 +1,7 @@
 INTERFACE FOR RECTANGLES
 ----------------------------------------------------------------------
+from planegeometry.structures.rectangles import Rectangle
+
 rectangle = Rectangle(x1, y1, x2, y2)   # bottom left, top right
 rectangle = Rectangle(point1, point2)   # bottom left, top right
 rectangle = Rectangle()   # Rectangle(0, 0, 1, 1)
