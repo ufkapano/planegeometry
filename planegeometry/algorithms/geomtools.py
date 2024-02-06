@@ -35,8 +35,8 @@ def oriented_area(pt1, pt2, pt3):
     return (pt2 - pt1).cross(pt3 - pt1)
 
 def angle3points(a, b, c):
-    """Counterclockwise angle in radians by turning from a to c around b
-        Returns a float between 0.0 and 2*math.pi.
+    """Counterclockwise angle in radians by turning from a to c around b.
+    Returns a float between 0.0 and 2*math.pi.
     
     https://python-forum.io/Thread-finding-angle-between-three-points-on-a-2d-graph
     """
