@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from planegeometry.structures.points import Point
 from planegeometry.structures.polygons import Polygon
 from planegeometry.triangulations.fantc import FanTriangulationTC as Triangulation
-#from triangulation1 import YMonotoneTriangulation as Triangulation
+#from planegeometry.triangulations.ymonotonetc import YMonotoneTriangulationTC as Triangulation
 
 point_list = []
 # wielokat wypukly z degeneracja, y-monotoniczny
