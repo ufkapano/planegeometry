@@ -15,7 +15,7 @@ class TestGraphDirected(unittest.TestCase):
 
     def setUp(self):
         self.N = 4           # number of nodes
-        self.G = Graph(self.N, directed=True)
+        self.G = Graph(n=self.N, directed=True)
         self.nodes = ["A", "B", "C", "D"]
         self.edges = [
             Edge("A", "B", 2), Edge("B", "C", 4), Edge("C", "A", 6),
@@ -35,9 +35,9 @@ class TestGraphDirected(unittest.TestCase):
         self.assertEqual(self.G.e(), 2)
 
     def test_cmp(self):
-        T = Graph(self.N)
+        T = Graph(n=self.N)
         self.assertFalse(T == self.G, "directed and undirected graphs")
-        T = Graph(self.N, directed=True)
+        T = Graph(n=self.N, directed=True)
         for node in ["A", "B", "C", "X"]:
             T.add_node(node)
         self.assertFalse(T == self.G, "nodes are different")
@@ -116,7 +116,7 @@ class TestGraphUndirected(unittest.TestCase):
 
     def setUp(self):
         self.N = 4           # number of nodes
-        self.G = Graph(self.N)
+        self.G = Graph(n=self.N)
         self.nodes = ["A", "B", "C", "D"]
         self.edges = [
             Edge("A", "B", 2), Edge("B", "C", 4), Edge("C", "A", 6),
@@ -192,7 +192,7 @@ class TestGraphLadder(unittest.TestCase):
 
     def setUp(self):
         self.N = 8           # number of nodes
-        self.G = Graph(self.N)
+        self.G = Graph(n=self.N)
         self.edges = [
             Edge(0, 1, 2), Edge(0, 2, 1), Edge(2, 3, 5),
             Edge(1, 3, 3), Edge(2, 4, 4), Edge(3, 5, 6), Edge(4, 6, 7),
@@ -232,7 +232,7 @@ class TestGraphWithSegments(unittest.TestCase):
 
     def setUp(self):
         self.N = 3           # number of nodes
-        self.G = Graph(self.N)
+        self.G = Graph(n=self.N)
         self.edges = [
             Segment(0, 0, 2, 0), Segment(0, 0, 1, 2), Segment(2, 0, 1, 2)]
         for edge in self.edges:
