@@ -3,6 +3,7 @@
 import unittest
 from fractions import Fraction
 from planegeometry.structures.points import Point
+#from planegeometry.structures.points2 import Point
 
 class TestPoint(unittest.TestCase):
 
@@ -12,10 +13,10 @@ class TestPoint(unittest.TestCase):
         self.p3 = Point(Fraction(1, 2), Fraction(2, 3))
 
     def test_print(self):
-        self.assertEqual(repr(Point()),"Point(0, 0)")
-        self.assertEqual(repr(self.p2),"Point(4.5, 2.1)")
-        self.assertEqual(repr(self.p1),"Point(3.4, 5.6)")
-        self.assertEqual(repr(self.p3),"Point(Fraction(1, 2), Fraction(2, 3))")
+        self.assertEqual(repr(Point()),"Point(x=0, y=0)")
+        self.assertEqual(repr(self.p2),"Point(x=4.5, y=2.1)")
+        self.assertEqual(repr(self.p1),"Point(x=3.4, y=5.6)")
+        self.assertEqual(repr(self.p3),"Point(x=Fraction(1, 2), y=Fraction(2, 3))")
 
     def test_add(self):
         self.assertAlmostEqual(self.p1 + self.p2, Point(7.9, 7.7))
@@ -40,10 +41,6 @@ class TestPoint(unittest.TestCase):
 
     def test_length(self):
         self.assertAlmostEqual(Point(3, 4).length(), 5.0)
-
-        self.p1 = Point(3.4, 5.6)
-        self.p2 = Point(4.5, 2.1)
-        self.p3 = Point(Fraction(1, 2), Fraction(2, 3))
 
     def test_cmp(self):
         self.assertTrue(self.p1 == Point(3.4, 5.6))

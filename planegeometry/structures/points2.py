@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
 
 import math
+from dataclasses import dataclass
+from numbers import Real
 from fractions import Fraction
-from functools import total_ordering
 
-@total_ordering
+@dataclass(frozen=True,order=True)
 class Point:
-    """The class for points (2D vectors) in the plane."""
-
-    def __init__(self, x=0, y=0):  # konstuktor
-        """Make a point in the plane."""
-        self.x = x
-        self.y = y
-
-    def __repr__(self):
-        """String representation of a point."""
-        return "Point(x={0!r}, y={1!r})".format(self.x, self.y)
+    x: Real = 0
+    y: Real = 0
 
     def __add__(self, other):            # point1 + point2
         """p + q, addition of points."""
@@ -36,8 +29,7 @@ class Point:
 
     def copy(self):
         """Return a copy of a point."""
-        #return self     # chyba tez mozna, bo niezmienne
-        return Point(self.x, self.y)   # inna instancja
+        return self     # points are immutable
 
     def cross(self, other):    # point1 x point2, iloczyn wektorowy 2D
         """The cross product of two 2D vectors, p.cross(q)."""
@@ -88,27 +80,6 @@ class Point:
                 return 2 + Fraction(-self.y, distance)
             elif self.x >= 0 and self.y < 0:  # IV cwiartka
                 return 4 - Fraction(-self.y, distance)
-
-    def __eq__(self, other):
-        """Comparison of points (p == q)."""
-        return self.x == other.x and self.y == other.y
-
-    def __ne__(self, other):
-        """Comparison of points (p != q)."""
-        return not self == other
-
-    def __lt__(self, other):
-        """Comparison of points (p < q)."""
-        return (self.x, self.y) < (other.x, other.y)
-
-    #def __cmp__(self, other):   # Python 2 only
-    #    return cmp((self.x, self.y), (other.x, other.y))
-        # Dla Grahama lepsze byloby odwrotne.
-        #return cmp((self.y, self.x), (other.y, other.x))
-
-    def __hash__(self):
-        """Hashable points."""
-        return hash((self.x, self.y))   # hash based on tuple
 
     def gnu(self):
         """Return a string for Gnuplot."""

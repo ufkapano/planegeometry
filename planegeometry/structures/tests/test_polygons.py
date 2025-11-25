@@ -50,9 +50,9 @@ class TestPolygon(unittest.TestCase):
 
     def test_print(self):
         self.assertEqual(repr(self.polygon1),
-        "Polygon(Point(0, 0), Point(1, 0), Point(1, 1), Point(0, 1))")
+        "Polygon(Point(x=0, y=0), Point(x=1, y=0), Point(x=1, y=1), Point(x=0, y=1))")
         self.assertEqual(repr(self.polygon2),
-        "Polygon(Point(0, 0), Point(2, 0), Point(1, 2))")
+        "Polygon(Point(x=0, y=0), Point(x=2, y=0), Point(x=1, y=2))")
 
     def test_move(self):
         self.assertEqual(self.polygon1.move(2, 3), Polygon(2, 3, 3, 3, 3, 4, 2, 4))

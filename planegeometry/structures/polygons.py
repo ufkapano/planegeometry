@@ -24,10 +24,8 @@ class Polygon:
             self.point_list = list(arguments) # bedziemy rozszerzac
         elif len(arguments) % 2 == 0 and len(arguments) >= 6:
             self.point_list = []
-            i = 0
-            while i < len(arguments):
+            for i in range(0, len(arguments), 2):
                 self.point_list.append(Point(arguments[i], arguments[i+1]))
-                i += 2
         else:
             raise ValueError("bad arguments")
         if len(self.point_list) != len(set(self.point_list)):
