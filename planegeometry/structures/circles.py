@@ -11,10 +11,7 @@ class Circle:
 
     def __init__(self, *arguments):
         """Make a circle in the plane."""
-        if len(arguments) == 0:
-            self.pt = Point(0, 0)
-            self.radius = 1
-        elif len(arguments) == 2:
+        if len(arguments) == 2:
             self.pt, self.radius = arguments
             if not isinstance(self.pt, Point):
                 raise ValueError("the first argument is not a point")

@@ -2,7 +2,6 @@ INTERFACE FOR CIRCLES
 ----------------------------------------------------------------------
 circle = Circle(x, y, radius)
 circle = Circle(point, radius)
-circle = Circle()   # Circle(0, 0, 1)
 repr(circle)   # return string
 hash(circle)
 circle.copy()   # return circle

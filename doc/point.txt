@@ -3,7 +3,6 @@ INTERFACE FOR POINTS
 from planegeometry.structures.points import Point
 
 point = Point(x, y)
-point = Point()   # Point(0, 0)
 repr(point)   # return string
 hash(point)
 p1 == p2, p1 != p2, p1 < p2, p1 <= p2, p1 > p2, p1 >= p2

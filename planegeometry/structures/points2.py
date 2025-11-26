@@ -7,8 +7,8 @@ from fractions import Fraction
 
 @dataclass(repr=False,frozen=True,order=True)
 class Point:
-    x: Real = 0
-    y: Real = 0
+    x: Real
+    y: Real
 
     def __repr__(self):
         """String representation of a point."""

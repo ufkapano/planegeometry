@@ -10,11 +10,7 @@ class Triangle:
 
     def __init__(self, *arguments):
         """Make a triangle in the plane."""
-        if len(arguments) == 0:
-            self.pt1 = Point(0, 0)
-            self.pt2 = Point(1, 0)
-            self.pt3 = Point(0, 1)
-        elif len(arguments) == 3:
+        if len(arguments) == 3:
             if not all(isinstance(pt, Point) for pt in arguments):
                 raise ValueError("arguments are not points")
             self.pt1, self.pt2, self.pt3 = arguments

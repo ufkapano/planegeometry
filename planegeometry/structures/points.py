@@ -8,7 +8,7 @@ from functools import total_ordering
 class Point:
     """The class for points (2D vectors) in the plane."""
 
-    def __init__(self, x=0, y=0):  # konstuktor
+    def __init__(self, x, y):  # konstuktor
         """Make a point in the plane."""
         self.x = x
         self.y = y

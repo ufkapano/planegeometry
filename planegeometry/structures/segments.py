@@ -11,10 +11,7 @@ class Segment:   # odcinek skierowany
 
     def __init__(self, *arguments):
         """Make a segment in the plane."""
-        if len(arguments) == 0:
-            self.pt1 = Point(0, 0)
-            self.pt2 = Point(1, 1)
-        elif len(arguments) == 2:
+        if len(arguments) == 2:
             if not all(isinstance(pt, Point) for pt in arguments):
                 raise ValueError("arguments are not points")
             self.pt1, self.pt2 = arguments
