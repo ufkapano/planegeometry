@@ -5,10 +5,14 @@ from dataclasses import dataclass
 from numbers import Real
 from fractions import Fraction
 
-@dataclass(frozen=True,order=True)
+@dataclass(repr=False,frozen=True,order=True)
 class Point:
     x: Real = 0
     y: Real = 0
+
+    def __repr__(self):
+        """String representation of a point."""
+        return "Point({0!r}, {1!r})".format(self.x, self.y)
 
     def __add__(self, other):            # point1 + point2
         """p + q, addition of points."""
