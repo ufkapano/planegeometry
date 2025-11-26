@@ -15,7 +15,7 @@ class Point:
 
     def __repr__(self):
         """String representation of a point."""
-        return "Point(x={0!r}, y={1!r})".format(self.x, self.y)
+        return "Point({0!r}, {1!r})".format(self.x, self.y)
 
     def __add__(self, other):            # point1 + point2
         """p + q, addition of points."""

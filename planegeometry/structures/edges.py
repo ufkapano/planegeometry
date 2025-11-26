@@ -69,6 +69,4 @@ class Edge:
         """Return the edge with the opposite direction."""
         return Edge(self.target, self.source, self.weight)
 
-    inverted = __invert__
-
 # EOF
