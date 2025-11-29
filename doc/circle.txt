@@ -10,9 +10,10 @@ circle.area()
 circle.move(x, y)   # return new circle
 circle.move(point)   # return new circle
 c1 == c2, c1 != c2, c1 < c2, c1 <= c2, c1 > c2, c1 >= c2
-c1.cover(c2)   # return circle
+circle1.cover(circle2)   # return circle
 point in circle   # return bool
 segment in circle   # return bool
+circle1 in circle2   # return bool
 circle.gnu()   # return gnuplot string
 ----------------------------------------------------------------------
 EOF

@@ -3,8 +3,8 @@ MODULE DEPENDENCIES
 (points, geomtools) --> segments
 
 (points, segments, geomtools) --> triangles
-(points, segments) --> rectangles
 (points, segments) --> circles
+(points, segments, circles) --> rectangles
 (points, segments, geomtools) --> polygons
 
 edges --> graphs

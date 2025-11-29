@@ -101,6 +101,9 @@ class Circle:
             return vector * vector <= self.radius * self.radius
         elif isinstance(other, Segment):
             return other.pt1 in self and other.pt2 in self
+        elif isinstance(other, Circle):
+            d = (self.pt - other.pt).length()
+            return d + other.radius <= self.radius
         else:
             raise ValueError()
 

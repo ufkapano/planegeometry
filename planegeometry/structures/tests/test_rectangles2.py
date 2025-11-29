@@ -6,6 +6,7 @@ from planegeometry.structures.points2 import Point
 from planegeometry.structures.segments2 import Segment
 from planegeometry.structures.rectangles2 import Rectangle
 from planegeometry.structures.rectangles2 import bounding_box
+from planegeometry.structures.circles import Circle
 
 class TestRectangle(unittest.TestCase):
 
@@ -116,6 +117,9 @@ class TestRectangle(unittest.TestCase):
         # segment in rectangle
         self.assertTrue(Segment(Point(1, 1), Point(2, 2)) in self.r1)
         self.assertFalse(Segment(Point(1, 1), Point(7, 7)) in self.r1)
+        # circle in rectangle
+        self.assertTrue(Circle(2, 2, 2) in self.r1)
+        self.assertFalse(Circle(0, 0, 2) in self.r1)
 
     def test_is_square(self):
         self.assertTrue(self.r2.is_square())

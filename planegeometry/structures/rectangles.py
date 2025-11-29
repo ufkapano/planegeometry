@@ -4,6 +4,7 @@ from fractions import Fraction
 from functools import total_ordering
 from planegeometry.structures.points import Point
 from planegeometry.structures.segments import Segment
+from planegeometry.structures.circles import Circle
 
 @total_ordering
 class Rectangle:
@@ -115,6 +116,12 @@ class Rectangle:
             return in_x and in_y
         elif isinstance(other, Segment):
             return other.pt1 in self and other.pt2 in self
+        elif isinstance(other, Circle):
+            in1 = self.pt1.x + other.radius <= other.pt.x
+            in2 = other.pt.x + other.radius <= self.pt2.x
+            in3 = self.pt1.y + other.radius <= other.pt.y
+            in4 = other.pt.y + other.radius <= self.pt2.y
+            return in1 and in2 and in3 and in4
         else:
             raise ValueError()
 
