@@ -5,7 +5,7 @@ from planegeometry.structures.rectangles import Rectangle
 rectangle = Rectangle(x1, y1, x2, y2)   # bottom left, top right
 rectangle = Rectangle(point1, point2)   # bottom left, top right
 repr(rectangle)   # return string
-hash(rectangle)
+hash(rectangle)   # rectangles are immutable
 rectangle.copy()   # return rectangle
 rectangle.center()   # return point
 rectangle.area()

@@ -14,11 +14,11 @@ point_list = [...]   # points for y-monotone polygon
 polygon = Polygon(*point_list)
 algorithm = Triangulation(polygon)
 algorithm.run()
-print ( algorithm.tc )   # triangle collection
+print( algorithm.tc )   # triangle collection
 assert len(algorithm.tc) == len(point_list)-2
 G = algorithm.tc.to_graph()   # graph with segments
 for segment in G.iteredges():
-    print ( segment )
+    print( segment )
 ----------------------------------------------------------------------
 # Triangulation with a planar map.
 from planegeometry.structures.points import Point
@@ -33,7 +33,7 @@ algorithm.run()
 assert len(algorithm.planar_map.face2edge) == len(point_list)-1
 G = algorithm.planar_map   # graph with segments
 for segment in G.iteredges():
-    print ( segment )
+    print( segment )
 ----------------------------------------------------------------------
 # MONOTONE PARTITION
 

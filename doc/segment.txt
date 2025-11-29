@@ -5,7 +5,7 @@ from planegeometry.structures.segments import Segment
 segment = Segment(x1, y1, x2, y2)   # Point(x1, y1) != Point(x2, y2)
 segment = Segment(point1, point2)   # point1 != point2
 repr(segment)   # return string
-hash(segment)
+hash(segment)   # segments are immutable
 segment.source == segment.pt1   # property (for graphs)
 segment.target == segment.pt2   # property (for graphs)
 segment.weight == segment.length()   # property (for graphs)

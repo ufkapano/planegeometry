@@ -3,7 +3,7 @@ INTERFACE FOR CIRCLES
 circle = Circle(x, y, radius)
 circle = Circle(point, radius)
 repr(circle)   # return string
-hash(circle)
+hash(circle)   # circles are immutable
 circle.copy()   # return circle
 circle.center()   # return point
 circle.area()

@@ -11,12 +11,12 @@ point_list = [...]
 # points outside main_rect are ignored
 for point in point_list:   # adding points to quadtree
     qt.insert(point)
-print ( qt.height() )
+print( qt.height() )
 
 query_rect = Rectangle(...)
-print ( qt.query(query_rect) )   # return points (list) in query_rect
+print( qt.query(query_rect) )   # return points (list) in query_rect
 
 query_point = Point(...)
-print ( qt.nearest(query_point) )   # return the nearest point
+print( qt.nearest(query_point) )   # return the nearest point
 ----------------------------------------------------------------------
 EOF

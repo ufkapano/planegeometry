@@ -9,6 +9,6 @@ algorithm = GrahamScan(point_list)   # O(n log n) time
 #algorithm = JarvisMarch(point_list)   # O(n h) time
 #algorithm = QuickHull(point_list)
 algorithm.run()
-print ( algorithm.convex_hull )   # list of points
+print( algorithm.convex_hull )   # list of points
 ----------------------------------------------------------------------
 EOF

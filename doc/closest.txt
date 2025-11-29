@@ -7,12 +7,12 @@ from planegeometry.algorithms.closestpair4 import ClosestPairSortXY
 
 point_list = [...]
 
-print ( find_two_closest_points(point_list) )   # O(n^2) time
+print( find_two_closest_points(point_list) )   # O(n^2) time
 
 algorithm = ClosestPairSweepLine(point_list)   # O(n log n) time
 #algorithm = ClosestPairDivideConquer(point_list)   # O(n (log n)^2) time
 #algorithm = ClosestPairSortXY(point_list)   # O(n log n) time
 algorithm.run()
-print ( algorithm.closest_pair )
+print( algorithm.closest_pair )
 ----------------------------------------------------------------------
 EOF

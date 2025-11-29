@@ -4,7 +4,7 @@ from planegeometry.structures.points import Point
 
 point = Point(x, y)
 repr(point)   # return string
-hash(point)
+hash(point)   # points are immutable
 p1 == p2, p1 != p2, p1 < p2, p1 <= p2, p1 > p2, p1 >= p2
 p1 + p2, p1 - p2, +point, -point
 p1 * p2     # scalar product
