@@ -117,6 +117,9 @@ class TestRectangle(unittest.TestCase):
         # segment in rectangle
         self.assertTrue(Segment(Point(1, 1), Point(2, 2)) in self.r1)
         self.assertFalse(Segment(Point(1, 1), Point(7, 7)) in self.r1)
+        # rectangle1 in rectangle2
+        self.assertTrue(Rectangle(Point(1, 1), Point(2, 2)) in self.r1)
+        self.assertFalse(Rectangle(Point(1, 1), Point(7, 7)) in self.r1)
         # circle in rectangle
         self.assertTrue(Circle(2, 2, 2) in self.r1)
         self.assertFalse(Circle(0, 0, 2) in self.r1)

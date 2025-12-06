@@ -92,7 +92,7 @@ class Circle:
         return Circle(pt, radius)
 
     def __contains__(self, other):
-        """Test if a point is in a circle."""
+        """Test if a figure is in a circle."""
         if isinstance(other, Point):
             #distance = (self.pt - other).length()
             #return distance <= self.radius

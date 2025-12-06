@@ -109,12 +109,12 @@ class Rectangle:
         return hash((self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y))
 
     def __contains__(self, other):
-        """Test if a point is in a rectangle."""
+        """Test if a figure is in a rectangle."""
         if isinstance(other, Point):
             in_x = self.pt1.x <= other.x <= self.pt2.x
             in_y = self.pt1.y <= other.y <= self.pt2.y
             return in_x and in_y
-        elif isinstance(other, Segment):
+        elif isinstance(other, (Segment, Rectangle)):
             return other.pt1 in self and other.pt2 in self
         elif isinstance(other, Circle):
             in1 = self.pt1.x + other.radius <= other.pt.x

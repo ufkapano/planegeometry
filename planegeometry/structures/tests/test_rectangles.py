@@ -111,6 +111,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(len(aset), 2)
 
     def test_contains(self):
+        #self.r1 = Rectangle(0, 0, 5, 6)
         self.assertTrue(Point(1, 1) in self.r1)
         self.assertFalse(Point(1, 7) in self.r1)
         self.assertFalse(Point(7, 1) in self.r1)
@@ -118,6 +119,9 @@ class TestRectangle(unittest.TestCase):
         # segment in rectangle
         self.assertTrue(Segment(1, 1, 2, 2) in self.r1)
         self.assertFalse(Segment(1, 1, 7, 7) in self.r1)
+        # rectangle1 in rectangle2
+        self.assertTrue(Rectangle(1, 1, 2, 2) in self.r1)
+        self.assertFalse(Rectangle(1, 1, 7, 7) in self.r1)
         # circle in rectangle
         self.assertTrue(Circle(2, 2, 2) in self.r1)
         self.assertFalse(Circle(0, 0, 2) in self.r1)

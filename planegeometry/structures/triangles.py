@@ -90,7 +90,7 @@ class Triangle:
         return hash(frozenset([self.pt1, self.pt2, self.pt3]))
 
     def __contains__(self, other):
-        """Test if a point is in a triangle."""
+        """Test if a figure is in a triangle."""
         if isinstance(other, Point):
             # Chyba wystarczy sprawdzic, czy punkt jest po tej samej
             # stronie boku, co przeciwlegly wierzcholek.

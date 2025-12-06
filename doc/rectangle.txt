@@ -17,6 +17,7 @@ rectangle.move(point)   # return new rectangle
 r1 == r2, r1 != r2, r1 < r2, r1 <= r2, r1 > r2, r1 >= r2
 point in rectangle   # return bool
 segment in rectangle   # return bool
+rectangle1 in rectangle2   # return bool
 circle in rectangle   # return bool
 rectangle.is_square()   # return bool
 rectangle.iterpoints()   # counterclockwise
