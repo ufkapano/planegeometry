@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#
+# UWAGA Ta implementacja nie pozwala na dodawanie nowych atrybutow!
 
 from typing import Any
 from dataclasses import dataclass

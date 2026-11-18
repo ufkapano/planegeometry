@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#
+# UWAGA Ta implementacja nie pozwala na dodawanie nowych atrybutow!
 
 import math
 from dataclasses import dataclass
