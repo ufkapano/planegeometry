@@ -53,6 +53,8 @@ class Circle:
 
     def __eq__(self, other):
         """Comparison of circles (c1 == c2)."""
+        if not isinstance(other, type(self)):
+            return False
         return self.pt == other.pt and self.radius == other.radius
 
     def __ne__(self, other):
@@ -61,6 +63,8 @@ class Circle:
 
     def __lt__(self, other):
         """Comparison of circles (c1 < c2)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Circle' instance")
         return (self.pt.x, self.pt.y, self.radius) < (
             other.pt.x, other.pt.y, other.radius)
 
@@ -71,6 +75,8 @@ class Circle:
 
     def cover(self, other):
         """Return the smallest circle covering given circles."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Circle' instance")
         # Trzeba znalezc srodek i promien.
         if self.pt == other.pt:
             radius = max(self.radius, other.radius)

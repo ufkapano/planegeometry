@@ -37,6 +37,8 @@ class Event:
 
     def __eq__(self, other):
         """Comparison of events (event1 == event2)."""
+        if not isinstance(other, type(self)):
+            return False
         return self.point == other.point
 
     def __ne__(self, other):
@@ -45,7 +47,9 @@ class Event:
 
     def __lt__(self, other):
         """Comparison of events (event1 < event2)."""
-        return (self.point.x, self.point.y) < (other.point.x, other.point.y)
+        if not isinstance(other, type(self)):
+            raise TypeError("not an 'Event' instance")
+        return self.point < other.point
 
     def __hash__(self):
         """Hashable events."""

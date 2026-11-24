@@ -91,6 +91,8 @@ class Segment:   # odcinek skierowany
 
     def intersect(self, other):
         """Test if two segments intersect."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         # https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
         o1 = orientation(self.pt1, self.pt2, other.pt1)
         o2 = orientation(self.pt1, self.pt2, other.pt2)
@@ -112,6 +114,8 @@ class Segment:   # odcinek skierowany
 
     def intersection_point(self, other):
         """Return the intersection point of two segments (not parallel)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         if self.intersect(other):
             if self.parallel(other):
                 # o--o----o is forbidden.
@@ -148,10 +152,14 @@ class Segment:   # odcinek skierowany
 
     def parallel(self, other):
         """Test if two segments are parallel."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         return (self.pt2 - self.pt1).cross(other.pt2 - other.pt1) == 0
 
     def perpendicular(self, other):
         """Test if two segments are perpendicular."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         return (self.pt2 - self.pt1) * (other.pt2 - other.pt1) == 0
 
     def calculate_y(self, x):

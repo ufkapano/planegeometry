@@ -78,6 +78,8 @@ class Triangle:
 
     def __eq__(self, other):
         """Comparison of triangles (t1 == t2)."""
+        if not isinstance(other, type(self)):
+            return False
         return set([self.pt1, self.pt2, self.pt3]) == set([other.pt1, other.pt2, other.pt3])
         #return frozenset([self.pt1, self.pt2, self.pt3]) == frozenset([other.pt1, other.pt2, other.pt3])
 
@@ -126,6 +128,8 @@ class Triangle:
 
     def common_segment(self, other):
         """Find the common segment of two triangles."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Triangle' instance")
         set1 = set([self.pt1, self.pt2, self.pt3])
         set2 = set([other.pt1, other.pt2, other.pt3])
         set3 = set1 & set2

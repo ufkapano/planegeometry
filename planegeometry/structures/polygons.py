@@ -38,6 +38,8 @@ class Polygon:
 
     def __eq__(self, other):
         """Comparison of polygons (polygon1 == polygon2)."""
+        if not isinstance(other, type(self)):
+            return False
         #return self.point_list == other.point_list
         n = len(self.point_list)
         if len(other.point_list) != n:

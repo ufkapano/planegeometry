@@ -50,6 +50,8 @@ class Rectangle:
 
     def cover(self, other):
         """Return the smallest rectangle covering given rectangles."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Rectangle' instance")
         x1 = min(self.pt1.x, other.pt1.x)
         y1 = min(self.pt1.y, other.pt1.y)
         x2 = max(self.pt2.x, other.pt2.x)
@@ -58,6 +60,8 @@ class Rectangle:
 
     def intersection(self, other):
         """Return the intersection of given rectangles."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Rectangle' instance")
         x1 = max(self.pt1.x, other.pt1.x)
         y1 = max(self.pt1.y, other.pt1.y)
         x2 = min(self.pt2.x, other.pt2.x)

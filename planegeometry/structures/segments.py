@@ -46,6 +46,8 @@ class Segment:   # odcinek skierowany
 
     def __eq__(self, other):
         """Comparison of segments (s1 == s2)."""
+        if not isinstance(other, type(self)):
+            return False
         return other.pt1 == self.pt1 and other.pt2 == self.pt2
 
     def __ne__(self, other):
@@ -54,6 +56,8 @@ class Segment:   # odcinek skierowany
 
     def __lt__(self, other):
         """Comparison of segments (s1 < s2)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         return (self.pt1.x, self.pt1.y, self.pt2.x, self.pt2.y) < (
             other.pt1.x, other.pt1.y, other.pt2.x, other.pt2.y)
 
@@ -111,6 +115,8 @@ class Segment:   # odcinek skierowany
 
     def intersect(self, other):
         """Test if two segments intersect."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         # https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
         o1 = orientation(self.pt1, self.pt2, other.pt1)
         o2 = orientation(self.pt1, self.pt2, other.pt2)
@@ -132,6 +138,8 @@ class Segment:   # odcinek skierowany
 
     def intersection_point(self, other):
         """Return the intersection point of two segments (not parallel)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         if self.intersect(other):
             if self.parallel(other):
                 # o--o----o is forbidden.
@@ -168,10 +176,14 @@ class Segment:   # odcinek skierowany
 
     def parallel(self, other):
         """Test if two segments are parallel."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         return (self.pt2 - self.pt1).cross(other.pt2 - other.pt1) == 0
 
     def perpendicular(self, other):
         """Test if two segments are perpendicular."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Segment' instance")
         return (self.pt2 - self.pt1) * (other.pt2 - other.pt1) == 0
 
     def calculate_y(self, x):

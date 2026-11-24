@@ -32,7 +32,7 @@ class Point:
 
     def __mul__(self, other):
         """The scalar product of two 2D vectors or number * point."""
-        if isinstance(other, Point):      # point1 * point2 to iloczyn skalarny
+        if isinstance(other, type(self)):      # point1 * point2 to iloczyn skalarny
             return (self.x * other.x + self.y * other.y)
         else:   # mnozenie przez liczbe (int, float, Fraction)
             return Point(self.x * other, self.y * other)
