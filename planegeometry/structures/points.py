@@ -4,6 +4,7 @@ import math
 from fractions import Fraction
 from functools import total_ordering
 
+
 @total_ordering
 class Point:
     """The class for points (2D vectors) in the plane."""
@@ -19,10 +20,14 @@ class Point:
 
     def __add__(self, other):            # point1 + point2
         """p + q, addition of points."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return Point(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):           # point1 - point2
         """p - q, substraction of points."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return Point(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
@@ -41,6 +46,8 @@ class Point:
 
     def cross(self, other):    # point1 x point2, iloczyn wektorowy 2D
         """The cross product of two 2D vectors, p.cross(q)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return (self.x * other.y - self.y * other.x)
 
     # operatory jednoargumentowe
@@ -91,6 +98,8 @@ class Point:
 
     def __eq__(self, other):
         """Comparison of points (p == q)."""
+        if not isinstance(other, type(self)):
+            return False
         return self.x == other.x and self.y == other.y
 
     def __ne__(self, other):
@@ -99,10 +108,14 @@ class Point:
 
     def __lt__(self, other):
         """Comparison of points (p < q)."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return (self.x, self.y) < (other.x, other.y)
 
-    #def __cmp__(self, other):   # Python 2 only
-    #    return cmp((self.x, self.y), (other.x, other.y))
+    def __cmp__(self, other):   # Python 2 only
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
+        return cmp((self.x, self.y), (other.x, other.y))
         # Dla Grahama lepsze byloby odwrotne.
         #return cmp((self.y, self.x), (other.y, other.x))
 

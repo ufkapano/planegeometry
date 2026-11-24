@@ -18,10 +18,14 @@ class Point:
 
     def __add__(self, other):            # point1 + point2
         """p + q, addition of points."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return Point(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):           # point1 - point2
         """p - q, substraction of points."""
+        if not isinstance(other, type(self)):
+            raise TypeError("not a 'Point' instance")
         return Point(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
